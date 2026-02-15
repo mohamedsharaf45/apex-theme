@@ -911,6 +911,28 @@
       box-shadow: var(--shadow-lg);
       border-color: var(--border-hover);
     }
+    a.project-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .project-card__links {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .project-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: gap var(--transition);
+    }
+    .project-card__link:hover { gap: 10px; }
+    .project-card__link svg { width: 14px; height: 14px; }
     .project-card__image {
       height: 200px;
       display: flex;
@@ -1528,7 +1550,7 @@
         <div class="project-card reveal reveal-delay-1">
           <div class="project-card__image project-card__image--1">
             <span aria-hidden="true">🌐</span>
-            <span class="project-card__badge">Coming Soon</span>
+            <span class="project-card__badge">APEX Demo</span>
           </div>
           <div class="project-card__body">
             <h3 class="project-card__title">Corporate Web Platform</h3>
@@ -1541,13 +1563,21 @@
               <span class="tech-tag">REST API</span>
               <span class="tech-tag">JavaScript</span>
             </div>
+            <div class="project-card__links">
+              <a href="https://github.com/mohamedsharaf45/apex-theme/tree/main/apex/demos/corporate" class="project-card__link" target="_blank" rel="noopener">
+                View Source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+              <a href="https://github.com/mohamedsharaf45/apex-theme/tree/main/apex/css/demos/corporate.css" class="project-card__link" target="_blank" rel="noopener">
+                Styles <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+            </div>
           </div>
         </div>
         <!-- Card 2 -->
         <div class="project-card reveal reveal-delay-2">
           <div class="project-card__image project-card__image--2">
             <span aria-hidden="true">🛍️</span>
-            <span class="project-card__badge">Coming Soon</span>
+            <span class="project-card__badge">APEX Commerce</span>
           </div>
           <div class="project-card__body">
             <h3 class="project-card__title">eCommerce Storefront</h3>
@@ -1560,13 +1590,21 @@
               <span class="tech-tag">CSS3</span>
               <span class="tech-tag">UX</span>
             </div>
+            <div class="project-card__links">
+              <a href="https://github.com/mohamedsharaf45/apex-theme/tree/main/apex/css/commerce" class="project-card__link" target="_blank" rel="noopener">
+                Commerce CSS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+              <a href="https://github.com/mohamedsharaf45/apex-theme/tree/main/apex/templates/commerce" class="project-card__link" target="_blank" rel="noopener">
+                Templates <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+            </div>
           </div>
         </div>
         <!-- Card 3 -->
         <div class="project-card reveal reveal-delay-3">
           <div class="project-card__image project-card__image--3">
             <span aria-hidden="true">📊</span>
-            <span class="project-card__badge">Coming Soon</span>
+            <span class="project-card__badge">APEX Feature</span>
           </div>
           <div class="project-card__body">
             <h3 class="project-card__title">Analytics Dashboard UI</h3>
@@ -1578,6 +1616,14 @@
               <span class="tech-tag">JavaScript</span>
               <span class="tech-tag">CSS Grid</span>
               <span class="tech-tag">a11y</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/mohamedsharaf45/apex-theme/tree/main/apex/js" class="project-card__link" target="_blank" rel="noopener">
+                JavaScript <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+              <a href="https://github.com/mohamedsharaf45/apex-theme/tree/main/apex/css/utilities" class="project-card__link" target="_blank" rel="noopener">
+                Dark Mode <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
             </div>
           </div>
         </div>
