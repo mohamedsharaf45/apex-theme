@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX Medical — Healthcare Theme Demo</title>
+  <meta name="description" content="APEX Medical Demo — A clean, trustworthy theme for clinics, hospitals, and health services.">
+  <meta name="author" content="Mohamed Mahmoud">
+  <style>
+    /* ============================================
+       APEX MEDICAL / HEALTHCARE DEMO
+       Teal + Blue | Clean, Accessible, Trustworthy
+       ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --primary-light: #14b8a6;
+      --primary-50: #f0fdfa;
+      --secondary: #1e293b;
+      --accent: #2563eb;
+      --danger: #dc2626;
+      --bg: #ffffff;
+      --bg-alt: var(--primary-50);
+      --bg-dark: #0f172a;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --text-white: #f8fafc;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --shadow: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-lg: 0 12px 40px rgba(13,148,136,0.12);
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --transition: 0.3s ease;
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---- Emergency Banner ---- */
+    .emergency {
+      background: var(--danger);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .emergency a { color: #fecaca; text-decoration: underline; }
+
+    /* ---- Top Bar ---- */
+    .topbar {
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.8rem;
+      padding: 8px 0;
+    }
+    .topbar__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar a { color: #5eead4; text-decoration: none; }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--bg);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header__logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header__logo-icon { font-size: 1.8rem; }
+    .nav { display: flex; gap: 28px; align-items: center; }
+    .nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    .nav a:hover { color: var(--primary); }
+    .nav__cta {
+      background: var(--primary) !important;
+      color: #fff !important;
+      padding: 10px 24px;
+      border-radius: var(--radius-full);
+      font-weight: 600 !important;
+    }
+    .nav__cta:hover { background: var(--primary-dark) !important; }
+
+    /* ---- Hero ---- */
+    .hero {
+      background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+      color: var(--text-white);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; right: -50px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(255,255,255,0.15);
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      margin-bottom: 24px;
+      backdrop-filter: blur(8px);
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: #ccfbf1;
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+    .hero__actions { display: flex; gap: 16px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .btn--white { background: #fff; color: var(--primary-dark); }
+    .btn--white:hover { background: #f0fdfa; transform: translateY(-2px); }
+    .btn--outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); }
+    .btn--outline:hover { border-color: #fff; }
+    .btn--primary { background: var(--primary); color: #fff; }
+    .btn--primary:hover { background: var(--primary-dark); }
+
+    /* Hero Appointment Card */
+    .appointment-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(16px);
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .appointment-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+      opacity: 0.8;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 0.9rem;
+      font-family: var(--font);
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,0.4); }
+    .form-group select option { color: var(--text); }
+    .btn--book {
+      width: 100%;
+      justify-content: center;
+      background: #fff;
+      color: var(--primary-dark);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      margin-top: 8px;
+    }
+
+    /* ---- Section ---- */
+    .section { padding: 80px 0; }
+    .section--alt { background: var(--bg-alt); }
+    .section--dark { background: var(--bg-dark); color: var(--text-white); }
+    .section__header { text-align: center; margin-bottom: 48px; }
+    .section__label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .section__title { font-size: 2.2rem; font-weight: 800; }
+    .section__subtitle { color: var(--text-muted); max-width: 600px; margin: 12px auto 0; }
+
+    /* ---- Departments ---- */
+    .departments-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .department-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .department-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    .department-card__icon {
+      width: 72px; height: 72px;
+      background: var(--primary-50);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 20px;
+    }
+    .department-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .department-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ---- Doctors / Team ---- */
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .doctor-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+    .doctor-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .doctor-card__image {
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+    .doctor-card__image--1 { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+    .doctor-card__image--2 { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+    .doctor-card__image--3 { background: linear-gradient(135deg, #0f766e, #0d9488); }
+    .doctor-card__image--4 { background: linear-gradient(135deg, #1d4ed8, #2563eb); }
+    .doctor-card__body { padding: 20px; text-align: center; }
+    .doctor-card__name { font-weight: 700; font-size: 1rem; }
+    .doctor-card__specialty { font-size: 0.8rem; color: var(--primary); margin-top: 4px; }
+
+    /* ---- Hours Widget ---- */
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .hours-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .hours-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row span:last-child { font-weight: 600; color: var(--primary); }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-item__icon {
+      width: 48px; height: 48px;
+      background: var(--primary-50);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-item__text { font-size: 0.9rem; }
+    .contact-item__label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* ---- Footer ---- */
+    .footer {
+      background: var(--bg-dark);
+      color: #94a3b8;
+      padding: 60px 0 24px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer h4 { color: var(--text-white); margin-bottom: 16px; font-size: 0.95rem; }
+    .footer p { font-size: 0.85rem; line-height: 1.7; }
+    .footer a {
+      color: #94a3b8; text-decoration: none; display: block;
+      margin-bottom: 8px; font-size: 0.85rem; transition: color var(--transition);
+    }
+    .footer a:hover { color: var(--primary-light); }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+
+    /* ---- Back link ---- */
+    .back-link {
+      position: fixed;
+      top: 16px; left: 16px;
+      z-index: 999;
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+      transition: all var(--transition);
+    }
+    .back-link:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) {
+      .hero__inner { grid-template-columns: 1fr; }
+      .appointment-card { display: none; }
+      .departments-grid { grid-template-columns: repeat(2, 1fr); }
+      .doctors-grid { grid-template-columns: repeat(2, 1fr); }
+      .hours-grid { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .departments-grid { grid-template-columns: 1fr; }
+      .doctors-grid { grid-template-columns: 1fr; }
+      .nav { display: none; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; text-align: center; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">← Back to Portfolio</a>
+
+  <!-- Emergency Banner -->
+  <div class="emergency">
+    🚨 Emergency? Call <a href="tel:911">911</a> or visit our Emergency Department — Open 24/7
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>📞 <a href="tel:+15551234567">(555) 123-4567</a> &nbsp;|&nbsp; 📧 <a href="#">info@apexmedical.com</a></span>
+      <span>🕐 Mon–Fri: 8AM–8PM | Sat: 9AM–5PM</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">
+        <span class="header__logo-icon">🏥</span>
+        APEX Medical
+      </a>
+      <nav class="nav">
+        <a href="#departments">Departments</a>
+        <a href="#doctors">Our Doctors</a>
+        <a href="#hours">Contact</a>
+        <a href="#" class="nav__cta">Book Appointment</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div>
+        <span class="hero__badge">✨ Trusted Healthcare Since 2005</span>
+        <h1>Your Health, Our Priority</h1>
+        <p>Providing compassionate, patient-centered healthcare with cutting-edge medical technology and a team of board-certified specialists.</p>
+        <div class="hero__actions">
+          <a href="#" class="btn btn--white">Book Appointment →</a>
+          <a href="#departments" class="btn btn--outline">Our Services</a>
+        </div>
+      </div>
+      <div>
+        <div class="appointment-card">
+          <h3>📋 Quick Appointment</h3>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label>Department</label>
+            <select>
+              <option>Select Department</option>
+              <option>Cardiology</option>
+              <option>Neurology</option>
+              <option>Orthopedics</option>
+              <option>Pediatrics</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Date</label>
+            <input type="text" placeholder="MM/DD/YYYY">
+          </div>
+          <button class="btn btn--book">Book Now →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Departments -->
+  <section class="section section--alt" id="departments">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Our Departments</span>
+        <h2 class="section__title">Specialized Care for Every Need</h2>
+        <p class="section__subtitle">Our world-class medical team provides comprehensive care across multiple specialties.</p>
+      </div>
+      <div class="departments-grid">
+        <div class="department-card">
+          <div class="department-card__icon">❤️</div>
+          <h3>Cardiology</h3>
+          <p>Advanced heart care including diagnostics, interventional procedures, and cardiac rehabilitation.</p>
+        </div>
+        <div class="department-card">
+          <div class="department-card__icon">🧠</div>
+          <h3>Neurology</h3>
+          <p>Expert diagnosis and treatment for neurological conditions with state-of-the-art imaging and therapy.</p>
+        </div>
+        <div class="department-card">
+          <div class="department-card__icon">🦴</div>
+          <h3>Orthopedics</h3>
+          <p>Joint replacement, sports medicine, and spine care with minimally invasive surgical techniques.</p>
+        </div>
+        <div class="department-card">
+          <div class="department-card__icon">👶</div>
+          <h3>Pediatrics</h3>
+          <p>Gentle, child-friendly healthcare from preventive check-ups to specialized pediatric treatments.</p>
+        </div>
+        <div class="department-card">
+          <div class="department-card__icon">🔬</div>
+          <h3>Laboratory</h3>
+          <p>Full-service diagnostic lab with rapid turnaround for blood work, pathology, and genetic testing.</p>
+        </div>
+        <div class="department-card">
+          <div class="department-card__icon">🩺</div>
+          <h3>General Medicine</h3>
+          <p>Comprehensive primary care, annual physicals, chronic disease management, and wellness programs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctors -->
+  <section class="section" id="doctors">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Our Team</span>
+        <h2 class="section__title">Meet Our Specialists</h2>
+        <p class="section__subtitle">Board-certified physicians with decades of combined experience dedicated to your care.</p>
+      </div>
+      <div class="doctors-grid">
+        <div class="doctor-card">
+          <div class="doctor-card__image doctor-card__image--1">👩‍⚕️</div>
+          <div class="doctor-card__body">
+            <div class="doctor-card__name">Dr. Sarah Mitchell</div>
+            <div class="doctor-card__specialty">Cardiology</div>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <div class="doctor-card__image doctor-card__image--2">👨‍⚕️</div>
+          <div class="doctor-card__body">
+            <div class="doctor-card__name">Dr. James Park</div>
+            <div class="doctor-card__specialty">Neurology</div>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <div class="doctor-card__image doctor-card__image--3">👩‍⚕️</div>
+          <div class="doctor-card__body">
+            <div class="doctor-card__name">Dr. Maria Rodriguez</div>
+            <div class="doctor-card__specialty">Orthopedics</div>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <div class="doctor-card__image doctor-card__image--4">👨‍⚕️</div>
+          <div class="doctor-card__body">
+            <div class="doctor-card__name">Dr. Ahmed Hassan</div>
+            <div class="doctor-card__specialty">Pediatrics</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hours & Contact -->
+  <section class="section section--alt" id="hours">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Get in Touch</span>
+        <h2 class="section__title">Visit Us</h2>
+      </div>
+      <div class="hours-grid">
+        <div class="hours-card">
+          <h3>🕐 Opening Hours</h3>
+          <div class="hours-row"><span>Monday – Friday</span><span>8:00 AM – 8:00 PM</span></div>
+          <div class="hours-row"><span>Saturday</span><span>9:00 AM – 5:00 PM</span></div>
+          <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+          <div class="hours-row"><span>Emergency</span><span style="color: var(--danger);">24/7 Open</span></div>
+        </div>
+        <div class="hours-card">
+          <h3>📍 Contact Information</h3>
+          <div class="contact-item">
+            <div class="contact-item__icon">📞</div>
+            <div>
+              <div class="contact-item__label">Phone</div>
+              <div class="contact-item__text">(555) 123-4567</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">📧</div>
+            <div>
+              <div class="contact-item__label">Email</div>
+              <div class="contact-item__text">info@apexmedical.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">📍</div>
+            <div>
+              <div class="contact-item__label">Address</div>
+              <div class="contact-item__text">123 Health Avenue, Suite 200</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h4 style="font-size: 1.3rem;">🏥 APEX Medical</h4>
+          <p>A premium Drupal theme demo for healthcare providers. Part of the APEX Multipurpose Business Theme by Mohamed Mahmoud.</p>
+        </div>
+        <div>
+          <h4>Departments</h4>
+          <a href="#">Cardiology</a>
+          <a href="#">Neurology</a>
+          <a href="#">Orthopedics</a>
+          <a href="#">Pediatrics</a>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="#">Book Appointment</a>
+          <a href="#">Our Doctors</a>
+          <a href="#">Patient Portal</a>
+          <a href="#">Insurance</a>
+        </div>
+        <div>
+          <h4>Emergency</h4>
+          <p style="color: #fca5a5; font-weight: 600;">Call 911</p>
+          <p style="margin-top: 8px;">For non-emergency:<br><strong style="color: #f8fafc;">(555) 123-4567</strong></p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 APEX Medical Theme Demo. Built by Mohamed Mahmoud.</span>
+        <span>Drupal 10/11 Compatible</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

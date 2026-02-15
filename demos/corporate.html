@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX Corporate — Business Theme Demo</title>
+  <meta name="description" content="APEX Corporate Demo — A polished, professional theme for corporate enterprises, agencies, and consulting firms.">
+  <meta name="author" content="Mohamed Mahmoud">
+  <style>
+    /* ============================================
+       APEX CORPORATE DEMO
+       Navy + Gold | Authoritative Typography
+       ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --secondary: #1e293b;
+      --accent: #d97706;
+      --accent-light: #fbbf24;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --bg-dark: #0f172a;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --text-white: #f8fafc;
+      --border: #e2e8f0;
+      --radius: 8px;
+      --radius-lg: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --transition: 0.3s ease;
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---- Top Bar ---- */
+    .topbar {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      font-size: 0.8rem;
+      padding: 8px 0;
+    }
+    .topbar__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar a { color: var(--accent-light); text-decoration: none; }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header__logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+    .header__logo span { color: var(--accent); }
+    .nav { display: flex; gap: 32px; }
+    .nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color var(--transition);
+    }
+    .nav a:hover { color: var(--primary); }
+    .nav__cta {
+      background: var(--primary) !important;
+      color: #fff !important;
+      padding: 10px 24px;
+      border-radius: var(--radius);
+      font-weight: 600 !important;
+      letter-spacing: 0.08em;
+    }
+    .nav__cta:hover { background: var(--primary-dark) !important; }
+
+    /* ---- Hero ---- */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: var(--text-white);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -50%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(217,119,6,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero__badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border: 1px solid rgba(217,119,6,0.4);
+      border-radius: var(--radius);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-light);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+    .hero__actions { display: flex; gap: 16px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: all var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .btn--primary { background: var(--accent); color: #fff; }
+    .btn--primary:hover { background: #b45309; }
+    .btn--outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.3); }
+    .btn--outline:hover { border-color: #fff; }
+
+    .hero__visual {
+      display: flex;
+      justify-content: center;
+    }
+    .hero__card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      width: 360px;
+    }
+    .hero__card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero__card-row:last-child { border-bottom: none; }
+    .hero__card-label { color: #94a3b8; font-size: 0.85rem; }
+    .hero__card-value { font-weight: 700; font-size: 1.1rem; color: var(--accent-light); }
+
+    /* ---- Section ---- */
+    .section { padding: 80px 0; }
+    .section--alt { background: var(--bg-alt); }
+    .section--dark { background: var(--bg-dark); color: var(--text-white); }
+    .section__header { text-align: center; margin-bottom: 48px; }
+    .section__label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .section__title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; }
+    .section__subtitle { color: var(--text-muted); max-width: 600px; margin: 12px auto 0; }
+
+    /* ---- Services Grid ---- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    .service-card__icon {
+      width: 56px; height: 56px;
+      background: rgba(30,64,175,0.08);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ---- Stats ---- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .stat__number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent-light);
+    }
+    .stat__label {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ---- Testimonials ---- */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+    .testimonial-card__quote {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-style: italic;
+      line-height: 1.7;
+    }
+    .testimonial-card__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-card__avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+    }
+    .testimonial-card__name { font-weight: 600; font-size: 0.9rem; }
+    .testimonial-card__role { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* ---- CTA ---- */
+    .cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 60px 0;
+      text-align: center;
+      color: var(--text-white);
+    }
+    .cta h2 { font-size: 2rem; margin-bottom: 12px; }
+    .cta p { color: #93c5fd; max-width: 500px; margin: 0 auto 32px; }
+
+    /* ---- Footer ---- */
+    .footer {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      padding: 60px 0 24px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer h4 {
+      color: var(--text-white);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .footer p { font-size: 0.85rem; line-height: 1.7; }
+    .footer a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: 8px;
+      transition: color var(--transition);
+    }
+    .footer a:hover { color: var(--accent-light); }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+
+    /* ---- Back link ---- */
+    .back-link {
+      position: fixed;
+      top: 16px; left: 16px;
+      z-index: 999;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: var(--shadow-lg);
+      transition: all var(--transition);
+    }
+    .back-link:hover { background: #b45309; transform: translateY(-2px); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) {
+      .hero__inner { grid-template-columns: 1fr; }
+      .hero__visual { display: none; }
+      .services-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav { display: none; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .hero__actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">← Back to Portfolio</a>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>📞 +1 (555) 123-4567 &nbsp;|&nbsp; 📧 info@corporate.com</span>
+      <span>Mon – Fri: 9:00 AM – 6:00 PM</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">APEX<span>Corp</span></a>
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#" class="nav__cta">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div>
+        <span class="hero__badge">🏆 Trusted by 500+ Companies</span>
+        <h1>Strategic Solutions for <span>Business Growth</span></h1>
+        <p>We deliver enterprise-grade consulting, digital transformation, and management solutions that drive measurable results for industry leaders worldwide.</p>
+        <div class="hero__actions">
+          <a href="#" class="btn btn--primary">Get Started →</a>
+          <a href="#" class="btn btn--outline">Our Services</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__card">
+          <div class="hero__card-row">
+            <span class="hero__card-label">Revenue Growth</span>
+            <span class="hero__card-value">+147%</span>
+          </div>
+          <div class="hero__card-row">
+            <span class="hero__card-label">Client Retention</span>
+            <span class="hero__card-value">98.5%</span>
+          </div>
+          <div class="hero__card-row">
+            <span class="hero__card-label">Projects Delivered</span>
+            <span class="hero__card-value">2,400+</span>
+          </div>
+          <div class="hero__card-row">
+            <span class="hero__card-label">Team Members</span>
+            <span class="hero__card-value">180+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section section--alt" id="services">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">What We Do</span>
+        <h2 class="section__title">Our Core Services</h2>
+        <p class="section__subtitle">Comprehensive solutions tailored to accelerate your business performance and competitive advantage.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-card__icon">📊</div>
+          <h3>Business Strategy</h3>
+          <p>Data-driven strategic planning and market analysis to identify growth opportunities and optimize operations.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">🔄</div>
+          <h3>Digital Transformation</h3>
+          <p>Modern technology solutions that streamline workflows, reduce costs, and enhance your digital presence.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">📈</div>
+          <h3>Financial Advisory</h3>
+          <p>Expert financial guidance for mergers, acquisitions, capital planning, and sustainable revenue growth.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">👥</div>
+          <h3>Team Management</h3>
+          <p>Leadership development, organizational design, and human capital strategies for peak performance.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">🌐</div>
+          <h3>Global Expansion</h3>
+          <p>Market entry strategies, cross-border compliance, and localization services for international growth.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">🔒</div>
+          <h3>Risk Management</h3>
+          <p>Comprehensive risk assessment, regulatory compliance, and business continuity planning solutions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section section--dark" id="about">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label" style="color: var(--accent-light);">By the Numbers</span>
+        <h2 class="section__title">Proven Track Record</h2>
+      </div>
+      <div class="stats-grid">
+        <div>
+          <div class="stat__number">500+</div>
+          <div class="stat__label">Clients Served</div>
+        </div>
+        <div>
+          <div class="stat__number">2.4K</div>
+          <div class="stat__label">Projects Completed</div>
+        </div>
+        <div>
+          <div class="stat__number">98%</div>
+          <div class="stat__label">Client Satisfaction</div>
+        </div>
+        <div>
+          <div class="stat__number">15+</div>
+          <div class="stat__label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Testimonials</span>
+        <h2 class="section__title">What Our Clients Say</h2>
+        <p class="section__subtitle">Trusted by industry leaders across Fortune 500 companies and growing enterprises.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"Their strategic insights transformed our market position. Revenue increased 40% within the first year of engagement."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">JC</div>
+            <div>
+              <div class="testimonial-card__name">James Carter</div>
+              <div class="testimonial-card__role">CEO, TechVision Inc.</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"Professional, thorough, and results-oriented. The digital transformation roadmap they delivered exceeded all expectations."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">SR</div>
+            <div>
+              <div class="testimonial-card__name">Sarah Reynolds</div>
+              <div class="testimonial-card__role">VP Operations, Meridian Health</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"A world-class consulting team. Their global expansion strategy helped us launch in 12 new markets seamlessly."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">MK</div>
+            <div>
+              <div class="testimonial-card__name">Michael Kim</div>
+              <div class="testimonial-card__role">Director, Atlas Global</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Transform Your Business?</h2>
+      <p>Schedule a free consultation with our team of experts and discover how we can accelerate your growth.</p>
+      <a href="#" class="btn btn--primary" style="background: var(--accent); font-size: 0.95rem;">Schedule Consultation →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h4 style="font-size: 1.3rem; text-transform: none; letter-spacing: -0.01em;">APEX<span style="color: var(--accent-light);">Corp</span></h4>
+          <p>A premium Drupal theme demo for corporate enterprises. Part of the APEX Multipurpose Business Theme collection by Mohamed Mahmoud.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="#">Strategy</a>
+          <a href="#">Digital Transformation</a>
+          <a href="#">Advisory</a>
+          <a href="#">Risk Management</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Leadership</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 APEX Corporate Theme Demo. Built by Mohamed Mahmoud.</span>
+        <span>Drupal 10/11 Compatible</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX Finance — Professional Services Theme Demo</title>
+  <meta name="description" content="APEX Finance Demo — An elegant, authoritative theme for financial advisors, law firms, and professional services.">
+  <meta name="author" content="Mohamed Mahmoud">
+  <style>
+    /* ============================================
+       APEX FINANCE / CONSULTING DEMO
+       Deep Green + Gold | Premium, Authoritative
+       ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #065f46;
+      --primary-dark: #064e3b;
+      --primary-light: #059669;
+      --secondary: #1c1917;
+      --accent: #b45309;
+      --accent-light: #d97706;
+      --bg: #ffffff;
+      --bg-alt: #f9fafb;
+      --bg-dark: #0c0a09;
+      --text: #1c1917;
+      --text-muted: #57534e;
+      --text-white: #fafaf9;
+      --border: #e7e5e4;
+      --radius: 4px;
+      --radius-lg: 8px;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 40px rgba(6,95,70,0.1);
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --transition: 0.3s ease;
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---- Top Bar ---- */
+    .topbar {
+      background: var(--bg-dark);
+      border-bottom: 1px solid var(--accent);
+      color: #a8a29e;
+      font-size: 0.78rem;
+      padding: 8px 0;
+    }
+    .topbar__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar a { color: var(--accent-light); text-decoration: none; }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--bg);
+      border-bottom: 2px solid var(--primary);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header__logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+    .header__logo span { color: var(--accent); }
+    .nav { display: flex; gap: 28px; align-items: center; }
+    .nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: color var(--transition);
+    }
+    .nav a:hover { color: var(--primary); }
+    .nav__cta {
+      background: var(--primary) !important;
+      color: #fff !important;
+      padding: 10px 24px;
+      border-radius: var(--radius);
+      text-transform: uppercase !important;
+      letter-spacing: 0.08em;
+    }
+    .nav__cta:hover { background: var(--primary-dark) !important; }
+
+    /* ---- Hero ---- */
+    .hero {
+      background: linear-gradient(135deg, #0c0a09 0%, #064e3b 100%);
+      color: var(--text-white);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -100px; right: 0;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(180,83,9,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero__eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-light);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero__eyebrow::before {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--accent-light);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero p {
+      font-size: 1.05rem;
+      color: #a8a29e;
+      max-width: 480px;
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+    .hero__actions { display: flex; gap: 16px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: all var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .btn--accent { background: var(--accent); color: #fff; }
+    .btn--accent:hover { background: var(--accent-light); }
+    .btn--outline { background: transparent; color: var(--text-white); border: 1px solid rgba(255,255,255,0.25); }
+    .btn--outline:hover { border-color: rgba(255,255,255,0.6); }
+    .btn--primary { background: var(--primary); color: #fff; }
+    .btn--primary:hover { background: var(--primary-dark); }
+
+    /* Hero trust logos */
+    .hero__trust {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .trust-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    .trust-card h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #a8a29e; margin-bottom: 12px; }
+    .trust-logos {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .trust-logo {
+      font-size: 0.75rem;
+      color: #78716c;
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: all var(--transition);
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .trust-logo:hover { filter: grayscale(0%); opacity: 1; color: var(--accent-light); border-color: var(--accent); }
+
+    /* ---- Section ---- */
+    .section { padding: 80px 0; }
+    .section--alt { background: var(--bg-alt); }
+    .section--dark { background: var(--bg-dark); color: var(--text-white); }
+    .section__header { text-align: center; margin-bottom: 48px; }
+    .section__label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section__label::before, .section__label::after {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
+    .section__title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; }
+    .section__subtitle { color: var(--text-muted); max-width: 600px; margin: 12px auto 0; }
+
+    /* ---- Services list ---- */
+    .services-list { max-width: 800px; margin: 0 auto; }
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 12px;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .service-item:hover {
+      padding-left: 36px;
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+    .service-item__icon {
+      width: 48px; height: 48px;
+      background: rgba(6,95,70,0.06);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .service-item h3 { font-size: 1rem; margin-bottom: 4px; }
+    .service-item p { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ---- Stats ---- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .stat { padding: 24px; }
+    .stat__number { font-size: 2.6rem; font-weight: 800; color: var(--accent-light); }
+    .stat__label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #a8a29e;
+      margin-top: 4px;
+    }
+
+    /* ---- Testimonials ---- */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px 28px 32px;
+    }
+    .testimonial-card__quote {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-style: italic;
+      line-height: 1.75;
+    }
+    .testimonial-card__author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-card__avatar {
+      width: 40px; height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .testimonial-card__name { font-weight: 600; font-size: 0.9rem; }
+    .testimonial-card__role { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ---- Awards ---- */
+    .awards-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .award {
+      text-align: center;
+      padding: 24px;
+      filter: grayscale(100%);
+      opacity: 0.5;
+      transition: all 0.4s ease;
+    }
+    .award:hover { filter: grayscale(0%); opacity: 1; }
+    .award__icon { font-size: 2.5rem; margin-bottom: 8px; }
+    .award__name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+
+    /* ---- CTA ---- */
+    .cta {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--text-white);
+      padding: 60px 0;
+      text-align: center;
+    }
+    .cta h2 { font-size: 2rem; margin-bottom: 12px; }
+    .cta p { color: #6ee7b7; max-width: 500px; margin: 0 auto 32px; }
+
+    /* ---- Footer ---- */
+    .footer {
+      background: var(--bg-dark);
+      color: #a8a29e;
+      padding: 60px 0 24px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer h4 {
+      color: var(--text-white);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .footer p { font-size: 0.85rem; line-height: 1.7; }
+    .footer a {
+      color: #a8a29e; text-decoration: none; display: block;
+      margin-bottom: 8px; font-size: 0.85rem; transition: color var(--transition);
+    }
+    .footer a:hover { color: var(--accent-light); }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+
+    /* ---- Back link ---- */
+    .back-link {
+      position: fixed;
+      top: 16px; left: 16px;
+      z-index: 999;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: var(--shadow-lg);
+      transition: all var(--transition);
+    }
+    .back-link:hover { background: var(--accent-light); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) {
+      .hero__inner { grid-template-columns: 1fr; }
+      .hero__trust { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav { display: none; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; text-align: center; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">← Back to Portfolio</a>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>📞 <a href="tel:+15559876543">(555) 987-6543</a> &nbsp;|&nbsp; 📧 <a href="#">consult@apexfinance.com</a></span>
+      <span>🏆 Rated #1 Advisory Firm — 2025</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">APEX<span>Finance</span></a>
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#testimonials">Clients</a>
+        <a href="#awards">Awards</a>
+        <a href="#" class="nav__cta">Free Consultation</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div>
+        <div class="hero__eyebrow">Financial Excellence</div>
+        <h1>Building <span>Wealth</span> with Confidence & Strategy</h1>
+        <p>Trusted by high-net-worth individuals and growing businesses for strategic financial planning, wealth management, and corporate advisory services.</p>
+        <div class="hero__actions">
+          <a href="#" class="btn btn--accent">Schedule Consultation →</a>
+          <a href="#services" class="btn btn--outline">Our Expertise</a>
+        </div>
+      </div>
+      <div class="hero__trust">
+        <div class="trust-card">
+          <h4>Trusted By Industry Leaders</h4>
+          <div class="trust-logos">
+            <span class="trust-logo">Vanguard</span>
+            <span class="trust-logo">BlackRock</span>
+            <span class="trust-logo">Fidelity</span>
+            <span class="trust-logo">JPMorgan</span>
+          </div>
+        </div>
+        <div class="trust-card">
+          <h4>Certifications</h4>
+          <div class="trust-logos">
+            <span class="trust-logo">CFA</span>
+            <span class="trust-logo">CFP®</span>
+            <span class="trust-logo">CPA</span>
+            <span class="trust-logo">Series 7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section section--alt" id="services">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Our Expertise</span>
+        <h2 class="section__title">Financial Services</h2>
+        <p class="section__subtitle">Tailored solutions for individuals and businesses seeking financial growth and security.</p>
+      </div>
+      <div class="services-list">
+        <div class="service-item">
+          <div class="service-item__icon">📊</div>
+          <div>
+            <h3>Wealth Management</h3>
+            <p>Personalized portfolio strategies, asset allocation, and long-term wealth preservation for high-net-worth clients.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item__icon">🏢</div>
+          <div>
+            <h3>Corporate Advisory</h3>
+            <p>M&A advisory, capital raising, restructuring, and strategic financial consulting for growing enterprises.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item__icon">📋</div>
+          <div>
+            <h3>Tax Planning</h3>
+            <p>Advanced tax optimization strategies, estate planning, and compliance management for individuals and businesses.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item__icon">🏠</div>
+          <div>
+            <h3>Real Estate Investment</h3>
+            <p>Commercial and residential real estate portfolio management, REITs analysis, and property investment advisory.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item__icon">🎓</div>
+          <div>
+            <h3>Retirement Planning</h3>
+            <p>401(k) optimization, IRA strategies, pension analysis, and comprehensive retirement income planning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat__number">$2.8B</div>
+          <div class="stat__label">Assets Under Management</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">1,200+</div>
+          <div class="stat__label">Clients Served</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">18%</div>
+          <div class="stat__label">Avg Annual Return</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">25+</div>
+          <div class="stat__label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Client Stories</span>
+        <h2 class="section__title">Trusted by Leaders</h2>
+        <p class="section__subtitle">Our clients' success stories speak to the quality and commitment of our advisory team.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"Their wealth management strategy grew our family portfolio by 32% in two years. The level of personalized attention is unmatched."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">RW</div>
+            <div>
+              <div class="testimonial-card__name">Robert Williams</div>
+              <div class="testimonial-card__role">CEO, Williams Holdings</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"Outstanding corporate advisory during our $50M acquisition. Their due diligence process was thorough and their insights invaluable."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">LM</div>
+            <div>
+              <div class="testimonial-card__name">Linda Martinez</div>
+              <div class="testimonial-card__role">CFO, Meridian Corp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section class="section section--alt" id="awards">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Recognition</span>
+        <h2 class="section__title">Awards & Certifications</h2>
+        <p class="section__subtitle">Recognized by the industry's most respected institutions.</p>
+      </div>
+      <div class="awards-grid">
+        <div class="award">
+          <div class="award__icon">🏆</div>
+          <div class="award__name">Best Advisory Firm<br>2024 & 2025</div>
+        </div>
+        <div class="award">
+          <div class="award__icon">⭐</div>
+          <div class="award__name">5-Star Rated<br>Wealth Manager</div>
+        </div>
+        <div class="award">
+          <div class="award__icon">🛡️</div>
+          <div class="award__name">Fiduciary<br>Certified</div>
+        </div>
+        <div class="award">
+          <div class="award__icon">📊</div>
+          <div class="award__name">Top 100<br>Financial Advisors</div>
+        </div>
+        <div class="award">
+          <div class="award__icon">🌐</div>
+          <div class="award__name">Global Finance<br>Excellence Award</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Secure Your Financial Future?</h2>
+      <p>Book a complimentary 30-minute consultation with one of our certified financial advisors.</p>
+      <a href="#" class="btn btn--accent" style="font-size: 0.95rem;">Book Free Consultation →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h4 style="font-size: 1.3rem; text-transform: none; letter-spacing: -0.01em;">APEX<span style="color: var(--accent-light);">Finance</span></h4>
+          <p>A premium Drupal theme demo for financial services. Part of the APEX Multipurpose Business Theme by Mohamed Mahmoud.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="#">Wealth Management</a>
+          <a href="#">Corporate Advisory</a>
+          <a href="#">Tax Planning</a>
+          <a href="#">Retirement</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Our Team</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Disclosures</a>
+          <a href="#">Regulatory</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 APEX Finance Theme Demo. Built by Mohamed Mahmoud.</span>
+        <span>Drupal 10/11 Compatible</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

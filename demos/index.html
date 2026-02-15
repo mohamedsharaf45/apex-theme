@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX Theme — Live Demo Previews</title>
+  <meta name="description" content="APEX Multipurpose Drupal Theme — Browse all 5 demo variations: Corporate, Startup, Portfolio, Medical, Finance.">
+  <meta name="author" content="Mohamed Mahmoud">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: #12121a;
+      --text: #e4e4e7;
+      --text-muted: #71717a;
+      --border: #27272a;
+      --accent: #06b6d4;
+      --radius: 16px;
+      --font: 'Space Grotesk', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ---- Background orbs ---- */
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-orb--1 { width: 600px; height: 600px; top: -200px; left: -200px; background: #7c3aed; }
+    .bg-orb--2 { width: 500px; height: 500px; bottom: -200px; right: -150px; background: #06b6d4; }
+    .bg-orb--3 { width: 400px; height: 400px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #b45309; opacity: 0.08; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+    /* ---- Header ---- */
+    .header {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header__logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .header__logo span { color: var(--accent); }
+    .header__back {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex; align-items: center; gap: 8px;
+      transition: color 0.3s;
+    }
+    .header__back:hover { color: var(--accent); }
+
+    /* ---- Hero ---- */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: rgba(6,182,212,0.08);
+      border: 1px solid rgba(6,182,212,0.2);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #7c3aed, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ---- Demo Grid ---- */
+    .demos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      padding-bottom: 80px;
+    }
+    .demo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.35s ease;
+      display: block;
+    }
+    .demo-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .demo-card__preview {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .demo-card__preview-text {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .demo-card__preview-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Demo-specific gradients */
+    .demo--corporate .demo-card__preview { background: linear-gradient(135deg, #0f172a, #1e3a8a); }
+    .demo--corporate .demo-card__preview-badge { background: #d97706; color: #fff; }
+    .demo--startup .demo-card__preview { background: linear-gradient(135deg, #0f172a, #4c1d95, #7c3aed); }
+    .demo--startup .demo-card__preview-badge { background: #06b6d4; color: #fff; }
+    .demo--portfolio .demo-card__preview { background: linear-gradient(135deg, #1c1917, #44403c); }
+    .demo--portfolio .demo-card__preview-badge { background: #b45309; color: #fff; }
+    .demo--medical .demo-card__preview { background: linear-gradient(135deg, #0f766e, #0d9488, #14b8a6); }
+    .demo--medical .demo-card__preview-badge { background: #2563eb; color: #fff; }
+    .demo--finance .demo-card__preview { background: linear-gradient(135deg, #0c0a09, #064e3b); }
+    .demo--finance .demo-card__preview-badge { background: #b45309; color: #fff; }
+
+    .demo-card__body { padding: 24px; }
+    .demo-card__title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .demo-card__desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .demo-card__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .demo-card__tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .demo-card:hover .demo-card__tag {
+      border-color: rgba(6,182,212,0.3);
+      color: var(--accent);
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      text-align: center;
+      padding: 32px 0;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .demos-grid { grid-template-columns: 1fr; }
+      .demo-card__preview { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-orb bg-orb--1"></div>
+  <div class="bg-orb bg-orb--2"></div>
+  <div class="bg-orb bg-orb--3"></div>
+
+  <div class="container">
+
+    <header class="header">
+      <a href="../index.html" class="header__logo">⚡ APEX<span>Theme</span></a>
+      <a href="../index.html" class="header__back">← Back to Portfolio</a>
+    </header>
+
+    <section class="hero">
+      <div class="hero__badge">⚡ 5 Demo Variations</div>
+      <h1>APEX <span>Theme Demos</span></h1>
+      <p>Browse all 5 live demo variations of the APEX Multipurpose Business Theme for Drupal 10/11. Each demo is a fully designed, responsive page.</p>
+    </section>
+
+    <div class="demos-grid">
+
+      <!-- Corporate -->
+      <a href="corporate.html" class="demo-card demo--corporate">
+        <div class="demo-card__preview">
+          <span class="demo-card__preview-badge">Navy + Gold</span>
+          <span class="demo-card__preview-text" style="color: #fbbf24;">🏢 Corporate</span>
+        </div>
+        <div class="demo-card__body">
+          <h2 class="demo-card__title">Corporate Business</h2>
+          <p class="demo-card__desc">A polished, professional theme for corporate enterprises, agencies, and consulting firms with authoritative typography.</p>
+          <div class="demo-card__tags">
+            <span class="demo-card__tag">Enterprise</span>
+            <span class="demo-card__tag">Stats Counter</span>
+            <span class="demo-card__tag">Testimonials</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Startup -->
+      <a href="startup.html" class="demo-card demo--startup">
+        <div class="demo-card__preview">
+          <span class="demo-card__preview-badge">Purple + Cyan</span>
+          <span class="demo-card__preview-text" style="color: #a5f3fc;">🚀 Startup</span>
+        </div>
+        <div class="demo-card__body">
+          <h2 class="demo-card__title">Tech Startup / SaaS</h2>
+          <p class="demo-card__desc">Bold, modern theme for tech startups and SaaS companies with glassmorphism effects and animated gradients.</p>
+          <div class="demo-card__tags">
+            <span class="demo-card__tag">Glassmorphism</span>
+            <span class="demo-card__tag">Gradient Text</span>
+            <span class="demo-card__tag">Pricing Table</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Portfolio -->
+      <a href="portfolio.html" class="demo-card demo--portfolio">
+        <div class="demo-card__preview">
+          <span class="demo-card__preview-badge">Terracotta + Sage</span>
+          <span class="demo-card__preview-text" style="color: #d97706;">🎨 Portfolio</span>
+        </div>
+        <div class="demo-card__body">
+          <h2 class="demo-card__title">Creative Portfolio</h2>
+          <p class="demo-card__desc">A visually rich editorial theme for designers, photographers, and creative agencies with Playfair Display serif.</p>
+          <div class="demo-card__tags">
+            <span class="demo-card__tag">Masonry Grid</span>
+            <span class="demo-card__tag">Serif Typography</span>
+            <span class="demo-card__tag">Zero-Radius</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Medical -->
+      <a href="medical.html" class="demo-card demo--medical">
+        <div class="demo-card__preview">
+          <span class="demo-card__preview-badge">Teal + Blue</span>
+          <span class="demo-card__preview-text" style="color: #ccfbf1;">🏥 Medical</span>
+        </div>
+        <div class="demo-card__body">
+          <h2 class="demo-card__title">Medical / Healthcare</h2>
+          <p class="demo-card__desc">Clean, trustworthy theme for clinics, hospitals, and health services with appointment booking and department cards.</p>
+          <div class="demo-card__tags">
+            <span class="demo-card__tag">Emergency Banner</span>
+            <span class="demo-card__tag">Appointment Form</span>
+            <span class="demo-card__tag">Doctor Cards</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Finance -->
+      <a href="finance.html" class="demo-card demo--finance">
+        <div class="demo-card__preview">
+          <span class="demo-card__preview-badge">Green + Gold</span>
+          <span class="demo-card__preview-text" style="color: #d97706;">💰 Finance</span>
+        </div>
+        <div class="demo-card__body">
+          <h2 class="demo-card__title">Finance / Consulting</h2>
+          <p class="demo-card__desc">An elegant, authoritative theme for financial advisors, law firms, and professional services with premium aesthetics.</p>
+          <div class="demo-card__tags">
+            <span class="demo-card__tag">Awards Section</span>
+            <span class="demo-card__tag">Trust Logos</span>
+            <span class="demo-card__tag">Service List</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2026 APEX Theme by <a href="https://github.com/mohamedsharaf45" target="_blank">Mohamed Mahmoud</a>. All demos are Drupal 10/11 compatible.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
