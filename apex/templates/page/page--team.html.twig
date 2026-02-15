@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Apex Theme - Team page template.
+ */
+#}
+
+<div class="apex-page-header">
+  <div class="apex-container">
+    <h1 class="apex-page-header__title">{{ 'Our Team'|t }}</h1>
+    <p class="apex-page-header__subtitle">{{ 'Meet the talented people behind our success.'|t }}</p>
+  </div>
+</div>
+
+{% if page.breadcrumb %}
+<div class="apex-breadcrumb-region">
+  <div class="apex-container">{{ page.breadcrumb }}</div>
+</div>
+{% endif %}
+
+<main id="main-content" class="apex-main">
+  {% if page.highlighted %}
+  <div class="apex-container">{{ page.highlighted }}</div>
+  {% endif %}
+
+  {% if page.content_top %}
+  <section class="apex-section">{{ page.content_top }}</section>
+  {% endif %}
+
+  <div class="apex-container">
+    <div class="apex-content">
+      {{ page.content }}
+    </div>
+  </div>
+
+  {# CTA Section #}
+  {% if page.content_bottom %}
+  <section class="apex-section apex-section--alt">
+    {{ page.content_bottom }}
+  </section>
+  {% endif %}
+</main>

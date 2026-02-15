@@ -1,0 +1,79 @@
+{#
+/**
+ * @file
+ * Apex Theme - Contact page template.
+ */
+#}
+
+{# Page Header #}
+<div class="apex-page-header apex-page-header--dark">
+  <div class="apex-container">
+    <h1 class="apex-page-header__title">{{ 'Contact Us'|t }}</h1>
+    <p class="apex-page-header__subtitle">{{ 'We\'d love to hear from you. Get in touch with us.'|t }}</p>
+  </div>
+</div>
+
+{% if page.breadcrumb %}
+<div class="apex-breadcrumb-region">
+  <div class="apex-container">{{ page.breadcrumb }}</div>
+</div>
+{% endif %}
+
+<main id="main-content" class="apex-main">
+  {% if page.highlighted %}
+  <div class="apex-container">{{ page.highlighted }}</div>
+  {% endif %}
+
+  <div class="apex-container">
+    <div class="apex-layout apex-layout--contact">
+
+      {# Contact Info Cards #}
+      <div class="apex-contact-info" data-apex-stagger="100">
+        <div class="apex-contact-card" data-apex-animate="fade-up">
+          <div class="apex-contact-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="apex-contact-card__title">{{ 'Our Office'|t }}</h3>
+          <p class="apex-contact-card__text">123 Business Street<br>Suite 100<br>New York, NY 10001</p>
+        </div>
+
+        <div class="apex-contact-card" data-apex-animate="fade-up" data-apex-delay="100">
+          <div class="apex-contact-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <h3 class="apex-contact-card__title">{{ 'Phone'|t }}</h3>
+          <p class="apex-contact-card__text">+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+        </div>
+
+        <div class="apex-contact-card" data-apex-animate="fade-up" data-apex-delay="200">
+          <div class="apex-contact-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <h3 class="apex-contact-card__title">{{ 'Email'|t }}</h3>
+          <p class="apex-contact-card__text">info@example.com<br>support@example.com</p>
+        </div>
+      </div>
+
+      {# Contact Form #}
+      <div class="apex-contact-form-wrapper" data-apex-animate="fade-up">
+        {{ page.content }}
+      </div>
+
+    </div>
+  </div>
+
+  {# Map Section #}
+  {% if page.content_bottom %}
+  <section class="apex-section apex-section--no-padding">
+    {{ page.content_bottom }}
+  </section>
+  {% endif %}
+</main>

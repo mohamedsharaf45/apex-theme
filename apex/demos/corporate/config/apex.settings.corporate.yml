@@ -1,0 +1,26 @@
+# Apex Corporate Demo - Theme Settings Override
+# Import with: drush config:import --partial --source=themes/apex/demos/corporate/config
+
+apex.settings:
+  demo: corporate
+  header_style: sticky
+  header_cta: true
+  header_cta_text: "Get a Quote"
+  header_cta_url: "/contact"
+  hero_style: full
+  hero_overlay: true
+  hero_overlay_opacity: 70
+  hero_parallax: false
+  show_breadcrumb: true
+  show_back_to_top: true
+  dark_mode_toggle: true
+  preloader: true
+  footer_style: multi-column
+  footer_columns: 4
+  social_links:
+    linkedin: "#"
+    twitter: "#"
+    facebook: "#"
+  font_heading: "Inter"
+  font_body: "Inter"
+  animations: true

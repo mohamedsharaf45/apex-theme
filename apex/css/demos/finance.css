@@ -1,0 +1,184 @@
+/**
+ * @file
+ * Apex Theme - Finance / Consulting Demo
+ *
+ * Financial advisors, law firms, professional services.
+ * Palette: Deep green, gold, charcoal.
+ * Typography: Elegant, authoritative.
+ */
+
+.apex-demo--finance {
+  --apex-primary: #065f46;
+  --apex-primary-light: #059669;
+  --apex-primary-dark: #064e3b;
+  --apex-primary-50: #ecfdf5;
+  --apex-primary-100: #d1fae5;
+  --apex-primary-200: #a7f3d0;
+  --apex-secondary: #1c1917;
+  --apex-secondary-light: #292524;
+  --apex-secondary-dark: #0c0a09;
+  --apex-accent: #b45309;
+  --apex-accent-light: #d97706;
+  --apex-accent-dark: #92400e;
+}
+
+/* Finance Hero */
+.apex-demo--finance .apex-hero {
+  background: linear-gradient(135deg, #0c0a09 0%, #064e3b 100%);
+}
+
+.apex-demo--finance .apex-hero__label {
+  background: rgba(180, 83, 9, 0.2);
+  color: #f59e0b;
+}
+
+.apex-demo--finance .apex-hero__title span {
+  color: #d97706;
+}
+
+/* Finance Cards - elegant, bordered */
+.apex-demo--finance .apex-card {
+  border-radius: var(--apex-radius-lg);
+  border: 1px solid var(--apex-border);
+}
+
+/* Finance Buttons - classic style */
+.apex-demo--finance .apex-btn {
+  border-radius: var(--apex-radius-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--apex-tracking-wider);
+  font-size: var(--apex-text-xs);
+}
+
+.apex-demo--finance .apex-btn--primary {
+  background: var(--apex-primary);
+}
+
+.apex-demo--finance .apex-btn--primary:hover {
+  background: var(--apex-primary-dark);
+  box-shadow: 0 4px 14px rgba(6, 95, 70, 0.3);
+}
+
+/* Finance Header - dark and premium */
+.apex-demo--finance .apex-topbar {
+  background: #0c0a09;
+  border-bottom: 1px solid rgba(180, 83, 9, 0.2);
+}
+
+.apex-demo--finance .apex-header {
+  background: var(--apex-white);
+  border-bottom: 2px solid var(--apex-primary);
+}
+
+/* Finance Section Titles */
+.apex-demo--finance .apex-section-title .apex-label {
+  color: var(--apex-accent);
+}
+
+.apex-demo--finance .apex-divider {
+  background: var(--apex-accent);
+}
+
+/* Finance Sections */
+.apex-demo--finance .apex-section--dark {
+  background: #0c0a09;
+}
+
+/* Finance Pricing */
+.apex-demo--finance .apex-card--pricing.is-featured {
+  border: 2px solid var(--apex-accent);
+}
+
+.apex-demo--finance .apex-card--pricing.is-featured .apex-widget-price-table__badge {
+  background: var(--apex-accent);
+}
+
+/* Finance Testimonials */
+.apex-demo--finance .apex-testimonial {
+  border-left: 4px solid var(--apex-accent);
+}
+
+/* Finance Counter */
+.apex-demo--finance .apex-counter__icon {
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+}
+
+/* Finance Footer */
+.apex-demo--finance .apex-footer {
+  background: #0c0a09;
+}
+
+.apex-demo--finance .apex-footer__social a:hover {
+  background: var(--apex-primary);
+}
+
+/* Finance CTA */
+.apex-demo--finance .apex-cta-block--primary {
+  background: linear-gradient(135deg, #065f46, #064e3b);
+}
+
+/* Services List */
+.apex-demo--finance .apex-service-list {
+  list-style: none;
+  padding: 0;
+}
+
+.apex-demo--finance .apex-service-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-4);
+  padding: var(--apex-space-5) var(--apex-space-6);
+  border-bottom: 1px solid var(--apex-border-light);
+  transition: var(--apex-transition-fast);
+}
+
+.apex-demo--finance .apex-service-list__item:hover {
+  background: var(--apex-primary-50);
+  padding-left: var(--apex-space-8);
+}
+
+.apex-demo--finance .apex-service-list__item:last-child {
+  border-bottom: none;
+}
+
+.apex-demo--finance .apex-service-list__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  border-radius: var(--apex-radius-lg);
+  flex-shrink: 0;
+}
+
+/* Awards / Certifications */
+.apex-demo--finance .apex-awards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--apex-space-12);
+  padding: var(--apex-space-8) 0;
+  flex-wrap: wrap;
+}
+
+.apex-demo--finance .apex-awards__item {
+  text-align: center;
+  max-width: 120px;
+}
+
+.apex-demo--finance .apex-awards__item img {
+  height: 60px;
+  width: auto;
+  margin: 0 auto var(--apex-space-3);
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: var(--apex-transition);
+}
+
+.apex-demo--finance .apex-awards__item:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}

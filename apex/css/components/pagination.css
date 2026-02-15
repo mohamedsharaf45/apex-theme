@@ -1,0 +1,95 @@
+/**
+ * @file
+ * Apex Theme - Pagination Component
+ */
+.apex-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--apex-space-2);
+  padding: var(--apex-space-8) 0;
+}
+
+.apex-pagination__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 var(--apex-space-3);
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text-secondary);
+  background: var(--apex-surface);
+  border: 1px solid var(--apex-border);
+  border-radius: var(--apex-radius-lg);
+  text-decoration: none;
+  transition: var(--apex-transition-fast);
+}
+
+.apex-pagination__item:hover {
+  border-color: var(--apex-primary);
+  color: var(--apex-primary);
+  text-decoration: none;
+}
+
+.apex-pagination__item.is-active {
+  background: var(--apex-primary);
+  border-color: var(--apex-primary);
+  color: var(--apex-white);
+}
+
+.apex-pagination__item.is-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.apex-pagination__ellipsis {
+  color: var(--apex-text-muted);
+  padding: 0 var(--apex-space-2);
+}
+
+/* Drupal pager override */
+.pager {
+  margin: var(--apex-space-8) 0;
+}
+
+.pager__items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--apex-space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pager__item a,
+.pager__item span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 var(--apex-space-3);
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text-secondary);
+  background: var(--apex-surface);
+  border: 1px solid var(--apex-border);
+  border-radius: var(--apex-radius-lg);
+  text-decoration: none;
+  transition: var(--apex-transition-fast);
+}
+
+.pager__item a:hover {
+  border-color: var(--apex-primary);
+  color: var(--apex-primary);
+}
+
+.pager__item.is-active a,
+.pager__item.is-active span {
+  background: var(--apex-primary);
+  border-color: var(--apex-primary);
+  color: var(--apex-white);
+}

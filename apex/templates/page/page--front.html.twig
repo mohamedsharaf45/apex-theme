@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Apex Theme - Front page template.
+ *
+ * This is the homepage layout with hero, features, about,
+ * services, counter, testimonials, blog, CTA, and clients sections.
+ * Customize by placing blocks into the respective regions.
+ *
+ * @see page.html.twig for the base layout.
+ */
+#}
+
+{# Extend the base page template #}
+{% extends "@apex/templates/layout/page.html.twig" %}
+
+{% block content %}
+
+{# ===== HERO SECTION ===== #}
+{% if page.hero %}
+  {{ page.hero }}
+{% else %}
+  {% include '@apex/templates/components/hero.html.twig' with {
+    variant: 'full',
+    title: site_name ~ ' - ' ~ ('Professional Business Solutions'|t),
+    subtitle: 'We help businesses grow with innovative strategies and cutting-edge technology.'|t,
+    cta_primary_text: 'Get Started'|t,
+    cta_primary_url: '/contact',
+    cta_secondary_text: 'Learn More'|t,
+    cta_secondary_url: '/about',
+    overlay: 'gradient',
+  } %}
+{% endif %}
+
+{# ===== CONTENT TOP REGION ===== #}
+{% if page.content_top %}
+<section class="apex-section">
+  {{ page.content_top }}
+</section>
+{% endif %}
+
+{# ===== MAIN CONTENT ===== #}
+<div class="apex-container">
+  {{ page.content }}
+</div>
+
+{# ===== CONTENT BOTTOM ===== #}
+{% if page.content_bottom %}
+<section class="apex-section">
+  {{ page.content_bottom }}
+</section>
+{% endif %}
+
+{% endblock %}

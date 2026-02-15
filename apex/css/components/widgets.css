@@ -1,0 +1,234 @@
+/**
+ * @file
+ * Apex Theme - Custom Widgets
+ */
+
+/* ===== Social Follow Widget ===== */
+.apex-widget-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--apex-space-3);
+}
+
+.apex-widget-social__link {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--apex-bg-alt);
+  color: var(--apex-text-secondary);
+  border-radius: var(--apex-radius-lg);
+  text-decoration: none;
+  transition: var(--apex-transition-fast);
+}
+
+.apex-widget-social__link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--apex-shadow-md);
+  text-decoration: none;
+}
+
+.apex-widget-social__link--facebook:hover { background: #1877f2; color: #fff; }
+.apex-widget-social__link--twitter:hover { background: #1da1f2; color: #fff; }
+.apex-widget-social__link--linkedin:hover { background: #0a66c2; color: #fff; }
+.apex-widget-social__link--instagram:hover { background: #e4405f; color: #fff; }
+.apex-widget-social__link--youtube:hover { background: #ff0000; color: #fff; }
+
+/* ===== Progress Bar Widget ===== */
+.apex-widget-progress {
+  margin-bottom: var(--apex-space-4);
+}
+
+.apex-widget-progress__label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--apex-space-2);
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-medium);
+}
+
+.apex-widget-progress__bar {
+  height: 8px;
+  background: var(--apex-bg-subtle);
+  border-radius: var(--apex-radius-full);
+  overflow: hidden;
+}
+
+.apex-widget-progress__fill {
+  height: 100%;
+  background: var(--apex-primary);
+  border-radius: var(--apex-radius-full);
+  transition: width var(--apex-duration-1000) var(--apex-ease-out);
+}
+
+/* ===== Opening Hours Widget ===== */
+.apex-widget-hours {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.apex-widget-hours li {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--apex-space-2) 0;
+  border-bottom: 1px solid var(--apex-border-light);
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+  margin-bottom: 0;
+}
+
+.apex-widget-hours li:last-child {
+  border-bottom: none;
+}
+
+.apex-widget-hours__day {
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text);
+}
+
+.apex-widget-hours__time {
+  color: var(--apex-text-secondary);
+}
+
+.apex-widget-hours--closed {
+  color: var(--apex-error);
+}
+
+/* ===== Map Widget ===== */
+.apex-widget-map {
+  border-radius: var(--apex-radius-xl);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+
+.apex-widget-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ===== Quick Info Widget ===== */
+.apex-widget-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.apex-widget-info__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--apex-space-3);
+  padding: var(--apex-space-3) 0;
+  border-bottom: 1px solid var(--apex-border-light);
+  margin-bottom: 0;
+}
+
+.apex-widget-info__item:last-child {
+  border-bottom: none;
+}
+
+.apex-widget-info__icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  border-radius: var(--apex-radius-md);
+  flex-shrink: 0;
+  font-size: 0.875rem;
+}
+
+.apex-widget-info__label {
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--apex-tracking-wider);
+}
+
+.apex-widget-info__value {
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text);
+}
+
+/* ===== Price Table Widget ===== */
+.apex-widget-price-table {
+  text-align: center;
+}
+
+.apex-widget-price-table__badge {
+  display: inline-block;
+  padding: var(--apex-space-1) var(--apex-space-3);
+  background: var(--apex-primary);
+  color: var(--apex-white);
+  font-size: var(--apex-text-xs);
+  font-weight: var(--apex-font-bold);
+  border-radius: var(--apex-radius-full);
+  text-transform: uppercase;
+  margin-bottom: var(--apex-space-4);
+}
+
+.apex-widget-price-table__price {
+  font-size: var(--apex-text-5xl);
+  font-weight: var(--apex-font-bold);
+  color: var(--apex-text);
+  line-height: 1;
+}
+
+.apex-widget-price-table__currency {
+  font-size: var(--apex-text-xl);
+  vertical-align: super;
+}
+
+.apex-widget-price-table__period {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-muted);
+}
+
+/* ===== Newsletter Widget ===== */
+.apex-widget-newsletter {
+  text-align: center;
+}
+
+.apex-widget-newsletter__icon {
+  font-size: 2.5rem;
+  color: var(--apex-primary);
+  margin-bottom: var(--apex-space-4);
+}
+
+.apex-widget-newsletter p {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+  margin-bottom: var(--apex-space-4);
+}
+
+/* ===== Banner Widget ===== */
+.apex-widget-banner {
+  position: relative;
+  border-radius: var(--apex-radius-xl);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: flex-end;
+}
+
+.apex-widget-banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apex-widget-banner__content {
+  position: relative;
+  z-index: 1;
+  padding: var(--apex-space-6);
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  width: 100%;
+  color: var(--apex-white);
+}

@@ -1,0 +1,25 @@
+# Apex Medical Demo - Theme Settings Override
+apex.settings:
+  demo: medical
+  header_style: sticky
+  header_cta: true
+  header_cta_text: "Book Appointment"
+  header_cta_url: "/appointment"
+  hero_style: medium
+  hero_overlay: true
+  hero_overlay_opacity: 60
+  hero_parallax: false
+  show_breadcrumb: true
+  show_back_to_top: true
+  dark_mode_toggle: true
+  preloader: true
+  footer_style: multi-column
+  footer_columns: 4
+  social_links:
+    facebook: "#"
+    twitter: "#"
+    instagram: "#"
+    youtube: "#"
+  font_heading: "Inter"
+  font_body: "Inter"
+  animations: true

@@ -1,0 +1,116 @@
+{#
+/**
+ * @file
+ * Apex Corporate Demo - Front page template.
+ *
+ * Showcases a professional corporate layout with:
+ * - Full-width hero with gradient overlay
+ * - Services / what we do section
+ * - About / company overview
+ * - Statistics counters
+ * - Case studies / portfolio
+ * - Testimonials
+ * - Client logos
+ * - CTA / newsletter
+ */
+#}
+
+{# Hero Section #}
+{% if page.hero %}
+<section class="apex-section apex-section--hero apex-section--no-padding">
+  {{ page.hero }}
+</section>
+{% else %}
+<section class="apex-hero apex-hero--full">
+  <div class="apex-hero__background" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);">
+    <div class="apex-hero__overlay"></div>
+  </div>
+  <div class="apex-container">
+    <div class="apex-hero__content" data-apex-animate="fade-up">
+      <span class="apex-hero__label">{{ 'Welcome to'|t }} {{ site_name }}</span>
+      <h1 class="apex-hero__title">{{ 'Strategic Solutions for'|t }}<br>{{ 'Business Growth'|t }}</h1>
+      <p class="apex-hero__subtitle">{{ 'We deliver innovative strategies and professional services to help your business reach its full potential.'|t }}</p>
+      <div class="apex-hero__actions">
+        <a href="/services" class="apex-btn apex-btn--primary apex-btn--lg">{{ 'Our Services'|t }}</a>
+        <a href="/contact" class="apex-btn apex-btn--outline-light apex-btn--lg">{{ 'Get in Touch'|t }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# Services Section #}
+<section class="apex-section" data-apex-animate="fade-up">
+  <div class="apex-container">
+    {% if page.content_top %}
+      {{ page.content_top }}
+    {% else %}
+      <div class="apex-section__header apex-text-center">
+        <span class="apex-section__label">{{ 'What We Do'|t }}</span>
+        <h2 class="apex-section__title">{{ 'Our Services'|t }}</h2>
+        <p class="apex-section__subtitle">{{ 'Comprehensive solutions tailored to your business needs.'|t }}</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{# About / Company Overview #}
+{% if page.content %}
+<section class="apex-section apex-section--alt">
+  <div class="apex-container">
+    {{ page.content }}
+  </div>
+</section>
+{% endif %}
+
+{# Statistics Section #}
+<section class="apex-section apex-section--dark" data-apex-animate="fade-up">
+  <div class="apex-container">
+    {% if page.highlighted %}
+      {{ page.highlighted }}
+    {% else %}
+      <div class="apex-counter-grid" data-apex-stagger>
+        <div class="apex-counter" data-apex-counter data-apex-target="500" data-apex-suffix="+">
+          <span class="apex-counter__number">0</span>
+          <span class="apex-counter__label">{{ 'Clients Served'|t }}</span>
+        </div>
+        <div class="apex-counter" data-apex-counter data-apex-target="50" data-apex-suffix="+">
+          <span class="apex-counter__number">0</span>
+          <span class="apex-counter__label">{{ 'Team Members'|t }}</span>
+        </div>
+        <div class="apex-counter" data-apex-counter data-apex-target="15">
+          <span class="apex-counter__number">0</span>
+          <span class="apex-counter__label">{{ 'Years Experience'|t }}</span>
+        </div>
+        <div class="apex-counter" data-apex-counter data-apex-target="98" data-apex-suffix="%">
+          <span class="apex-counter__number">0</span>
+          <span class="apex-counter__label">{{ 'Client Satisfaction'|t }}</span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{# Testimonials #}
+{% if page.content_bottom %}
+<section class="apex-section">
+  <div class="apex-container">
+    <div class="apex-section__header apex-text-center">
+      <span class="apex-section__label">{{ 'Testimonials'|t }}</span>
+      <h2 class="apex-section__title">{{ 'What Our Clients Say'|t }}</h2>
+    </div>
+    {{ page.content_bottom }}
+  </div>
+</section>
+{% endif %}
+
+{# CTA Section #}
+<section class="apex-section apex-section--primary" data-apex-animate="fade-up">
+  <div class="apex-container apex-text-center">
+    <h2 class="apex-section__title">{{ 'Ready to Transform Your Business?'|t }}</h2>
+    <p class="apex-section__subtitle">{{ 'Schedule a free consultation and discover how we can help your business grow.'|t }}</p>
+    <div class="apex-hero__actions">
+      <a href="/contact" class="apex-btn apex-btn--white apex-btn--lg">{{ 'Schedule a Consultation'|t }}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,171 @@
+/**
+ * @file
+ * Apex Theme - Animations
+ * Scroll-triggered entrance animations using Intersection Observer.
+ */
+
+/* ===== Base Animation States ===== */
+[data-apex-animate] {
+  opacity: 0;
+  transition: opacity var(--apex-duration-700) var(--apex-ease-out),
+              transform var(--apex-duration-700) var(--apex-ease-out);
+}
+
+[data-apex-animate].is-animated {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== Animation Types ===== */
+[data-apex-animate="fade-up"] {
+  transform: translateY(30px);
+}
+
+[data-apex-animate="fade-down"] {
+  transform: translateY(-30px);
+}
+
+[data-apex-animate="fade-left"] {
+  transform: translateX(30px);
+}
+
+[data-apex-animate="fade-right"] {
+  transform: translateX(-30px);
+}
+
+[data-apex-animate="fade-in"] {
+  transform: none;
+}
+
+[data-apex-animate="zoom-in"] {
+  transform: scale(0.9);
+}
+
+[data-apex-animate="zoom-out"] {
+  transform: scale(1.1);
+}
+
+[data-apex-animate="flip-up"] {
+  transform: perspective(1000px) rotateX(10deg) translateY(20px);
+}
+
+[data-apex-animate="slide-up"] {
+  transform: translateY(60px);
+}
+
+/* ===== Animation Delays ===== */
+[data-apex-delay="100"] { transition-delay: 100ms; }
+[data-apex-delay="200"] { transition-delay: 200ms; }
+[data-apex-delay="300"] { transition-delay: 300ms; }
+[data-apex-delay="400"] { transition-delay: 400ms; }
+[data-apex-delay="500"] { transition-delay: 500ms; }
+[data-apex-delay="600"] { transition-delay: 600ms; }
+[data-apex-delay="700"] { transition-delay: 700ms; }
+[data-apex-delay="800"] { transition-delay: 800ms; }
+
+/* ===== Animation Durations ===== */
+[data-apex-duration="fast"] { transition-duration: 400ms; }
+[data-apex-duration="normal"] { transition-duration: 700ms; }
+[data-apex-duration="slow"] { transition-duration: 1000ms; }
+
+/* ===== Utility Animations ===== */
+.apex-pulse {
+  animation: apex-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes apex-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.apex-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--apex-bg-alt) 25%,
+    var(--apex-bg-subtle) 50%,
+    var(--apex-bg-alt) 75%
+  );
+  background-size: 200% 100%;
+  animation: apex-shimmer 1.5s infinite;
+}
+
+@keyframes apex-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===== Counter Animation ===== */
+.apex-counter__number[data-count] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== Floating Animation (for decorative elements) ===== */
+.apex-float {
+  animation: apex-float 6s ease-in-out infinite;
+}
+
+@keyframes apex-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* ===== Loading Skeleton ===== */
+.apex-skeleton {
+  background: var(--apex-bg-alt);
+  border-radius: var(--apex-radius-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.apex-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: apex-shimmer 1.5s infinite;
+}
+
+.apex-skeleton--text {
+  height: 1em;
+  margin-bottom: var(--apex-space-2);
+}
+
+.apex-skeleton--title {
+  height: 1.5em;
+  width: 60%;
+  margin-bottom: var(--apex-space-4);
+}
+
+.apex-skeleton--image {
+  aspect-ratio: 16 / 10;
+}
+
+.apex-skeleton--avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--apex-radius-full);
+}
+
+/* ===== Respect Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  [data-apex-animate] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .apex-pulse,
+  .apex-shimmer,
+  .apex-float {
+    animation: none;
+  }
+
+  .apex-skeleton::after {
+    animation: none;
+  }
+}

@@ -1,0 +1,148 @@
+{#
+/**
+ * @file
+ * Apex Theme - Commerce product template (full page).
+ *
+ * @see template_preprocess_commerce_product()
+ */
+#}
+{%
+  set classes = [
+    'commerce-product',
+    'commerce-product--' ~ product_entity.bundle|clean_class,
+    'apex-product-detail',
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+
+  {# Product Gallery #}
+  <div class="apex-product-gallery">
+    {% if product.field_images|render|trim %}
+      <div class="apex-product-gallery__main">
+        {{ product.field_images }}
+      </div>
+    {% endif %}
+  </div>
+
+  {# Product Info #}
+  <div class="apex-product-info">
+
+    {# Breadcrumb #}
+    {% if breadcrumb %}
+    <div class="apex-product-info__breadcrumb">
+      {{ breadcrumb }}
+    </div>
+    {% endif %}
+
+    {# Title #}
+    {{ title_prefix }}
+    <h1 class="apex-product-info__title">{{ product_entity.title.value }}</h1>
+    {{ title_suffix }}
+
+    {# Rating #}
+    {% if product.field_rating|render|trim %}
+    <div class="apex-product-info__rating">
+      {{ product.field_rating }}
+    </div>
+    {% endif %}
+
+    {# Price #}
+    <div class="apex-product-info__price">
+      {{ product.variation_price }}
+    </div>
+
+    {# Description #}
+    {% if product.body|render|trim %}
+    <div class="apex-product-info__description">
+      {{ product.body }}
+    </div>
+    {% endif %}
+
+    {# Variations (size, color, etc.) #}
+    {% if product.variations|render|trim %}
+    <div class="apex-product-variations">
+      {{ product.variations }}
+    </div>
+    {% endif %}
+
+    {# Add to Cart #}
+    <div class="apex-product-actions">
+      {{ product.variation_add_to_cart_form }}
+    </div>
+
+    {# Product Meta #}
+    <div class="apex-product-meta">
+      {% if product.field_sku|render|trim %}
+      <div class="apex-product-meta__item">
+        <strong>{{ 'SKU:'|t }}</strong> {{ product.field_sku }}
+      </div>
+      {% endif %}
+      {% if product.field_category|render|trim %}
+      <div class="apex-product-meta__item">
+        <strong>{{ 'Category:'|t }}</strong> {{ product.field_category }}
+      </div>
+      {% endif %}
+    </div>
+
+    {# Share #}
+    <div class="apex-article__share">
+      <span class="apex-article__share-label">{{ 'Share:'|t }}</span>
+      <div class="apex-article__share-links">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('<current>')|url_encode }}"
+           target="_blank" rel="noopener noreferrer" aria-label="{{ 'Share on Facebook'|t }}"
+           class="apex-share-link apex-share-link--facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url={{ url('<current>')|url_encode }}"
+           target="_blank" rel="noopener noreferrer" aria-label="{{ 'Share on Twitter'|t }}"
+           class="apex-share-link apex-share-link--twitter">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.27 0-.53-.02-.8A7.72 7.72 0 0023 3z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</article>
+
+{# Product Tabs (Description, Reviews, Additional Info) #}
+<div class="apex-product-tabs">
+  <div class="apex-tabs-container">
+    <div class="apex-tabs__nav" role="tablist">
+      <button class="apex-tabs__tab is-active" role="tab" aria-selected="true" data-tab="description">
+        {{ 'Description'|t }}
+      </button>
+      <button class="apex-tabs__tab" role="tab" aria-selected="false" data-tab="reviews">
+        {{ 'Reviews'|t }}
+      </button>
+      <button class="apex-tabs__tab" role="tab" aria-selected="false" data-tab="additional">
+        {{ 'Additional Info'|t }}
+      </button>
+    </div>
+
+    <div class="apex-tabs__panel is-active" role="tabpanel" data-tab-panel="description">
+      {% if product.field_description|render|trim %}
+        {{ product.field_description }}
+      {% else %}
+        {{ product.body }}
+      {% endif %}
+    </div>
+
+    <div class="apex-tabs__panel" role="tabpanel" data-tab-panel="reviews">
+      {% if product.field_reviews|render|trim %}
+        {{ product.field_reviews }}
+      {% else %}
+        <p>{{ 'No reviews yet.'|t }}</p>
+      {% endif %}
+    </div>
+
+    <div class="apex-tabs__panel" role="tabpanel" data-tab-panel="additional">
+      {% if product.field_specifications|render|trim %}
+        {{ product.field_specifications }}
+      {% else %}
+        <p>{{ 'No additional information.'|t }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>

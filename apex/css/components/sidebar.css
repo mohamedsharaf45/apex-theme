@@ -1,0 +1,153 @@
+/**
+ * @file
+ * Apex Theme - Sidebar Component
+ */
+.apex-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--apex-space-8);
+}
+
+.apex-sidebar__widget {
+  background: var(--apex-surface);
+  border: 1px solid var(--apex-border-light);
+  border-radius: var(--apex-radius-xl);
+  padding: var(--apex-space-6);
+}
+
+.apex-sidebar__widget-title {
+  font-size: var(--apex-text-lg);
+  font-weight: var(--apex-font-bold);
+  margin-bottom: var(--apex-space-4);
+  padding-bottom: var(--apex-space-3);
+  border-bottom: 2px solid var(--apex-primary);
+  font-family: var(--apex-font-primary);
+}
+
+/* Widget: Recent Posts */
+.apex-widget-posts__item {
+  display: flex;
+  gap: var(--apex-space-4);
+  padding: var(--apex-space-3) 0;
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.apex-widget-posts__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.apex-widget-posts__image {
+  width: 80px;
+  height: 60px;
+  border-radius: var(--apex-radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.apex-widget-posts__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apex-widget-posts__title {
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-semibold);
+  line-height: var(--apex-leading-snug);
+  margin-bottom: var(--apex-space-1);
+}
+
+.apex-widget-posts__title a {
+  color: var(--apex-text);
+  text-decoration: none;
+}
+
+.apex-widget-posts__title a:hover {
+  color: var(--apex-primary);
+}
+
+.apex-widget-posts__date {
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-muted);
+}
+
+/* Widget: Categories */
+.apex-widget-categories {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.apex-widget-categories li {
+  margin-bottom: 0;
+}
+
+.apex-widget-categories a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--apex-space-2) var(--apex-space-3);
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+  text-decoration: none;
+  border-radius: var(--apex-radius-md);
+  transition: var(--apex-transition-fast);
+}
+
+.apex-widget-categories a:hover {
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  text-decoration: none;
+}
+
+.apex-widget-categories__count {
+  font-size: var(--apex-text-xs);
+  background: var(--apex-bg-alt);
+  padding: var(--apex-space-1) var(--apex-space-2);
+  border-radius: var(--apex-radius-full);
+  color: var(--apex-text-muted);
+}
+
+/* Widget: Tags */
+.apex-widget-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--apex-space-2);
+}
+
+.apex-widget-tags a {
+  display: inline-block;
+  padding: var(--apex-space-1) var(--apex-space-3);
+  font-size: var(--apex-text-xs);
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text-secondary);
+  background: var(--apex-bg-alt);
+  border-radius: var(--apex-radius-full);
+  text-decoration: none;
+  transition: var(--apex-transition-fast);
+}
+
+.apex-widget-tags a:hover {
+  background: var(--apex-primary);
+  color: var(--apex-white);
+  text-decoration: none;
+}
+
+/* Widget: CTA */
+.apex-widget-cta {
+  background: linear-gradient(135deg, var(--apex-primary), var(--apex-primary-dark));
+  color: var(--apex-white);
+  text-align: center;
+  border: none;
+}
+
+.apex-widget-cta .apex-sidebar__widget-title {
+  color: var(--apex-white);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.apex-widget-cta p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--apex-text-sm);
+}

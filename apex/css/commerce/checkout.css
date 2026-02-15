@@ -1,0 +1,541 @@
+/* ==========================================================================
+   Commerce - Checkout
+   Multi-step checkout, payment, order review.
+   ========================================================================== */
+
+/* Checkout Layout
+   ========================================================================== */
+
+.apex-checkout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: var(--apex-spacing-10);
+  margin-bottom: var(--apex-spacing-16);
+}
+
+.apex-checkout__main {
+  min-width: 0;
+}
+
+.apex-checkout__sidebar {
+  position: sticky;
+  top: calc(var(--apex-header-height) + var(--apex-spacing-8));
+  align-self: start;
+}
+
+/* Progress Steps
+   ========================================================================== */
+
+.apex-checkout-steps {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--apex-spacing-10);
+  padding: var(--apex-spacing-4) 0;
+}
+
+.apex-checkout-step {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-3);
+  flex: 1;
+  position: relative;
+}
+
+.apex-checkout-step::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--apex-border-color);
+  margin: 0 var(--apex-spacing-4);
+}
+
+.apex-checkout-step:last-child::after {
+  display: none;
+}
+
+.apex-checkout-step:last-child {
+  flex: 0;
+}
+
+.apex-checkout-step__number {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: var(--apex-text-sm);
+  font-weight: 700;
+  background: var(--apex-bg-secondary);
+  color: var(--apex-text-tertiary);
+  border: 2px solid var(--apex-border-color);
+  flex-shrink: 0;
+  transition: all var(--apex-transition-normal);
+}
+
+.apex-checkout-step__label {
+  font-size: var(--apex-text-sm);
+  font-weight: 500;
+  color: var(--apex-text-tertiary);
+  white-space: nowrap;
+  transition: color var(--apex-transition-normal);
+}
+
+.apex-checkout-step.is-active .apex-checkout-step__number {
+  background: var(--apex-primary);
+  border-color: var(--apex-primary);
+  color: #fff;
+}
+
+.apex-checkout-step.is-active .apex-checkout-step__label {
+  color: var(--apex-primary);
+  font-weight: 600;
+}
+
+.apex-checkout-step.is-completed .apex-checkout-step__number {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #fff;
+}
+
+.apex-checkout-step.is-completed .apex-checkout-step__label {
+  color: var(--apex-text-primary);
+}
+
+.apex-checkout-step.is-completed::after {
+  background: #16a34a;
+}
+
+/* Checkout Sections
+   ========================================================================== */
+
+.apex-checkout-section {
+  background: var(--apex-bg-primary);
+  border-radius: var(--apex-radius-lg);
+  box-shadow: var(--apex-shadow-sm);
+  margin-bottom: var(--apex-spacing-6);
+  overflow: hidden;
+}
+
+.apex-checkout-section__header {
+  padding: var(--apex-spacing-5) var(--apex-spacing-6);
+  border-bottom: 1px solid var(--apex-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.apex-checkout-section__title {
+  font-size: var(--apex-text-lg);
+  font-weight: 700;
+  margin: 0;
+}
+
+.apex-checkout-section__edit {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.apex-checkout-section__body {
+  padding: var(--apex-spacing-6);
+}
+
+/* Checkout Form
+   ========================================================================== */
+
+.apex-checkout-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--apex-spacing-4);
+  margin-bottom: var(--apex-spacing-4);
+}
+
+.apex-checkout-form__row--full {
+  grid-template-columns: 1fr;
+}
+
+.apex-checkout-form__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.apex-checkout-form__label {
+  font-size: var(--apex-text-sm);
+  font-weight: 600;
+  margin-bottom: var(--apex-spacing-2);
+  color: var(--apex-text-primary);
+}
+
+.apex-checkout-form__label .required {
+  color: #ef4444;
+}
+
+.apex-checkout-form__input {
+  padding: var(--apex-spacing-3) var(--apex-spacing-4);
+  border: 1px solid var(--apex-border-color);
+  border-radius: var(--apex-radius-md);
+  font-size: var(--apex-text-base);
+  background: var(--apex-bg-primary);
+  color: var(--apex-text-primary);
+  transition: border-color var(--apex-transition-fast);
+}
+
+.apex-checkout-form__input:focus {
+  outline: none;
+  border-color: var(--apex-primary);
+  box-shadow: 0 0 0 3px rgba(var(--apex-primary-rgb, 37, 99, 235), 0.1);
+}
+
+.apex-checkout-form__input--error {
+  border-color: #ef4444;
+}
+
+.apex-checkout-form__error {
+  font-size: var(--apex-text-xs);
+  color: #ef4444;
+  margin-top: var(--apex-spacing-1);
+}
+
+.apex-checkout-form__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--apex-spacing-2);
+  margin-top: var(--apex-spacing-4);
+}
+
+.apex-checkout-form__checkbox input[type="checkbox"] {
+  margin-top: 3px;
+}
+
+.apex-checkout-form__checkbox label {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+}
+
+/* Shipping Methods
+   ========================================================================== */
+
+.apex-shipping-methods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--apex-spacing-3);
+}
+
+.apex-shipping-method {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-4);
+  padding: var(--apex-spacing-4);
+  border: 2px solid var(--apex-border-color);
+  border-radius: var(--apex-radius-md);
+  cursor: pointer;
+  transition: all var(--apex-transition-fast);
+}
+
+.apex-shipping-method:hover {
+  border-color: var(--apex-primary-light);
+}
+
+.apex-shipping-method.is-selected {
+  border-color: var(--apex-primary);
+  background: rgba(var(--apex-primary-rgb, 37, 99, 235), 0.02);
+}
+
+.apex-shipping-method__radio {
+  flex-shrink: 0;
+}
+
+.apex-shipping-method__info {
+  flex: 1;
+}
+
+.apex-shipping-method__name {
+  font-weight: 600;
+  font-size: var(--apex-text-sm);
+}
+
+.apex-shipping-method__time {
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-tertiary);
+}
+
+.apex-shipping-method__price {
+  font-weight: 700;
+  font-size: var(--apex-text-base);
+  flex-shrink: 0;
+}
+
+.apex-shipping-method__price--free {
+  color: #16a34a;
+}
+
+/* Payment Methods
+   ========================================================================== */
+
+.apex-payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--apex-spacing-3);
+}
+
+.apex-payment-method {
+  border: 2px solid var(--apex-border-color);
+  border-radius: var(--apex-radius-md);
+  overflow: hidden;
+  transition: all var(--apex-transition-fast);
+}
+
+.apex-payment-method.is-selected {
+  border-color: var(--apex-primary);
+}
+
+.apex-payment-method__header {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-3);
+  padding: var(--apex-spacing-4);
+  cursor: pointer;
+}
+
+.apex-payment-method__icon {
+  width: 40px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.apex-payment-method__icon img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.apex-payment-method__name {
+  flex: 1;
+  font-weight: 600;
+  font-size: var(--apex-text-sm);
+}
+
+.apex-payment-method__body {
+  padding: 0 var(--apex-spacing-4) var(--apex-spacing-4);
+  display: none;
+}
+
+.apex-payment-method.is-selected .apex-payment-method__body {
+  display: block;
+}
+
+/* Card fields */
+.apex-card-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--apex-spacing-3);
+}
+
+.apex-card-fields__number {
+  grid-column: 1 / -1;
+}
+
+/* Order Summary Sidebar
+   ========================================================================== */
+
+.apex-order-summary {
+  background: var(--apex-bg-primary);
+  border-radius: var(--apex-radius-lg);
+  box-shadow: var(--apex-shadow-md);
+  overflow: hidden;
+}
+
+.apex-order-summary__header {
+  padding: var(--apex-spacing-5) var(--apex-spacing-6);
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.apex-order-summary__title {
+  font-size: var(--apex-text-lg);
+  font-weight: 700;
+  margin: 0;
+}
+
+.apex-order-summary__items {
+  padding: var(--apex-spacing-4) var(--apex-spacing-6);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.apex-order-summary__item {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-3);
+  padding: var(--apex-spacing-3) 0;
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.apex-order-summary__item:last-child {
+  border-bottom: none;
+}
+
+.apex-order-summary__item-image {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--apex-radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.apex-order-summary__item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apex-order-summary__item-qty {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--apex-primary);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+.apex-order-summary__item-name {
+  flex: 1;
+  font-size: var(--apex-text-sm);
+  font-weight: 500;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.apex-order-summary__item-price {
+  font-size: var(--apex-text-sm);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.apex-order-summary__totals {
+  padding: var(--apex-spacing-4) var(--apex-spacing-6);
+  border-top: 1px solid var(--apex-border-light);
+  background: var(--apex-bg-secondary);
+}
+
+.apex-order-summary__row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--apex-spacing-2) 0;
+  font-size: var(--apex-text-sm);
+}
+
+.apex-order-summary__row--total {
+  padding-top: var(--apex-spacing-4);
+  margin-top: var(--apex-spacing-2);
+  border-top: 2px solid var(--apex-border-color);
+  font-size: var(--apex-text-lg);
+  font-weight: 700;
+}
+
+.apex-order-summary__secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--apex-spacing-2);
+  padding: var(--apex-spacing-4) var(--apex-spacing-6);
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-tertiary);
+  border-top: 1px solid var(--apex-border-light);
+}
+
+.apex-order-summary__secure svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Order Confirmation
+   ========================================================================== */
+
+.apex-order-confirmation {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--apex-spacing-16) var(--apex-spacing-4);
+}
+
+.apex-order-confirmation__icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #dcfce7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--apex-spacing-6);
+}
+
+.apex-order-confirmation__icon svg {
+  width: 40px;
+  height: 40px;
+  color: #16a34a;
+}
+
+.apex-order-confirmation__title {
+  font-size: var(--apex-text-3xl);
+  font-weight: 700;
+  margin: 0 0 var(--apex-spacing-2);
+}
+
+.apex-order-confirmation__message {
+  color: var(--apex-text-secondary);
+  margin-bottom: var(--apex-spacing-8);
+}
+
+.apex-order-confirmation__number {
+  font-size: var(--apex-text-lg);
+  font-weight: 600;
+  margin-bottom: var(--apex-spacing-8);
+  padding: var(--apex-spacing-4);
+  background: var(--apex-bg-secondary);
+  border-radius: var(--apex-radius-md);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .apex-checkout {
+    grid-template-columns: 1fr;
+  }
+
+  .apex-checkout__sidebar {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .apex-checkout-steps {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .apex-checkout-step__label {
+    display: none;
+  }
+
+  .apex-checkout-form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .apex-card-fields {
+    grid-template-columns: 1fr;
+  }
+}

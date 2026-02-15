@@ -1,0 +1,140 @@
+{#
+/**
+ * @file
+ * Apex Finance Demo - Front page template.
+ *
+ * Financial services landing page with:
+ * - Sophisticated hero with overlay
+ * - Services overview
+ * - Trust indicators / certifications
+ * - Team / advisors section
+ * - Client testimonials
+ * - Statistics / track record
+ * - CTA for consultation booking
+ */
+#}
+
+{# Hero Section #}
+{% if page.hero %}
+<section class="apex-section apex-section--hero apex-section--no-padding">
+  {{ page.hero }}
+</section>
+{% else %}
+<section class="apex-hero apex-hero--full apex-hero--finance">
+  <div class="apex-hero__background" style="background: linear-gradient(135deg, #0c0a09 0%, #064e3b 100%);">
+    <div class="apex-hero__overlay" style="opacity: 0.65;"></div>
+  </div>
+  <div class="apex-container">
+    <div class="apex-hero__content" data-apex-animate="fade-up">
+      <span class="apex-hero__label">{{ 'Trusted Financial Partners'|t }}</span>
+      <h1 class="apex-hero__title">{{ 'Securing Your'|t }}<br>{{ 'Financial Future'|t }}</h1>
+      <p class="apex-hero__subtitle">{{ 'Expert wealth management, tax planning, and financial advisory services backed by decades of experience.'|t }}</p>
+      <div class="apex-hero__actions">
+        <a href="/contact" class="apex-btn apex-btn--accent apex-btn--lg">{{ 'Book a Consultation'|t }}</a>
+        <a href="/services" class="apex-btn apex-btn--outline-light apex-btn--lg">{{ 'Our Services'|t }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# Trust Bar #}
+<section class="apex-section apex-section--sm apex-section--dark" data-apex-animate="fade-up">
+  <div class="apex-container">
+    {% if page.highlighted %}
+      {{ page.highlighted }}
+    {% else %}
+      <div class="apex-trust-bar">
+        <div class="apex-trust-item">
+          <span class="apex-trust-item__value" data-apex-counter data-apex-target="30" data-apex-suffix="+">0</span>
+          <span class="apex-trust-item__label">{{ 'Years of Experience'|t }}</span>
+        </div>
+        <div class="apex-trust-item">
+          <span class="apex-trust-item__value">$<span data-apex-counter data-apex-target="2" data-apex-suffix="B+">0</span></span>
+          <span class="apex-trust-item__label">{{ 'Assets Under Management'|t }}</span>
+        </div>
+        <div class="apex-trust-item">
+          <span class="apex-trust-item__value" data-apex-counter data-apex-target="5000" data-apex-suffix="+">0</span>
+          <span class="apex-trust-item__label">{{ 'Clients Nationwide'|t }}</span>
+        </div>
+        <div class="apex-trust-item">
+          <span class="apex-trust-item__value" data-apex-counter data-apex-target="98" data-apex-suffix="%">0</span>
+          <span class="apex-trust-item__label">{{ 'Client Retention Rate'|t }}</span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{# Services Section #}
+{% if page.content_top %}
+<section class="apex-section">
+  <div class="apex-container">
+    <div class="apex-section__header apex-text-center" data-apex-animate="fade-up">
+      <span class="apex-section__label">{{ 'Our Expertise'|t }}</span>
+      <h2 class="apex-section__title">{{ 'Comprehensive Financial Services'|t }}</h2>
+      <p class="apex-section__subtitle">{{ 'Tailored strategies to meet your unique financial goals.'|t }}</p>
+    </div>
+    {{ page.content_top }}
+  </div>
+</section>
+{% endif %}
+
+{# About / Why Choose Us #}
+{% if page.content %}
+<section class="apex-section apex-section--alt">
+  <div class="apex-container">
+    {{ page.content }}
+  </div>
+</section>
+{% endif %}
+
+{# Team / Advisors #}
+<section class="apex-section" data-apex-animate="fade-up">
+  <div class="apex-container">
+    <div class="apex-section__header apex-text-center">
+      <span class="apex-section__label">{{ 'Our Team'|t }}</span>
+      <h2 class="apex-section__title">{{ 'Meet Our Senior Advisors'|t }}</h2>
+      <p class="apex-section__subtitle">{{ 'Experienced professionals committed to your financial success.'|t }}</p>
+    </div>
+    {% if page.sidebar_first %}
+      {{ page.sidebar_first }}
+    {% endif %}
+  </div>
+</section>
+
+{# Testimonials #}
+{% if page.content_bottom %}
+<section class="apex-section apex-section--alt">
+  <div class="apex-container">
+    <div class="apex-section__header apex-text-center" data-apex-animate="fade-up">
+      <span class="apex-section__label">{{ 'Client Stories'|t }}</span>
+      <h2 class="apex-section__title">{{ 'Trusted by Thousands'|t }}</h2>
+    </div>
+    {{ page.content_bottom }}
+  </div>
+</section>
+{% endif %}
+
+{# CTA - Consultation #}
+<section class="apex-section apex-section--dark" data-apex-animate="fade-up" style="background: linear-gradient(135deg, #0c0a09 0%, #064e3b 100%);">
+  <div class="apex-container">
+    <div class="apex-cta-split">
+      <div class="apex-cta-split__content">
+        <span class="apex-section__label apex-section__label--accent">{{ 'Get Started'|t }}</span>
+        <h2 class="apex-section__title apex-text-white">{{ 'Take the First Step Towards Financial Freedom'|t }}</h2>
+        <p class="apex-text-white apex-text-muted">{{ 'Schedule your complimentary consultation with one of our senior advisors and discover a personalized financial strategy.'|t }}</p>
+        <div class="apex-hero__actions">
+          <a href="/contact" class="apex-btn apex-btn--accent apex-btn--lg">{{ 'Schedule Free Consultation'|t }}</a>
+        </div>
+      </div>
+      <div class="apex-cta-split__trust">
+        <div class="apex-trust-badges">
+          <span class="apex-trust-badge">{{ 'SEC Registered'|t }}</span>
+          <span class="apex-trust-badge">{{ 'FINRA Member'|t }}</span>
+          <span class="apex-trust-badge">{{ 'Fiduciary Standard'|t }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

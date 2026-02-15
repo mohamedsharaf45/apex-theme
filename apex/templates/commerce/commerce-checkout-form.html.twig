@@ -1,0 +1,86 @@
+{#
+/**
+ * @file
+ * Apex Theme - Commerce checkout form template.
+ *
+ * @see template_preprocess_commerce_checkout_form()
+ */
+#}
+
+<div class="apex-checkout">
+
+  <div class="apex-checkout__main">
+
+    {# Checkout Steps Progress #}
+    <div class="apex-checkout-steps">
+      {% for step in checkout_progress %}
+      <div class="apex-checkout-step {{ step.status }}">
+        <span class="apex-checkout-step__number">{{ loop.index }}</span>
+        <span class="apex-checkout-step__label">{{ step.label }}</span>
+      </div>
+      {% endfor %}
+    </div>
+
+    {# Form Content #}
+    {{ form }}
+
+  </div>
+
+  {# Order Summary Sidebar #}
+  <div class="apex-checkout__sidebar">
+    <div class="apex-order-summary">
+      <div class="apex-order-summary__header">
+        <h3 class="apex-order-summary__title">{{ 'Order Summary'|t }}</h3>
+      </div>
+
+      <div class="apex-order-summary__items">
+        {% if order_items %}
+        {% for item in order_items %}
+        <div class="apex-order-summary__item">
+          <div class="apex-order-summary__item-image">
+            {% if item.image %}
+            <img src="{{ item.image }}" alt="{{ item.title }}" />
+            {% endif %}
+            <span class="apex-order-summary__item-qty">{{ item.quantity }}</span>
+          </div>
+          <span class="apex-order-summary__item-name">{{ item.title }}</span>
+          <span class="apex-order-summary__item-price">{{ item.total_price }}</span>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="apex-order-summary__totals">
+        <div class="apex-order-summary__row">
+          <span>{{ 'Subtotal'|t }}</span>
+          <span>{{ order_total }}</span>
+        </div>
+        {% if shipping_total %}
+        <div class="apex-order-summary__row">
+          <span>{{ 'Shipping'|t }}</span>
+          <span>{{ shipping_total }}</span>
+        </div>
+        {% endif %}
+        {% if discount_total %}
+        <div class="apex-order-summary__row">
+          <span>{{ 'Discount'|t }}</span>
+          <span class="apex-order-summary__discount">-{{ discount_total }}</span>
+        </div>
+        {% endif %}
+        <div class="apex-order-summary__row apex-order-summary__row--total">
+          <span>{{ 'Total'|t }}</span>
+          <span>{{ order_grand_total }}</span>
+        </div>
+      </div>
+
+      <div class="apex-order-summary__secure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        {{ 'Secure 256-bit SSL encryption'|t }}
+      </div>
+    </div>
+  </div>
+
+</div>

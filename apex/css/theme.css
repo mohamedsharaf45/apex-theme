@@ -1,0 +1,269 @@
+/**
+ * @file
+ * Apex Theme - Theme Overrides & Drupal-specific Styles
+ */
+
+/* ===== Drupal Messages ===== */
+.messages {
+  padding: var(--apex-space-4) var(--apex-space-6);
+  margin-bottom: var(--apex-space-6);
+  border-radius: var(--apex-radius-lg);
+  border: 1px solid;
+  font-size: var(--apex-text-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--apex-space-3);
+}
+
+.messages--status {
+  background: var(--apex-success-light);
+  border-color: var(--apex-success);
+  color: #065f46;
+}
+
+.messages--warning {
+  background: var(--apex-warning-light);
+  border-color: var(--apex-warning);
+  color: #92400e;
+}
+
+.messages--error {
+  background: var(--apex-error-light);
+  border-color: var(--apex-error);
+  color: #991b1b;
+}
+
+/* ===== Drupal Tabs (Local Tasks) ===== */
+.tabs {
+  margin-bottom: var(--apex-space-6);
+}
+
+.tabs__nav {
+  display: flex;
+  gap: var(--apex-space-1);
+  border-bottom: 2px solid var(--apex-border-light);
+  overflow-x: auto;
+}
+
+.tabs__tab {
+  padding: var(--apex-space-3) var(--apex-space-5);
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text-secondary);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  transition: var(--apex-transition-fast);
+}
+
+.tabs__tab:hover {
+  color: var(--apex-primary);
+  text-decoration: none;
+}
+
+.tabs__tab.is-active {
+  color: var(--apex-primary);
+  border-bottom-color: var(--apex-primary);
+  font-weight: var(--apex-font-semibold);
+}
+
+/* ===== Drupal Admin Edit Links ===== */
+.contextual {
+  z-index: var(--apex-z-dropdown);
+}
+
+/* ===== Views ===== */
+.view-content {
+  margin-bottom: var(--apex-space-8);
+}
+
+.view-empty {
+  text-align: center;
+  padding: var(--apex-space-16);
+  color: var(--apex-text-muted);
+}
+
+.view-filters {
+  margin-bottom: var(--apex-space-8);
+  padding: var(--apex-space-6);
+  background: var(--apex-bg-alt);
+  border-radius: var(--apex-radius-xl);
+}
+
+/* ===== Node ===== */
+.node__content {
+  margin-bottom: var(--apex-space-8);
+}
+
+.node--type-article .field--name-body {
+  font-size: var(--apex-text-lg);
+  line-height: var(--apex-leading-loose);
+  color: var(--apex-text-secondary);
+}
+
+.node--type-article .field--name-body p {
+  margin-bottom: var(--apex-space-6);
+}
+
+.node--type-article .field--name-field-image {
+  margin-bottom: var(--apex-space-8);
+  border-radius: var(--apex-radius-2xl);
+  overflow: hidden;
+}
+
+/* ===== Node Teaser ===== */
+.node--view-mode-teaser {
+  margin-bottom: var(--apex-space-8);
+  padding-bottom: var(--apex-space-8);
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.node--view-mode-teaser:last-child {
+  border-bottom: none;
+}
+
+/* ===== Comment ===== */
+.comment {
+  padding: var(--apex-space-6);
+  margin-bottom: var(--apex-space-4);
+  border: 1px solid var(--apex-border-light);
+  border-radius: var(--apex-radius-xl);
+}
+
+.comment__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-3);
+  margin-bottom: var(--apex-space-4);
+}
+
+.comment__author {
+  font-weight: var(--apex-font-semibold);
+  color: var(--apex-text);
+}
+
+.comment__date {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-muted);
+}
+
+/* ===== Search ===== */
+.search-form {
+  max-width: 640px;
+  margin-bottom: var(--apex-space-8);
+}
+
+.search-results {
+  list-style: none;
+  padding: 0;
+}
+
+.search-result {
+  padding: var(--apex-space-6) 0;
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.search-result__title {
+  font-size: var(--apex-text-xl);
+  font-weight: var(--apex-font-bold);
+  margin-bottom: var(--apex-space-2);
+}
+
+.search-result__snippet {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+}
+
+/* ===== User Profile ===== */
+.profile {
+  display: flex;
+  gap: var(--apex-space-8);
+  flex-wrap: wrap;
+}
+
+.profile__photo {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--apex-radius-full);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ===== Preloader ===== */
+.apex-preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--apex-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: calc(var(--apex-z-toast) + 10);
+  transition: opacity var(--apex-duration-500) var(--apex-ease-in-out);
+}
+
+.apex-preloader.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.apex-preloader__spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--apex-border);
+  border-top-color: var(--apex-primary);
+  border-radius: 50%;
+  animation: apex-spin 0.8s linear infinite;
+}
+
+/* ===== Search Overlay ===== */
+.apex-search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: var(--apex-z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--apex-transition);
+}
+
+.apex-search-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.apex-search-overlay__inner {
+  width: min(640px, 90vw);
+}
+
+.apex-search-overlay__input {
+  width: 100%;
+  padding: var(--apex-space-4) var(--apex-space-6);
+  font-size: var(--apex-text-3xl);
+  font-weight: var(--apex-font-light);
+  color: var(--apex-white);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+.apex-search-overlay__input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.apex-search-overlay__close {
+  position: absolute;
+  top: var(--apex-space-6);
+  right: var(--apex-space-6);
+  width: 48px;
+  height: 48px;
+  color: var(--apex-white);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

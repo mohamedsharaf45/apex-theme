@@ -1,0 +1,215 @@
+/**
+ * @file
+ * Apex Theme - CSS Custom Properties (Design Tokens)
+ *
+ * Central design token system for colors, typography, spacing,
+ * shadows, borders, transitions, and layout variables.
+ * All components reference these variables for consistent theming.
+ */
+
+:root {
+  /* ===== Color Palette ===== */
+  --apex-primary: #2563eb;
+  --apex-primary-light: #3b82f6;
+  --apex-primary-dark: #1d4ed8;
+  --apex-primary-50: #eff6ff;
+  --apex-primary-100: #dbeafe;
+  --apex-primary-200: #bfdbfe;
+  --apex-primary-500: #3b82f6;
+  --apex-primary-600: #2563eb;
+  --apex-primary-700: #1d4ed8;
+  --apex-primary-800: #1e40af;
+  --apex-primary-900: #1e3a8a;
+
+  --apex-secondary: #1e293b;
+  --apex-secondary-light: #334155;
+  --apex-secondary-dark: #0f172a;
+
+  --apex-accent: #f59e0b;
+  --apex-accent-light: #fbbf24;
+  --apex-accent-dark: #d97706;
+
+  /* Neutral Palette */
+  --apex-white: #ffffff;
+  --apex-black: #000000;
+  --apex-gray-50: #f8fafc;
+  --apex-gray-100: #f1f5f9;
+  --apex-gray-200: #e2e8f0;
+  --apex-gray-300: #cbd5e1;
+  --apex-gray-400: #94a3b8;
+  --apex-gray-500: #64748b;
+  --apex-gray-600: #475569;
+  --apex-gray-700: #334155;
+  --apex-gray-800: #1e293b;
+  --apex-gray-900: #0f172a;
+  --apex-gray-950: #020617;
+
+  /* Semantic Colors */
+  --apex-success: #10b981;
+  --apex-success-light: #d1fae5;
+  --apex-warning: #f59e0b;
+  --apex-warning-light: #fef3c7;
+  --apex-error: #ef4444;
+  --apex-error-light: #fee2e2;
+  --apex-info: #3b82f6;
+  --apex-info-light: #dbeafe;
+
+  /* ===== Background & Surface Colors ===== */
+  --apex-bg: var(--apex-white);
+  --apex-bg-alt: var(--apex-gray-50);
+  --apex-bg-subtle: var(--apex-gray-100);
+  --apex-surface: var(--apex-white);
+  --apex-surface-raised: var(--apex-white);
+  --apex-surface-overlay: rgba(255, 255, 255, 0.95);
+
+  /* ===== Text Colors ===== */
+  --apex-text: var(--apex-gray-900);
+  --apex-text-secondary: var(--apex-gray-600);
+  --apex-text-muted: var(--apex-gray-400);
+  --apex-text-inverse: var(--apex-white);
+  --apex-text-link: var(--apex-primary);
+  --apex-text-link-hover: var(--apex-primary-dark);
+
+  /* ===== Border Colors ===== */
+  --apex-border: var(--apex-gray-200);
+  --apex-border-light: var(--apex-gray-100);
+  --apex-border-strong: var(--apex-gray-300);
+
+  /* ===== Typography ===== */
+  --apex-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --apex-font-secondary: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --apex-font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  /* Font Sizes - Fluid Typography */
+  --apex-text-xs: clamp(0.694rem, 0.66vi + 0.53rem, 0.75rem);
+  --apex-text-sm: clamp(0.8rem, 0.17vi + 0.76rem, 0.875rem);
+  --apex-text-base: clamp(0.875rem, 0.35vi + 0.81rem, 1rem);
+  --apex-text-lg: clamp(1rem, 0.5vi + 0.9rem, 1.125rem);
+  --apex-text-xl: clamp(1.125rem, 0.7vi + 0.97rem, 1.25rem);
+  --apex-text-2xl: clamp(1.25rem, 1.2vi + 1rem, 1.5rem);
+  --apex-text-3xl: clamp(1.5rem, 1.8vi + 1.1rem, 1.875rem);
+  --apex-text-4xl: clamp(1.875rem, 2.5vi + 1.25rem, 2.25rem);
+  --apex-text-5xl: clamp(2.25rem, 3.5vi + 1.375rem, 3rem);
+  --apex-text-6xl: clamp(2.75rem, 4.5vi + 1.5rem, 3.75rem);
+  --apex-text-7xl: clamp(3rem, 5.5vi + 1.625rem, 4.5rem);
+
+  /* Font Weights */
+  --apex-font-light: 300;
+  --apex-font-normal: 400;
+  --apex-font-medium: 500;
+  --apex-font-semibold: 600;
+  --apex-font-bold: 700;
+  --apex-font-extrabold: 800;
+
+  /* Line Heights */
+  --apex-leading-none: 1;
+  --apex-leading-tight: 1.25;
+  --apex-leading-snug: 1.375;
+  --apex-leading-normal: 1.5;
+  --apex-leading-relaxed: 1.625;
+  --apex-leading-loose: 2;
+
+  /* Letter Spacing */
+  --apex-tracking-tighter: -0.05em;
+  --apex-tracking-tight: -0.025em;
+  --apex-tracking-normal: 0;
+  --apex-tracking-wide: 0.025em;
+  --apex-tracking-wider: 0.05em;
+  --apex-tracking-widest: 0.1em;
+
+  /* ===== Spacing Scale ===== */
+  --apex-space-1: 0.25rem;   /* 4px */
+  --apex-space-2: 0.5rem;    /* 8px */
+  --apex-space-3: 0.75rem;   /* 12px */
+  --apex-space-4: 1rem;      /* 16px */
+  --apex-space-5: 1.25rem;   /* 20px */
+  --apex-space-6: 1.5rem;    /* 24px */
+  --apex-space-8: 2rem;      /* 32px */
+  --apex-space-10: 2.5rem;   /* 40px */
+  --apex-space-12: 3rem;     /* 48px */
+  --apex-space-16: 4rem;     /* 64px */
+  --apex-space-20: 5rem;     /* 80px */
+  --apex-space-24: 6rem;     /* 96px */
+  --apex-space-32: 8rem;     /* 128px */
+
+  /* Section Spacing */
+  --apex-section-py: clamp(3rem, 8vi, 6rem);
+  --apex-section-px: clamp(1rem, 5vi, 2rem);
+
+  /* ===== Layout ===== */
+  --apex-container-sm: 640px;
+  --apex-container-md: 768px;
+  --apex-container-lg: 1024px;
+  --apex-container-xl: 1280px;
+  --apex-container-2xl: 1536px;
+  --apex-container-max: 1440px;
+  --apex-container-padding: clamp(1rem, 5vw, 2rem);
+
+  /* Grid */
+  --apex-grid-columns: 12;
+  --apex-grid-gap: var(--apex-space-6);
+
+  /* ===== Borders ===== */
+  --apex-radius-none: 0;
+  --apex-radius-sm: 0.25rem;
+  --apex-radius-md: 0.375rem;
+  --apex-radius-lg: 0.5rem;
+  --apex-radius-xl: 0.75rem;
+  --apex-radius-2xl: 1rem;
+  --apex-radius-3xl: 1.5rem;
+  --apex-radius-full: 9999px;
+
+  --apex-border-width: 1px;
+  --apex-border-width-2: 2px;
+
+  /* ===== Shadows ===== */
+  --apex-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --apex-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --apex-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --apex-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --apex-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --apex-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --apex-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* ===== Transitions ===== */
+  --apex-duration-75: 75ms;
+  --apex-duration-100: 100ms;
+  --apex-duration-150: 150ms;
+  --apex-duration-200: 200ms;
+  --apex-duration-300: 300ms;
+  --apex-duration-500: 500ms;
+  --apex-duration-700: 700ms;
+  --apex-duration-1000: 1000ms;
+
+  --apex-ease-linear: linear;
+  --apex-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --apex-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --apex-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --apex-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  --apex-transition: all var(--apex-duration-300) var(--apex-ease-in-out);
+  --apex-transition-fast: all var(--apex-duration-150) var(--apex-ease-in-out);
+  --apex-transition-slow: all var(--apex-duration-500) var(--apex-ease-in-out);
+
+  /* ===== Z-Index Scale ===== */
+  --apex-z-dropdown: 1000;
+  --apex-z-sticky: 1020;
+  --apex-z-fixed: 1030;
+  --apex-z-modal-backdrop: 1040;
+  --apex-z-modal: 1050;
+  --apex-z-popover: 1060;
+  --apex-z-tooltip: 1070;
+  --apex-z-toast: 1080;
+
+  /* ===== Header ===== */
+  --apex-header-height: 80px;
+  --apex-header-height-scrolled: 64px;
+  --apex-topbar-height: 40px;
+
+  /* ===== Breakpoints (for reference in JS — CSS uses media queries) ===== */
+  --apex-bp-sm: 640px;
+  --apex-bp-md: 768px;
+  --apex-bp-lg: 1024px;
+  --apex-bp-xl: 1280px;
+  --apex-bp-2xl: 1536px;
+}

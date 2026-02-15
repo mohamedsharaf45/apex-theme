@@ -1,0 +1,286 @@
+/**
+ * @file
+ * Apex Theme - Header Component
+ */
+
+/* ===== Top Bar ===== */
+.apex-topbar {
+  background: var(--apex-secondary);
+  color: var(--apex-white);
+  font-size: var(--apex-text-sm);
+  padding: var(--apex-space-2) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.apex-topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--apex-space-4);
+}
+
+.apex-topbar__contact {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-6);
+}
+
+.apex-topbar__contact a {
+  color: var(--apex-gray-300);
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-2);
+  transition: color var(--apex-duration-200) var(--apex-ease-in-out);
+}
+
+.apex-topbar__contact a:hover {
+  color: var(--apex-white);
+  text-decoration: none;
+}
+
+.apex-topbar__social {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-3);
+}
+
+.apex-topbar__social a {
+  color: var(--apex-gray-400);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--apex-radius-full);
+  transition: var(--apex-transition-fast);
+}
+
+.apex-topbar__social a:hover {
+  color: var(--apex-white);
+  background: rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+}
+
+/* ===== Header ===== */
+.apex-header {
+  position: relative;
+  z-index: var(--apex-z-sticky);
+  background: var(--apex-surface);
+  border-bottom: 1px solid var(--apex-border-light);
+  transition: var(--apex-transition);
+}
+
+.apex-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--apex-header-height);
+  gap: var(--apex-space-8);
+}
+
+/* Sticky Header */
+.apex-header--sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--apex-z-sticky);
+}
+
+.apex-header--scrolled {
+  height: var(--apex-header-height-scrolled);
+  box-shadow: var(--apex-shadow-md);
+  background: var(--apex-surface-overlay);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.apex-header--scrolled .apex-header__inner {
+  height: var(--apex-header-height-scrolled);
+}
+
+/* Transparent Header */
+.apex-header--transparent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.apex-header--transparent .apex-logo,
+.apex-header--transparent .apex-nav a {
+  color: var(--apex-white);
+}
+
+.apex-header--transparent.apex-header--scrolled {
+  background: var(--apex-surface-overlay);
+}
+
+.apex-header--transparent.apex-header--scrolled .apex-logo,
+.apex-header--transparent.apex-header--scrolled .apex-nav a {
+  color: var(--apex-text);
+}
+
+/* ===== Logo ===== */
+.apex-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-3);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.apex-logo__image {
+  height: 40px;
+  width: auto;
+}
+
+.apex-logo__text {
+  font-family: var(--apex-font-secondary);
+  font-size: var(--apex-text-2xl);
+  font-weight: var(--apex-font-bold);
+  color: var(--apex-text);
+  letter-spacing: var(--apex-tracking-tight);
+}
+
+.apex-logo:hover {
+  text-decoration: none;
+}
+
+/* ===== Header Actions ===== */
+.apex-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-4);
+}
+
+.apex-header__search-toggle,
+.apex-header__cart-toggle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--apex-radius-full);
+  color: var(--apex-text-secondary);
+  transition: var(--apex-transition-fast);
+  position: relative;
+}
+
+.apex-header__search-toggle:hover,
+.apex-header__cart-toggle:hover {
+  background: var(--apex-bg-alt);
+  color: var(--apex-primary);
+}
+
+.apex-header__cart-count {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  background: var(--apex-error);
+  color: var(--apex-white);
+  font-size: 0.625rem;
+  font-weight: var(--apex-font-bold);
+  border-radius: var(--apex-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Mobile Toggle ===== */
+.apex-mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--apex-radius-md);
+  color: var(--apex-text);
+  transition: var(--apex-transition-fast);
+}
+
+.apex-mobile-toggle:hover {
+  background: var(--apex-bg-alt);
+}
+
+.apex-mobile-toggle__bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: var(--apex-transition);
+  position: relative;
+}
+
+.apex-mobile-toggle__bar::before,
+.apex-mobile-toggle__bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  border-radius: 2px;
+  transition: var(--apex-transition);
+}
+
+.apex-mobile-toggle__bar::before {
+  top: -7px;
+}
+
+.apex-mobile-toggle__bar::after {
+  bottom: -7px;
+}
+
+/* Active state */
+.apex-mobile-toggle.is-active .apex-mobile-toggle__bar {
+  background: transparent;
+}
+
+.apex-mobile-toggle.is-active .apex-mobile-toggle__bar::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.apex-mobile-toggle.is-active .apex-mobile-toggle__bar::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 1024px) {
+  .apex-mobile-toggle {
+    display: none;
+  }
+}
+
+/* ===== Header Styles ===== */
+/* Centered Logo */
+.apex-header--centered .apex-header__inner {
+  flex-direction: column;
+  height: auto;
+  padding: var(--apex-space-4) 0;
+}
+
+.apex-header--centered .apex-nav {
+  order: 2;
+  margin-top: var(--apex-space-4);
+}
+
+/* Minimal */
+.apex-header--minimal {
+  border-bottom: none;
+}
+
+.apex-header--minimal .apex-header__inner {
+  height: 60px;
+}
+
+@media (max-width: 1023px) {
+  .apex-topbar__contact {
+    display: none;
+  }
+}

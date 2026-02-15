@@ -1,0 +1,296 @@
+{#
+/**
+ * @file
+ * Apex Theme - Page template.
+ *
+ * The main page layout with all 25+ regions organized into
+ * header, content, and footer sections.
+ *
+ * Regions:
+ * - page.header_top: Pre-header bar (contact info, social).
+ * - page.header: Main header (logo, navigation, actions).
+ * - page.hero: Full-width hero section.
+ * - page.breadcrumb: Breadcrumb navigation.
+ * - page.highlighted: Highlighted messages area.
+ * - page.help: Help text area.
+ * - page.content_top: Above main content.
+ * - page.content: Main content area.
+ * - page.content_bottom: Below main content.
+ * - page.sidebar_first: Left sidebar.
+ * - page.sidebar_second: Right sidebar.
+ * - page.footer_top: Pre-footer CTA or widgets.
+ * - page.footer: Main footer with columns.
+ * - page.footer_bottom: Copyright bar.
+ *
+ * @see template_preprocess_page()
+ * @see apex_preprocess_page()
+ */
+#}
+
+{# Determine sidebar layout #}
+{%
+  set layout_classes = [
+    page.sidebar_first and page.sidebar_second ? 'layout--two-sidebars',
+    page.sidebar_first and not page.sidebar_second ? 'layout--sidebar-first',
+    not page.sidebar_first and page.sidebar_second ? 'layout--sidebar-second',
+    not page.sidebar_first and not page.sidebar_second ? 'layout--no-sidebar',
+  ]
+%}
+
+<div class="apex-page" {{ attributes }}>
+
+  {# ========== HEADER ========== #}
+
+  {# Top Bar #}
+  {% if page.header_top %}
+  <div class="apex-topbar">
+    <div class="apex-container">
+      {{ page.header_top }}
+    </div>
+  </div>
+  {% endif %}
+
+  {# Main Header #}
+  <header class="apex-header {{ apex_sticky_header ? 'apex-header--sticky' }} {{ apex_transparent_header ? 'apex-header--transparent' }}" role="banner">
+    <div class="apex-container">
+      <div class="apex-header__inner">
+
+        {# Logo #}
+        <div class="apex-header__brand">
+          {% if site_logo %}
+            <a href="{{ path('<front>') }}" class="apex-logo" rel="home" title="{{ 'Home'|t }}">
+              <img src="{{ site_logo }}" alt="{{ site_name }}" class="apex-logo__image" />
+            </a>
+          {% endif %}
+          {% if site_name %}
+            <a href="{{ path('<front>') }}" class="apex-logo__text" rel="home">
+              {{ site_name }}
+            </a>
+          {% endif %}
+        </div>
+
+        {# Navigation #}
+        {% if page.header %}
+        <nav class="apex-nav" role="navigation" aria-label="{{ 'Main navigation'|t }}">
+          {{ page.header }}
+        </nav>
+        {% endif %}
+
+        {# Header Actions (search, cart, dark mode) #}
+        <div class="apex-header__actions">
+          {# Search Toggle #}
+          <button class="apex-header__search-toggle" aria-label="{{ 'Search'|t }}" type="button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          {# Cart Toggle (if commerce enabled) #}
+          {% if apex_commerce %}
+          <button class="apex-header__cart-toggle" aria-label="{{ 'Shopping cart'|t }}" aria-expanded="false" type="button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 01-8 0"></path>
+            </svg>
+            <span class="apex-header__cart-count">0</span>
+          </button>
+          {% endif %}
+
+          {# Mobile Toggle #}
+          <button class="apex-mobile-toggle" aria-label="{{ 'Toggle menu'|t }}" aria-expanded="false" type="button">
+            <span class="apex-mobile-toggle__bar"></span>
+            <span class="apex-mobile-toggle__bar"></span>
+            <span class="apex-mobile-toggle__bar"></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  {# Mobile Navigation Drawer #}
+  <div class="apex-mobile-nav__overlay"></div>
+  <nav class="apex-mobile-nav" role="navigation" aria-label="{{ 'Mobile navigation'|t }}">
+    <div class="apex-mobile-nav__header">
+      <button class="apex-mobile-nav__close" aria-label="{{ 'Close menu'|t }}" type="button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="apex-mobile-nav__content">
+      {% if page.header %}
+        {{ page.header }}
+      {% endif %}
+    </div>
+  </nav>
+
+  {# Search Overlay #}
+  <div class="apex-search-overlay">
+    <div class="apex-search-overlay__inner">
+      <button class="apex-search-overlay__close" aria-label="{{ 'Close search'|t }}" type="button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <form class="apex-search-overlay__form" action="{{ path('search.view') }}" method="get">
+        <input class="apex-search-overlay__input" type="search" name="keys" placeholder="{{ 'Search...'|t }}" autocomplete="off" />
+      </form>
+    </div>
+  </div>
+
+  {# Mini Cart Dropdown #}
+  {% if apex_commerce %}
+  <div class="apex-mini-cart" aria-label="{{ 'Shopping cart'|t }}">
+    <div class="apex-mini-cart__header">
+      <h3 class="apex-mini-cart__title">{{ 'Shopping Cart'|t }}</h3>
+      <span class="apex-mini-cart__count"></span>
+    </div>
+    <div class="apex-mini-cart__items">
+      {# Cart items loaded dynamically #}
+    </div>
+    <div class="apex-mini-cart__footer">
+      <div class="apex-mini-cart__total">
+        <span>{{ 'Total'|t }}:</span>
+        <span class="apex-mini-cart__total-price">$0.00</span>
+      </div>
+      <div class="apex-mini-cart__actions">
+        <a href="{{ path('commerce_cart.page') }}" class="apex-btn apex-btn--outline">{{ 'View Cart'|t }}</a>
+        <a href="{{ path('commerce_checkout.form') }}" class="apex-btn apex-btn--primary">{{ 'Checkout'|t }}</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {# ========== HERO ========== #}
+
+  {% if page.hero %}
+  <section class="apex-hero-region">
+    {{ page.hero }}
+  </section>
+  {% endif %}
+
+  {# ========== BREADCRUMB ========== #}
+
+  {% if page.breadcrumb %}
+  <div class="apex-breadcrumb-region">
+    <div class="apex-container">
+      {{ page.breadcrumb }}
+    </div>
+  </div>
+  {% endif %}
+
+  {# ========== MAIN CONTENT ========== #}
+
+  <main id="main-content" class="apex-main" role="main">
+
+    {# Highlighted / Messages #}
+    {% if page.highlighted %}
+    <div class="apex-highlighted">
+      <div class="apex-container">
+        {{ page.highlighted }}
+      </div>
+    </div>
+    {% endif %}
+
+    {# Help #}
+    {% if page.help %}
+    <div class="apex-help">
+      <div class="apex-container">
+        {{ page.help }}
+      </div>
+    </div>
+    {% endif %}
+
+    {# Content Top (full-width) #}
+    {% if page.content_top %}
+    <section class="apex-content-top">
+      {{ page.content_top }}
+    </section>
+    {% endif %}
+
+    {# Content Area with Sidebars #}
+    <div class="apex-container">
+      <div class="apex-layout {{ layout_classes|join(' ') }}">
+
+        {# Left Sidebar #}
+        {% if page.sidebar_first %}
+        <aside class="apex-sidebar apex-sidebar--first" role="complementary">
+          {{ page.sidebar_first }}
+        </aside>
+        {% endif %}
+
+        {# Main Content #}
+        <div class="apex-content">
+          {{ page.content }}
+        </div>
+
+        {# Right Sidebar #}
+        {% if page.sidebar_second %}
+        <aside class="apex-sidebar apex-sidebar--second" role="complementary">
+          {{ page.sidebar_second }}
+        </aside>
+        {% endif %}
+
+      </div>
+    </div>
+
+    {# Content Bottom (full-width) #}
+    {% if page.content_bottom %}
+    <section class="apex-content-bottom">
+      {{ page.content_bottom }}
+    </section>
+    {% endif %}
+
+  </main>
+
+  {# ========== FOOTER ========== #}
+
+  {# Footer Top / CTA #}
+  {% if page.footer_top %}
+  <section class="apex-footer-top">
+    {{ page.footer_top }}
+  </section>
+  {% endif %}
+
+  {# Main Footer #}
+  <footer class="apex-footer" role="contentinfo">
+    {% if page.footer %}
+    <div class="apex-footer__main">
+      <div class="apex-container">
+        <div class="apex-footer__grid">
+          {{ page.footer }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    {# Footer Bottom #}
+    {% if page.footer_bottom %}
+    <div class="apex-footer__bottom">
+      <div class="apex-container">
+        <div class="apex-footer__bottom-inner">
+          {{ page.footer_bottom }}
+          {% if apex_copyright %}
+          <p class="apex-footer__copyright">
+            &copy; {{ 'now'|date('Y') }} {{ site_name }}. {{ 'All rights reserved.'|t }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </footer>
+
+  {# Back to Top #}
+  <button class="apex-back-to-top" aria-label="{{ 'Back to top'|t }}" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+</div>

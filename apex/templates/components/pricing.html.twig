@@ -1,0 +1,83 @@
+{#
+/**
+ * @file
+ * Apex Theme - Pricing table component template.
+ *
+ * Variables:
+ * - plans: array of pricing plans, each containing:
+ *   - name: plan name.
+ *   - price: price value.
+ *   - period: billing period (e.g., 'month').
+ *   - description: short description.
+ *   - features: array of feature strings.
+ *   - cta_text: button text.
+ *   - cta_url: button URL.
+ *   - featured: boolean for highlighted plan.
+ *   - badge: badge text (e.g., 'Most Popular').
+ *
+ * Usage:
+ * {% include '@apex/templates/components/pricing.html.twig' with {
+ *   plans: [
+ *     { name: 'Basic', price: '$9', period: 'month', features: ['Feature 1', 'Feature 2'], cta_text: 'Choose Plan', cta_url: '#' },
+ *     { name: 'Pro', price: '$29', period: 'month', features: ['Feature 1', 'Feature 2', 'Feature 3'], cta_text: 'Choose Plan', cta_url: '#', featured: true, badge: 'Popular' },
+ *   ]
+ * } %}
+ */
+#}
+
+<div class="apex-pricing" data-apex-stagger="150">
+
+  {% for plan in plans %}
+  {%
+    set plan_classes = [
+      'apex-pricing__plan',
+      plan.featured ? 'apex-pricing__plan--featured',
+    ]
+  %}
+
+  <div class="{{ plan_classes|join(' ') }}">
+
+    {% if plan.badge %}
+    <span class="apex-pricing__badge">{{ plan.badge }}</span>
+    {% endif %}
+
+    <div class="apex-pricing__header">
+      <h3 class="apex-pricing__name">{{ plan.name }}</h3>
+      {% if plan.description %}
+      <p class="apex-pricing__description">{{ plan.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="apex-pricing__price">
+      <span class="apex-pricing__amount">{{ plan.price }}</span>
+      {% if plan.period %}
+      <span class="apex-pricing__period">/{{ plan.period }}</span>
+      {% endif %}
+    </div>
+
+    {% if plan.features %}
+    <ul class="apex-pricing__features">
+      {% for feature in plan.features %}
+      <li class="apex-pricing__feature">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        {{ feature }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if plan.cta_text %}
+    <div class="apex-pricing__cta">
+      <a href="{{ plan.cta_url|default('#') }}"
+         class="apex-btn {{ plan.featured ? 'apex-btn--primary' : 'apex-btn--outline' }} apex-btn--block">
+        {{ plan.cta_text }}
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+  {% endfor %}
+
+</div>

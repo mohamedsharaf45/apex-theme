@@ -1,0 +1,180 @@
+/**
+ * @file
+ * Apex Theme - RTL (Right-to-Left) Language Support
+ */
+
+[dir="rtl"],
+.apex-rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ===== Layout Flips ===== */
+[dir="rtl"] .apex-flex--between {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] ul,
+[dir="rtl"] ol {
+  padding-left: 0;
+  padding-right: var(--apex-space-6);
+}
+
+/* ===== Header ===== */
+[dir="rtl"] .apex-header__inner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .apex-nav__list {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .apex-nav__dropdown {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .apex-nav__dropdown .apex-nav__dropdown {
+  left: auto;
+  right: 100%;
+  margin-left: 0;
+  margin-right: 4px;
+}
+
+[dir="rtl"] .apex-mobile-nav {
+  right: auto;
+  left: -100%;
+}
+
+[dir="rtl"] .apex-mobile-nav.is-open {
+  left: 0;
+}
+
+[dir="rtl"] .apex-mobile-nav__sub {
+  padding-left: 0;
+  padding-right: var(--apex-space-4);
+}
+
+/* ===== Hero ===== */
+[dir="rtl"] .apex-hero__content {
+  text-align: right;
+}
+
+[dir="rtl"] .apex-hero--centered .apex-hero__content {
+  text-align: center;
+}
+
+/* ===== Breadcrumb ===== */
+[dir="rtl"] .apex-breadcrumb ol {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .apex-breadcrumb li:not(:last-child)::after {
+  content: '\\';
+}
+
+/* ===== Cards ===== */
+[dir="rtl"] .apex-card--horizontal {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 639px) {
+  [dir="rtl"] .apex-card--horizontal {
+    flex-direction: column;
+  }
+}
+
+/* ===== Sidebar ===== */
+@media (min-width: 1024px) {
+  [dir="rtl"] .apex-layout--sidebar-left {
+    grid-template-columns: 1fr 300px;
+  }
+
+  [dir="rtl"] .apex-layout--sidebar-right {
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+/* ===== Forms ===== */
+[dir="rtl"] .apex-form__select {
+  background-position: left 0.75rem center;
+  padding-right: var(--apex-space-4);
+  padding-left: 2.5rem;
+}
+
+[dir="rtl"] .apex-form__input-icon .apex-form__input {
+  padding-left: var(--apex-space-4);
+  padding-right: 2.75rem;
+}
+
+[dir="rtl"] .apex-form__input-icon .apex-icon {
+  left: auto;
+  right: var(--apex-space-3);
+}
+
+/* ===== Blockquote ===== */
+[dir="rtl"] blockquote {
+  border-left: none;
+  border-right: 4px solid var(--apex-primary);
+  border-radius: var(--apex-radius-lg) 0 0 var(--apex-radius-lg);
+}
+
+/* ===== Testimonial ===== */
+[dir="rtl"] .apex-testimonial__quote {
+  padding-left: 0;
+  padding-right: var(--apex-space-8);
+}
+
+[dir="rtl"] .apex-testimonial__quote::before {
+  left: auto;
+  right: 0;
+}
+
+/* ===== Timeline ===== */
+[dir="rtl"] .apex-timeline {
+  padding-left: 0;
+  padding-right: var(--apex-space-8);
+}
+
+[dir="rtl"] .apex-timeline::before {
+  left: auto;
+  right: 12px;
+}
+
+[dir="rtl"] .apex-timeline__dot {
+  left: auto;
+  right: calc(-1 * var(--apex-space-8) - 1px);
+}
+
+/* ===== Footer ===== */
+[dir="rtl"] .apex-footer__links a:hover {
+  padding-left: 0;
+  padding-right: var(--apex-space-2);
+}
+
+/* ===== Divider ===== */
+[dir="rtl"] .apex-divider--left {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* ===== Back to Top ===== */
+[dir="rtl"] .apex-back-to-top {
+  right: auto;
+  left: var(--apex-space-6);
+}
+
+/* ===== Cart Count ===== */
+[dir="rtl"] .apex-header__cart-count {
+  right: auto;
+  left: -2px;
+}
+
+/* ===== Animations ===== */
+[dir="rtl"] [data-apex-animate="fade-left"] {
+  transform: translateX(-30px);
+}
+
+[dir="rtl"] [data-apex-animate="fade-right"] {
+  transform: translateX(30px);
+}

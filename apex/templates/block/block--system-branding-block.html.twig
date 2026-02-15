@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Apex Theme - System branding block template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+<div{{ attributes.addClass('apex-branding') }}>
+  {% if site_logo %}
+    <a href="{{ path('<front>') }}" class="apex-branding__logo" rel="home" title="{{ 'Home'|t }}">
+      <img src="{{ site_logo }}" alt="{{ site_name }}" />
+    </a>
+  {% endif %}
+
+  {% if site_name %}
+    <div class="apex-branding__name">
+      <a href="{{ path('<front>') }}" rel="home">{{ site_name }}</a>
+    </div>
+  {% endif %}
+
+  {% if site_slogan %}
+    <div class="apex-branding__slogan">
+      {{ site_slogan }}
+    </div>
+  {% endif %}
+</div>

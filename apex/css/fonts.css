@@ -1,0 +1,21 @@
+/**
+ * @file
+ * Apex Theme - Google Fonts Integration
+ */
+
+/* Fallback font-face declarations (served when Google Fonts unavailable) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: local('Inter');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: local('Playfair Display');
+}

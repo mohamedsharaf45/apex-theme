@@ -1,0 +1,287 @@
+/**
+ * @file
+ * Apex Theme - Base Styles
+ *
+ * Core typography, body defaults, headings, links,
+ * lists, and foundational element styles.
+ */
+
+/* ===== Body ===== */
+body {
+  font-family: var(--apex-font-primary);
+  font-size: var(--apex-text-base);
+  font-weight: var(--apex-font-normal);
+  line-height: var(--apex-leading-relaxed);
+  color: var(--apex-text);
+  background-color: var(--apex-bg);
+  transition: background-color var(--apex-duration-300) var(--apex-ease-in-out),
+              color var(--apex-duration-300) var(--apex-ease-in-out);
+}
+
+/* ===== Headings ===== */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--apex-font-secondary);
+  font-weight: var(--apex-font-bold);
+  line-height: var(--apex-leading-tight);
+  color: var(--apex-text);
+  margin-bottom: var(--apex-space-4);
+  letter-spacing: var(--apex-tracking-tight);
+}
+
+h1, .h1 {
+  font-size: var(--apex-text-5xl);
+  font-weight: var(--apex-font-extrabold);
+  letter-spacing: var(--apex-tracking-tighter);
+}
+
+h2, .h2 {
+  font-size: var(--apex-text-4xl);
+}
+
+h3, .h3 {
+  font-size: var(--apex-text-3xl);
+}
+
+h4, .h4 {
+  font-size: var(--apex-text-2xl);
+}
+
+h5, .h5 {
+  font-size: var(--apex-text-xl);
+  font-weight: var(--apex-font-semibold);
+}
+
+h6, .h6 {
+  font-size: var(--apex-text-lg);
+  font-weight: var(--apex-font-semibold);
+}
+
+/* ===== Paragraphs ===== */
+p {
+  margin-bottom: var(--apex-space-4);
+  color: var(--apex-text-secondary);
+}
+
+.lead {
+  font-size: var(--apex-text-xl);
+  line-height: var(--apex-leading-relaxed);
+  color: var(--apex-text-secondary);
+}
+
+.small-text {
+  font-size: var(--apex-text-sm);
+}
+
+/* ===== Links ===== */
+a {
+  color: var(--apex-text-link);
+  text-decoration: none;
+  transition: color var(--apex-duration-200) var(--apex-ease-in-out);
+}
+
+a:hover {
+  color: var(--apex-text-link-hover);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--apex-primary);
+  outline-offset: 2px;
+  border-radius: var(--apex-radius-sm);
+}
+
+/* ===== Lists ===== */
+ul, ol {
+  padding-left: var(--apex-space-6);
+  margin-bottom: var(--apex-space-4);
+}
+
+li {
+  margin-bottom: var(--apex-space-2);
+  color: var(--apex-text-secondary);
+}
+
+/* ===== Blockquote ===== */
+blockquote {
+  border-left: 4px solid var(--apex-primary);
+  padding: var(--apex-space-4) var(--apex-space-6);
+  margin: var(--apex-space-6) 0;
+  background: var(--apex-bg-alt);
+  border-radius: 0 var(--apex-radius-lg) var(--apex-radius-lg) 0;
+  font-style: italic;
+  font-size: var(--apex-text-lg);
+  color: var(--apex-text-secondary);
+}
+
+blockquote cite {
+  display: block;
+  margin-top: var(--apex-space-3);
+  font-size: var(--apex-text-sm);
+  font-style: normal;
+  font-weight: var(--apex-font-semibold);
+  color: var(--apex-text);
+}
+
+/* ===== Code ===== */
+code,
+pre {
+  font-family: var(--apex-font-mono);
+}
+
+code {
+  background: var(--apex-bg-subtle);
+  padding: 0.125em 0.375em;
+  border-radius: var(--apex-radius-sm);
+  font-size: 0.875em;
+  color: var(--apex-primary-dark);
+}
+
+pre {
+  background: var(--apex-gray-900);
+  color: var(--apex-gray-100);
+  padding: var(--apex-space-6);
+  border-radius: var(--apex-radius-lg);
+  overflow-x: auto;
+  margin-bottom: var(--apex-space-6);
+  line-height: var(--apex-leading-relaxed);
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: var(--apex-text-sm);
+}
+
+/* ===== Horizontal Rule ===== */
+hr {
+  border: none;
+  border-top: 1px solid var(--apex-border);
+  margin: var(--apex-space-8) 0;
+}
+
+/* ===== Tables ===== */
+table {
+  width: 100%;
+  margin-bottom: var(--apex-space-6);
+  border: 1px solid var(--apex-border);
+  border-radius: var(--apex-radius-lg);
+  overflow: hidden;
+}
+
+thead {
+  background: var(--apex-bg-alt);
+}
+
+th {
+  padding: var(--apex-space-3) var(--apex-space-4);
+  text-align: left;
+  font-weight: var(--apex-font-semibold);
+  font-size: var(--apex-text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--apex-tracking-wider);
+  color: var(--apex-text-secondary);
+  border-bottom: 2px solid var(--apex-border);
+}
+
+td {
+  padding: var(--apex-space-3) var(--apex-space-4);
+  border-bottom: 1px solid var(--apex-border-light);
+  color: var(--apex-text-secondary);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--apex-bg-alt);
+}
+
+/* ===== Images ===== */
+figure {
+  margin-bottom: var(--apex-space-6);
+}
+
+figcaption {
+  margin-top: var(--apex-space-2);
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-muted);
+  text-align: center;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--apex-primary-200);
+  color: var(--apex-primary-900);
+}
+
+/* ===== Section Titles ===== */
+.apex-section-title {
+  text-align: center;
+  margin-bottom: var(--apex-space-16);
+}
+
+.apex-section-title .apex-label {
+  display: inline-block;
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--apex-tracking-widest);
+  color: var(--apex-primary);
+  margin-bottom: var(--apex-space-3);
+}
+
+.apex-section-title h2 {
+  margin-bottom: var(--apex-space-4);
+}
+
+.apex-section-title p {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: var(--apex-text-lg);
+}
+
+/* ===== Dividers ===== */
+.apex-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--apex-primary);
+  border-radius: var(--apex-radius-full);
+  margin: var(--apex-space-4) auto;
+}
+
+.apex-divider--left {
+  margin-left: 0;
+}
+
+/* ===== Badge ===== */
+.apex-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--apex-space-1) var(--apex-space-3);
+  font-size: var(--apex-text-xs);
+  font-weight: var(--apex-font-semibold);
+  border-radius: var(--apex-radius-full);
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--apex-tracking-wide);
+}
+
+.apex-badge--success {
+  background: var(--apex-success-light);
+  color: var(--apex-success);
+}
+
+.apex-badge--warning {
+  background: var(--apex-warning-light);
+  color: var(--apex-warning);
+}
+
+.apex-badge--error {
+  background: var(--apex-error-light);
+  color: var(--apex-error);
+}

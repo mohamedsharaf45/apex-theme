@@ -1,0 +1,34 @@
+# Apex Theme - Startup Demo
+# SaaS products, software companies, innovation hubs.
+name: Tech Startup
+description: "A bold, modern demo for tech startups, SaaS companies, and innovation hubs. Features vibrant purple-indigo palette with glassmorphism effects and animated gradients."
+demo_class: apex-demo--startup
+library: apex/demo-startup
+palette:
+  primary: "#7c3aed"
+  primary_light: "#8b5cf6"
+  primary_dark: "#6d28d9"
+  secondary: "#0f172a"
+  accent: "#06b6d4"
+features:
+  - Animated gradient hero with floating shapes
+  - Glassmorphism UI cards
+  - Feature showcase with icons
+  - Pricing table with toggle (monthly/yearly)
+  - Integration logos section
+  - Product screenshots with device frames
+  - Customer testimonials
+  - FAQ accordion
+  - Startup-style CTA with gradient backgrounds
+  - Minimal single-column footer
+regions:
+  hero: Hero Banner
+  features: Features Section
+  product: Product Showcase
+  pricing: Pricing Plans
+  integrations: Integrations / Partners
+  testimonials: Customer Testimonials
+  faq: FAQ Section
+  cta: Call to Action
+screenshot: screenshot.png
+version: "1.0.0"

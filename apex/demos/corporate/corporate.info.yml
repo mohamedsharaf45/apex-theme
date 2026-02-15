@@ -1,0 +1,36 @@
+# Apex Theme - Corporate Demo
+# Professional services, agencies, consulting firms.
+name: Corporate Business
+description: "A polished, professional demo for corporate enterprises, agencies, and consulting firms. Features navy blue palette with gold accents and authoritative typography."
+demo_class: apex-demo--corporate
+library: apex/demo-corporate
+palette:
+  primary: "#1e40af"
+  primary_light: "#3b82f6"
+  primary_dark: "#1e3a8a"
+  secondary: "#1e293b"
+  accent: "#d97706"
+features:
+  - Sticky corporate header with CTA button
+  - Full-width hero with gradient overlay
+  - Services grid with icon boxes
+  - Client logo carousel
+  - Case studies portfolio
+  - Team members section
+  - Testimonial slider
+  - Statistics counter section
+  - Newsletter signup CTA
+  - Multi-column footer
+regions:
+  hero: Hero Banner
+  services: Services Section
+  about: About Section
+  portfolio: Portfolio / Case Studies
+  team: Team Members
+  testimonials: Client Testimonials
+  clients: Client Logos
+  cta: Call to Action
+  stats: Statistics / Counters
+  newsletter: Newsletter Signup
+screenshot: screenshot.png
+version: "1.0.0"

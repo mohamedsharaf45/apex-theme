@@ -1,0 +1,109 @@
+{#
+/**
+ * @file
+ * Apex Theme - Card component template.
+ *
+ * Variables:
+ * - variant: card variant (default, horizontal, overlay, icon, feature, minimal, pricing, team).
+ * - image: image URL.
+ * - image_alt: image alt text.
+ * - icon: icon SVG markup or icon class.
+ * - tag: tag/category label.
+ * - title: card title.
+ * - url: link URL for the title.
+ * - text: body text / description.
+ * - meta: metadata string (date, author, etc.).
+ * - link_text: read more link text.
+ * - link_url: read more link URL.
+ * - featured: boolean for featured/highlighted state.
+ * - animate: animation type.
+ *
+ * Usage:
+ * {% include '@apex/templates/components/card.html.twig' with {
+ *   variant: 'default',
+ *   image: '/path/to/image.jpg',
+ *   tag: 'Technology',
+ *   title: 'Card Title',
+ *   url: '/node/1',
+ *   text: 'Card description text.',
+ *   meta: 'Jan 2024',
+ * } %}
+ */
+#}
+
+{%
+  set card_classes = [
+    'apex-card',
+    'apex-card--' ~ (variant|default('default')),
+    featured ? 'apex-card--featured',
+  ]
+%}
+
+<div{{ attributes|default(create_attribute()).addClass(card_classes) }}
+     {% if animate %}data-apex-animate="{{ animate }}"{% endif %}>
+
+  {# Image #}
+  {% if image and variant != 'icon' and variant != 'feature' %}
+  <div class="apex-card__image">
+    <img src="{{ image }}" alt="{{ image_alt|default(title) }}" loading="lazy" />
+    {% if tag %}
+    <span class="apex-card__tag">{{ tag }}</span>
+    {% endif %}
+    {% if variant == 'overlay' %}
+    <div class="apex-card__overlay"></div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {# Icon (for icon/feature cards) #}
+  {% if icon and (variant == 'icon' or variant == 'feature') %}
+  <div class="apex-card__icon">
+    {{ icon|raw }}
+  </div>
+  {% endif %}
+
+  {# Content #}
+  <div class="apex-card__content">
+
+    {% if tag and variant == 'icon' %}
+    <span class="apex-card__tag">{{ tag }}</span>
+    {% endif %}
+
+    {% if title %}
+    <h3 class="apex-card__title">
+      {% if url %}
+        <a href="{{ url }}">{{ title }}</a>
+      {% else %}
+        {{ title }}
+      {% endif %}
+    </h3>
+    {% endif %}
+
+    {% if meta %}
+    <div class="apex-card__meta">{{ meta }}</div>
+    {% endif %}
+
+    {% if text %}
+    <p class="apex-card__text">{{ text }}</p>
+    {% endif %}
+
+    {% if link_text %}
+    <a href="{{ link_url|default(url|default('#')) }}" class="apex-card__link">
+      {{ link_text }}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+    {% endif %}
+
+  </div>
+
+  {# Footer (optional slot) #}
+  {% if card_footer %}
+  <div class="apex-card__footer">
+    {{ card_footer }}
+  </div>
+  {% endif %}
+
+</div>

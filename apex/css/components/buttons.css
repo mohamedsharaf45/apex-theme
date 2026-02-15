@@ -1,0 +1,251 @@
+/**
+ * @file
+ * Apex Theme - Button Component
+ */
+
+/* ===== Base Button ===== */
+.apex-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--apex-space-2);
+  padding: var(--apex-space-3) var(--apex-space-6);
+  font-family: var(--apex-font-primary);
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-semibold);
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  border: var(--apex-border-width-2) solid transparent;
+  border-radius: var(--apex-radius-lg);
+  cursor: pointer;
+  transition: var(--apex-transition-fast);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.apex-btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.apex-btn:active {
+  transform: translateY(0);
+}
+
+.apex-btn:focus-visible {
+  outline: 2px solid var(--apex-primary);
+  outline-offset: 2px;
+}
+
+.apex-btn:disabled,
+.apex-btn.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ===== Button Variants ===== */
+/* Primary */
+.apex-btn--primary {
+  background: var(--apex-primary);
+  color: var(--apex-white);
+  border-color: var(--apex-primary);
+}
+
+.apex-btn--primary:hover {
+  background: var(--apex-primary-dark);
+  border-color: var(--apex-primary-dark);
+  color: var(--apex-white);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+/* Secondary */
+.apex-btn--secondary {
+  background: var(--apex-secondary);
+  color: var(--apex-white);
+  border-color: var(--apex-secondary);
+}
+
+.apex-btn--secondary:hover {
+  background: var(--apex-secondary-dark);
+  border-color: var(--apex-secondary-dark);
+  color: var(--apex-white);
+}
+
+/* Outline */
+.apex-btn--outline {
+  background: transparent;
+  color: var(--apex-primary);
+  border-color: var(--apex-primary);
+}
+
+.apex-btn--outline:hover {
+  background: var(--apex-primary);
+  color: var(--apex-white);
+}
+
+/* Outline White */
+.apex-btn--outline-white {
+  background: transparent;
+  color: var(--apex-white);
+  border-color: var(--apex-white);
+}
+
+.apex-btn--outline-white:hover {
+  background: var(--apex-white);
+  color: var(--apex-secondary);
+}
+
+/* Ghost */
+.apex-btn--ghost {
+  background: transparent;
+  color: var(--apex-primary);
+  border-color: transparent;
+}
+
+.apex-btn--ghost:hover {
+  background: var(--apex-primary-50);
+  color: var(--apex-primary-dark);
+}
+
+/* White */
+.apex-btn--white {
+  background: var(--apex-white);
+  color: var(--apex-primary);
+  border-color: var(--apex-white);
+}
+
+.apex-btn--white:hover {
+  background: var(--apex-gray-100);
+  color: var(--apex-primary-dark);
+}
+
+/* Accent */
+.apex-btn--accent {
+  background: var(--apex-accent);
+  color: var(--apex-secondary-dark);
+  border-color: var(--apex-accent);
+}
+
+.apex-btn--accent:hover {
+  background: var(--apex-accent-dark);
+  border-color: var(--apex-accent-dark);
+}
+
+/* Success */
+.apex-btn--success {
+  background: var(--apex-success);
+  color: var(--apex-white);
+  border-color: var(--apex-success);
+}
+
+/* Error / Danger */
+.apex-btn--danger {
+  background: var(--apex-error);
+  color: var(--apex-white);
+  border-color: var(--apex-error);
+}
+
+/* ===== Button Sizes ===== */
+.apex-btn--xs {
+  padding: var(--apex-space-1) var(--apex-space-3);
+  font-size: var(--apex-text-xs);
+  border-radius: var(--apex-radius-md);
+}
+
+.apex-btn--sm {
+  padding: var(--apex-space-2) var(--apex-space-4);
+  font-size: var(--apex-text-sm);
+}
+
+.apex-btn--lg {
+  padding: var(--apex-space-4) var(--apex-space-8);
+  font-size: var(--apex-text-base);
+  border-radius: var(--apex-radius-xl);
+}
+
+.apex-btn--xl {
+  padding: var(--apex-space-5) var(--apex-space-10);
+  font-size: var(--apex-text-lg);
+  border-radius: var(--apex-radius-xl);
+}
+
+/* ===== Button Shapes ===== */
+.apex-btn--pill {
+  border-radius: var(--apex-radius-full);
+}
+
+.apex-btn--square {
+  border-radius: 0;
+}
+
+/* ===== Button Block ===== */
+.apex-btn--block {
+  display: flex;
+  width: 100%;
+}
+
+/* ===== Icon Button ===== */
+.apex-btn--icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: var(--apex-radius-full);
+}
+
+.apex-btn--icon.apex-btn--sm {
+  width: 36px;
+  height: 36px;
+}
+
+.apex-btn--icon.apex-btn--lg {
+  width: 52px;
+  height: 52px;
+}
+
+/* ===== Button with Loading ===== */
+.apex-btn.is-loading {
+  color: transparent;
+  pointer-events: none;
+}
+
+.apex-btn.is-loading::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-right-color: currentColor;
+  border-radius: 50%;
+  animation: apex-spin 0.6s linear infinite;
+  color: var(--apex-white);
+}
+
+@keyframes apex-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Button Group ===== */
+.apex-btn-group {
+  display: inline-flex;
+}
+
+.apex-btn-group .apex-btn {
+  border-radius: 0;
+}
+
+.apex-btn-group .apex-btn:first-child {
+  border-radius: var(--apex-radius-lg) 0 0 var(--apex-radius-lg);
+}
+
+.apex-btn-group .apex-btn:last-child {
+  border-radius: 0 var(--apex-radius-lg) var(--apex-radius-lg) 0;
+}
+
+.apex-btn-group .apex-btn + .apex-btn {
+  margin-left: -2px;
+}

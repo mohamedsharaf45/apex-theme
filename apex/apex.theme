@@ -1,0 +1,582 @@
+<?php
+
+/**
+ * @file
+ * Apex theme file.
+ *
+ * Provides theme hooks, preprocess functions, and alter hooks
+ * for the Apex multipurpose business theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function apex_theme() {
+  return [
+    'apex_hero' => [
+      'variables' => [
+        'title' => NULL,
+        'subtitle' => NULL,
+        'description' => NULL,
+        'cta_text' => NULL,
+        'cta_url' => NULL,
+        'cta_secondary_text' => NULL,
+        'cta_secondary_url' => NULL,
+        'background_image' => NULL,
+        'background_video' => NULL,
+        'overlay' => TRUE,
+        'style' => 'default',
+      ],
+      'template' => 'components/apex-hero',
+    ],
+    'apex_card' => [
+      'variables' => [
+        'title' => NULL,
+        'body' => NULL,
+        'image' => NULL,
+        'icon' => NULL,
+        'url' => NULL,
+        'tags' => [],
+        'style' => 'default',
+        'meta' => [],
+      ],
+      'template' => 'components/apex-card',
+    ],
+    'apex_cta' => [
+      'variables' => [
+        'title' => NULL,
+        'description' => NULL,
+        'button_text' => NULL,
+        'button_url' => NULL,
+        'style' => 'default',
+        'background' => NULL,
+      ],
+      'template' => 'components/apex-cta',
+    ],
+    'apex_testimonial' => [
+      'variables' => [
+        'quote' => NULL,
+        'author' => NULL,
+        'role' => NULL,
+        'company' => NULL,
+        'avatar' => NULL,
+        'rating' => 5,
+      ],
+      'template' => 'components/apex-testimonial',
+    ],
+    'apex_pricing' => [
+      'variables' => [
+        'title' => NULL,
+        'price' => NULL,
+        'period' => NULL,
+        'features' => [],
+        'featured' => FALSE,
+        'button_text' => NULL,
+        'button_url' => NULL,
+      ],
+      'template' => 'components/apex-pricing',
+    ],
+    'apex_team_member' => [
+      'variables' => [
+        'name' => NULL,
+        'role' => NULL,
+        'bio' => NULL,
+        'image' => NULL,
+        'social_links' => [],
+      ],
+      'template' => 'components/apex-team-member',
+    ],
+    'apex_counter' => [
+      'variables' => [
+        'number' => NULL,
+        'label' => NULL,
+        'icon' => NULL,
+        'prefix' => '',
+        'suffix' => '',
+      ],
+      'template' => 'components/apex-counter',
+    ],
+    'apex_icon_box' => [
+      'variables' => [
+        'title' => NULL,
+        'description' => NULL,
+        'icon' => NULL,
+        'url' => NULL,
+        'style' => 'default',
+      ],
+      'template' => 'components/apex-icon-box',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ */
+function apex_preprocess_html(&$variables) {
+  $theme_settings = \Drupal::config('apex.settings');
+
+  // Add demo variant class.
+  $demo = $theme_settings->get('demo_variant') ?: 'corporate';
+  $variables['attributes']['class'][] = 'apex-demo--' . $demo;
+
+  // Dark mode.
+  if ($theme_settings->get('dark_mode_enabled')) {
+    $variables['attributes']['class'][] = 'apex-dark-mode-enabled';
+    $variables['#attached']['library'][] = 'apex/dark-mode';
+  }
+
+  // RTL support.
+  if ($theme_settings->get('rtl_enabled')) {
+    $variables['attributes']['class'][] = 'apex-rtl';
+    $variables['html_attributes']['dir'] = 'rtl';
+  }
+
+  // Animations.
+  if ($theme_settings->get('animations_enabled')) {
+    $variables['#attached']['library'][] = 'apex/animations';
+  }
+
+  // Commerce.
+  if ($theme_settings->get('commerce_enabled')) {
+    $variables['#attached']['library'][] = 'apex/commerce';
+  }
+
+  // Demo library.
+  $variables['#attached']['library'][] = 'apex/demo-' . $demo;
+
+  // Pass settings to JS.
+  $variables['#attached']['drupalSettings']['apex'] = [
+    'darkMode' => $theme_settings->get('dark_mode_enabled'),
+    'darkModeDefault' => $theme_settings->get('dark_mode_default') ?: 'light',
+    'headerSticky' => $theme_settings->get('header_sticky'),
+    'preloader' => $theme_settings->get('preloader'),
+    'backToTop' => $theme_settings->get('back_to_top'),
+    'animationsEnabled' => $theme_settings->get('animations_enabled'),
+    'demoVariant' => $demo,
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for page.html.twig.
+ */
+function apex_preprocess_page(&$variables) {
+  $theme_settings = \Drupal::config('apex.settings');
+
+  $variables['header_style'] = $theme_settings->get('header_style') ?: 'default';
+  $variables['header_sticky'] = $theme_settings->get('header_sticky');
+  $variables['header_transparent'] = $theme_settings->get('header_transparent');
+  $variables['top_bar_enabled'] = $theme_settings->get('top_bar_enabled');
+  $variables['top_bar_phone'] = $theme_settings->get('top_bar_phone');
+  $variables['top_bar_email'] = $theme_settings->get('top_bar_email');
+  $variables['footer_style'] = $theme_settings->get('footer_style') ?: 'default';
+  $variables['footer_columns'] = $theme_settings->get('footer_columns') ?: 4;
+  $variables['back_to_top'] = $theme_settings->get('back_to_top');
+  $variables['preloader'] = $theme_settings->get('preloader');
+  $variables['dark_mode_enabled'] = $theme_settings->get('dark_mode_enabled');
+  $variables['demo_variant'] = $theme_settings->get('demo_variant') ?: 'corporate';
+
+  // Social links.
+  $social_platforms = ['facebook', 'twitter', 'linkedin', 'instagram', 'youtube'];
+  $variables['social_links'] = [];
+  foreach ($social_platforms as $platform) {
+    $url = $theme_settings->get('social_' . $platform);
+    if (!empty($url)) {
+      $variables['social_links'][$platform] = $url;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function apex_preprocess_node(&$variables) {
+  $variables['apex_card_style'] = 'default';
+  if ($variables['node']->getType() === 'article') {
+    $variables['apex_card_style'] = 'blog';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for block.html.twig.
+ */
+function apex_preprocess_block(&$variables) {
+  // Add base block ID for template suggestions.
+  if (isset($variables['elements']['#id'])) {
+    $variables['attributes']['data-block-id'] = $variables['elements']['#id'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for page.
+ */
+function apex_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $route = \Drupal::routeMatch()->getRouteName();
+
+  // Add commerce page suggestions.
+  if (str_starts_with($route, 'commerce_')) {
+    $suggestions[] = 'page__commerce';
+  }
+
+  // Add demo variant page suggestion.
+  $demo = \Drupal::config('apex.settings')->get('demo_variant') ?: 'corporate';
+  $suggestions[] = 'page__demo__' . $demo;
+
+  // Node type suggestions.
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if (is_object($node)) {
+      $suggestions[] = 'page__node__' . $node->getType();
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for block.
+ */
+function apex_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['#id'])) {
+    $suggestions[] = 'block__' . $variables['elements']['#id'];
+  }
+
+  // Region-based block suggestions.
+  if (isset($variables['elements']['#configuration']['region'])) {
+    $region = $variables['elements']['#configuration']['region'];
+    $suggestions[] = 'block__region__' . $region;
+  }
+}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function apex_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+  // Apex Theme Settings Vertical Tabs.
+  $form['apex_settings'] = [
+    '#type' => 'vertical_tabs',
+    '#title' => t('Apex Theme Settings'),
+    '#weight' => -20,
+  ];
+
+  // ---- Demo Variant ----
+  $form['demo'] = [
+    '#type' => 'details',
+    '#title' => t('Demo Variant'),
+    '#group' => 'apex_settings',
+    '#open' => TRUE,
+  ];
+  $form['demo']['demo_variant'] = [
+    '#type' => 'select',
+    '#title' => t('Active Demo'),
+    '#default_value' => theme_get_setting('demo_variant') ?: 'corporate',
+    '#options' => [
+      'corporate' => t('Corporate Business'),
+      'startup' => t('Tech Startup'),
+      'portfolio' => t('Creative Portfolio'),
+      'medical' => t('Medical / Healthcare'),
+      'finance' => t('Finance / Consulting'),
+    ],
+    '#description' => t('Select the demo variant to use for your site.'),
+  ];
+
+  // ---- Colors ----
+  $form['colors'] = [
+    '#type' => 'details',
+    '#title' => t('Colors & Fonts'),
+    '#group' => 'apex_settings',
+  ];
+  $form['colors']['primary_color'] = [
+    '#type' => 'color',
+    '#title' => t('Primary Color'),
+    '#default_value' => theme_get_setting('primary_color') ?: '#2563eb',
+  ];
+  $form['colors']['secondary_color'] = [
+    '#type' => 'color',
+    '#title' => t('Secondary Color'),
+    '#default_value' => theme_get_setting('secondary_color') ?: '#1e293b',
+  ];
+  $form['colors']['accent_color'] = [
+    '#type' => 'color',
+    '#title' => t('Accent Color'),
+    '#default_value' => theme_get_setting('accent_color') ?: '#f59e0b',
+  ];
+  $form['colors']['primary_font'] = [
+    '#type' => 'textfield',
+    '#title' => t('Primary Font Family'),
+    '#default_value' => theme_get_setting('primary_font') ?: 'Inter',
+    '#description' => t('Google Fonts family name for body text.'),
+  ];
+  $form['colors']['secondary_font'] = [
+    '#type' => 'textfield',
+    '#title' => t('Secondary Font Family'),
+    '#default_value' => theme_get_setting('secondary_font') ?: 'Playfair Display',
+    '#description' => t('Google Fonts family name for headings.'),
+  ];
+  $form['colors']['google_fonts'] = [
+    '#type' => 'textfield',
+    '#title' => t('Google Fonts URL'),
+    '#default_value' => theme_get_setting('google_fonts'),
+    '#description' => t('Full Google Fonts embed URL.'),
+    '#maxlength' => 512,
+  ];
+
+  // ---- Dark Mode ----
+  $form['dark_mode'] = [
+    '#type' => 'details',
+    '#title' => t('Dark Mode'),
+    '#group' => 'apex_settings',
+  ];
+  $form['dark_mode']['dark_mode_enabled'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable Dark Mode Toggle'),
+    '#default_value' => theme_get_setting('dark_mode_enabled'),
+    '#description' => t('Show a dark/light mode toggle switch in the header.'),
+  ];
+  $form['dark_mode']['dark_mode_default'] = [
+    '#type' => 'select',
+    '#title' => t('Default Mode'),
+    '#default_value' => theme_get_setting('dark_mode_default') ?: 'light',
+    '#options' => [
+      'light' => t('Light'),
+      'dark' => t('Dark'),
+      'auto' => t('System Preference'),
+    ],
+  ];
+
+  // ---- Header ----
+  $form['header_settings'] = [
+    '#type' => 'details',
+    '#title' => t('Header'),
+    '#group' => 'apex_settings',
+  ];
+  $form['header_settings']['header_style'] = [
+    '#type' => 'select',
+    '#title' => t('Header Style'),
+    '#default_value' => theme_get_setting('header_style') ?: 'default',
+    '#options' => [
+      'default' => t('Default'),
+      'centered' => t('Centered Logo'),
+      'split' => t('Split Navigation'),
+      'minimal' => t('Minimal'),
+      'mega' => t('Mega Menu'),
+    ],
+  ];
+  $form['header_settings']['header_sticky'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Sticky Header'),
+    '#default_value' => theme_get_setting('header_sticky'),
+  ];
+  $form['header_settings']['header_transparent'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Transparent Header (Hero pages)'),
+    '#default_value' => theme_get_setting('header_transparent'),
+  ];
+  $form['header_settings']['top_bar_enabled'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable Top Bar'),
+    '#default_value' => theme_get_setting('top_bar_enabled'),
+  ];
+  $form['header_settings']['top_bar_phone'] = [
+    '#type' => 'textfield',
+    '#title' => t('Phone Number'),
+    '#default_value' => theme_get_setting('top_bar_phone'),
+  ];
+  $form['header_settings']['top_bar_email'] = [
+    '#type' => 'textfield',
+    '#title' => t('Email Address'),
+    '#default_value' => theme_get_setting('top_bar_email'),
+  ];
+
+  // ---- Footer ----
+  $form['footer_settings'] = [
+    '#type' => 'details',
+    '#title' => t('Footer'),
+    '#group' => 'apex_settings',
+  ];
+  $form['footer_settings']['footer_style'] = [
+    '#type' => 'select',
+    '#title' => t('Footer Style'),
+    '#default_value' => theme_get_setting('footer_style') ?: 'default',
+    '#options' => [
+      'default' => t('Default (4 Columns)'),
+      'centered' => t('Centered'),
+      'minimal' => t('Minimal'),
+      'mega' => t('Mega Footer'),
+    ],
+  ];
+  $form['footer_settings']['footer_columns'] = [
+    '#type' => 'select',
+    '#title' => t('Footer Columns'),
+    '#default_value' => theme_get_setting('footer_columns') ?: 4,
+    '#options' => [2 => '2', 3 => '3', 4 => '4'],
+  ];
+
+  // ---- Social Media ----
+  $form['social'] = [
+    '#type' => 'details',
+    '#title' => t('Social Media'),
+    '#group' => 'apex_settings',
+  ];
+  $platforms = ['facebook', 'twitter', 'linkedin', 'instagram', 'youtube'];
+  foreach ($platforms as $platform) {
+    $form['social']['social_' . $platform] = [
+      '#type' => 'url',
+      '#title' => t('@platform URL', ['@platform' => ucfirst($platform)]),
+      '#default_value' => theme_get_setting('social_' . $platform),
+    ];
+  }
+
+  // ---- General ----
+  $form['general'] = [
+    '#type' => 'details',
+    '#title' => t('General Settings'),
+    '#group' => 'apex_settings',
+  ];
+  $form['general']['back_to_top'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Back to Top Button'),
+    '#default_value' => theme_get_setting('back_to_top'),
+  ];
+  $form['general']['preloader'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Page Preloader'),
+    '#default_value' => theme_get_setting('preloader'),
+  ];
+  $form['general']['animations_enabled'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable Scroll Animations'),
+    '#default_value' => theme_get_setting('animations_enabled'),
+  ];
+  $form['general']['rtl_enabled'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable RTL Support'),
+    '#default_value' => theme_get_setting('rtl_enabled'),
+  ];
+
+  // ---- Commerce ----
+  $form['commerce_settings'] = [
+    '#type' => 'details',
+    '#title' => t('Commerce'),
+    '#group' => 'apex_settings',
+  ];
+  $form['commerce_settings']['commerce_enabled'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable Commerce Features'),
+    '#default_value' => theme_get_setting('commerce_enabled'),
+    '#description' => t('Requires Drupal Commerce module to be installed.'),
+  ];
+  $form['commerce_settings']['commerce_catalog_style'] = [
+    '#type' => 'select',
+    '#title' => t('Product Catalog Layout'),
+    '#default_value' => theme_get_setting('commerce_catalog_style') ?: 'grid',
+    '#options' => [
+      'grid' => t('Grid View'),
+      'list' => t('List View'),
+      'masonry' => t('Masonry Grid'),
+    ],
+  ];
+  $form['commerce_settings']['commerce_products_per_page'] = [
+    '#type' => 'number',
+    '#title' => t('Products Per Page'),
+    '#default_value' => theme_get_setting('commerce_products_per_page') ?: 12,
+    '#min' => 4,
+    '#max' => 48,
+    '#step' => 4,
+  ];
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function apex_page_attachments_alter(array &$attachments) {
+  // Add Google Fonts.
+  $google_fonts = theme_get_setting('google_fonts');
+  if (!empty($google_fonts)) {
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'preconnect',
+          'href' => 'https://fonts.googleapis.com',
+        ],
+      ],
+      'apex_google_fonts_preconnect',
+    ];
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'preconnect',
+          'href' => 'https://fonts.gstatic.com',
+          'crossorigin' => 'anonymous',
+        ],
+      ],
+      'apex_google_fonts_preconnect_gstatic',
+    ];
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'stylesheet',
+          'href' => $google_fonts,
+        ],
+      ],
+      'apex_google_fonts',
+    ];
+  }
+
+  // Add meta viewport for mobile-first.
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'name' => 'viewport',
+        'content' => 'width=device-width, initial-scale=1.0',
+      ],
+    ],
+    'apex_viewport',
+  ];
+
+  // Theme color meta.
+  $primary = theme_get_setting('primary_color') ?: '#2563eb';
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'name' => 'theme-color',
+        'content' => $primary,
+      ],
+    ],
+    'apex_theme_color',
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for field.html.twig.
+ */
+function apex_preprocess_field(&$variables) {
+  $variables['apex_field_class'] = 'apex-field--' . str_replace('_', '-', $variables['field_name']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for region.html.twig.
+ */
+function apex_preprocess_region(&$variables) {
+  $variables['attributes']['class'][] = 'apex-region';
+  $variables['attributes']['class'][] = 'apex-region--' . str_replace('_', '-', $variables['region']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for breadcrumb.html.twig.
+ */
+function apex_preprocess_breadcrumb(&$variables) {
+  if (!empty($variables['breadcrumb'])) {
+    $request = \Drupal::request();
+    $route_match = \Drupal::routeMatch();
+    $title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+    if ($title) {
+      $variables['breadcrumb'][] = [
+        'text' => $title,
+      ];
+    }
+  }
+}

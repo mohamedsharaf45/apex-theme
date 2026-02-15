@@ -1,0 +1,155 @@
+/**
+ * @file
+ * Apex Theme - Medical / Healthcare Demo
+ *
+ * Clinics, hospitals, health services.
+ * Palette: Teal, clean whites, calming blues.
+ * Typography: Clean, trustworthy.
+ */
+
+.apex-demo--medical {
+  --apex-primary: #0d9488;
+  --apex-primary-light: #14b8a6;
+  --apex-primary-dark: #0f766e;
+  --apex-primary-50: #f0fdfa;
+  --apex-primary-100: #ccfbf1;
+  --apex-primary-200: #99f6e4;
+  --apex-secondary: #1e293b;
+  --apex-secondary-light: #334155;
+  --apex-secondary-dark: #0f172a;
+  --apex-accent: #2563eb;
+  --apex-accent-light: #3b82f6;
+  --apex-accent-dark: #1d4ed8;
+}
+
+/* Medical Hero - clean, reassuring */
+.apex-demo--medical .apex-hero {
+  background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+}
+
+.apex-demo--medical .apex-hero__label {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--apex-white);
+}
+
+.apex-demo--medical .apex-hero__title span {
+  color: #ccfbf1;
+}
+
+/* Medical Cards */
+.apex-demo--medical .apex-card {
+  border-radius: var(--apex-radius-2xl);
+}
+
+.apex-demo--medical .apex-card--icon .apex-card__icon {
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  border-radius: var(--apex-radius-full);
+  width: 72px;
+  height: 72px;
+}
+
+/* Medical Buttons */
+.apex-demo--medical .apex-btn {
+  border-radius: var(--apex-radius-full);
+}
+
+/* Medical Header - clean white */
+.apex-demo--medical .apex-header {
+  background: var(--apex-white);
+  box-shadow: var(--apex-shadow-sm);
+}
+
+.apex-demo--medical .apex-topbar {
+  background: var(--apex-primary-dark);
+}
+
+/* Medical Sections */
+.apex-demo--medical .apex-section--alt {
+  background: var(--apex-primary-50);
+}
+
+/* Doctor/Team Cards */
+.apex-demo--medical .apex-card--team {
+  border-radius: var(--apex-radius-2xl);
+  overflow: hidden;
+}
+
+.apex-demo--medical .apex-card--team .apex-card__image {
+  aspect-ratio: 3 / 4;
+}
+
+/* Medical Opening Hours */
+.apex-demo--medical .apex-widget-hours__day {
+  color: var(--apex-primary-dark);
+}
+
+/* Medical Contact Info */
+.apex-demo--medical .apex-widget-info__icon {
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  border-radius: var(--apex-radius-full);
+}
+
+/* Medical Footer */
+.apex-demo--medical .apex-footer {
+  background: #0f172a;
+}
+
+/* Medical CTA */
+.apex-demo--medical .apex-cta-block--primary {
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+}
+
+/* Emergency Banner */
+.apex-demo--medical .apex-emergency-banner {
+  background: var(--apex-error);
+  color: var(--apex-white);
+  padding: var(--apex-space-3) 0;
+  text-align: center;
+  font-weight: var(--apex-font-semibold);
+  font-size: var(--apex-text-sm);
+}
+
+/* Department Cards */
+.apex-demo--medical .apex-department-card {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-4);
+  padding: var(--apex-space-6);
+  background: var(--apex-surface);
+  border: 1px solid var(--apex-border-light);
+  border-radius: var(--apex-radius-xl);
+  transition: var(--apex-transition);
+}
+
+.apex-demo--medical .apex-department-card:hover {
+  border-color: var(--apex-primary);
+  box-shadow: var(--apex-shadow-md);
+}
+
+.apex-demo--medical .apex-department-card__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  border-radius: var(--apex-radius-full);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* Appointment Form */
+.apex-demo--medical .apex-appointment-form {
+  background: var(--apex-surface);
+  border: 2px solid var(--apex-primary-100);
+  border-radius: var(--apex-radius-2xl);
+  padding: var(--apex-space-8);
+}
+
+.apex-demo--medical .apex-appointment-form__title {
+  color: var(--apex-primary);
+  margin-bottom: var(--apex-space-6);
+}

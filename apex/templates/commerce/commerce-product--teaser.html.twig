@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Apex Theme - Commerce product teaser template.
+ *
+ * Product card used in listings / grids.
+ */
+#}
+{%
+  set classes = [
+    'commerce-product',
+    'commerce-product--teaser',
+    'apex-product-card',
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+
+  {# Image #}
+  <div class="apex-product-card__image">
+    {% if product.field_images|render|trim %}
+      <a href="{{ product_url }}">{{ product.field_images }}</a>
+    {% endif %}
+
+    {# Badges #}
+    <div class="apex-product-card__badges">
+      {% if product_entity.field_on_sale.value %}
+        <span class="apex-product-card__badge apex-product-card__badge--sale">{{ 'Sale'|t }}</span>
+      {% endif %}
+      {% if product_entity.field_new_arrival.value %}
+        <span class="apex-product-card__badge apex-product-card__badge--new">{{ 'New'|t }}</span>
+      {% endif %}
+    </div>
+
+    {# Quick Actions #}
+    <div class="apex-product-card__actions">
+      <button class="apex-product-card__action-btn apex-wishlist-toggle"
+              data-product-id="{{ product_entity.id() }}"
+              aria-label="{{ 'Add to wishlist'|t }}"
+              aria-pressed="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      </button>
+      <a href="{{ product_url }}" class="apex-product-card__action-btn apex-quick-view-trigger"
+         data-quick-view-url="{{ product_url }}" aria-label="{{ 'Quick view'|t }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  {# Content #}
+  <div class="apex-product-card__content">
+
+    {# Category #}
+    {% if product.field_category|render|trim %}
+    <span class="apex-product-card__category">
+      {{ product.field_category }}
+    </span>
+    {% endif %}
+
+    {# Title #}
+    <h3 class="apex-product-card__title">
+      <a href="{{ product_url }}">{{ product_entity.title.value }}</a>
+    </h3>
+
+    {# Rating #}
+    {% if product.field_rating|render|trim %}
+    <div class="apex-product-card__rating">
+      {{ product.field_rating }}
+    </div>
+    {% endif %}
+
+    {# Price #}
+    <div class="apex-product-card__price">
+      {{ product.variation_price }}
+    </div>
+
+  </div>
+
+</article>

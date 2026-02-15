@@ -1,0 +1,79 @@
+/**
+ * @file
+ * Apex Theme - Corporate Business Demo
+ *
+ * Professional services, agencies, consulting firms.
+ * Palette: Navy blue, slate, gold accents.
+ * Typography: Clean, authoritative.
+ */
+
+.apex-demo--corporate {
+  --apex-primary: #1e40af;
+  --apex-primary-light: #3b82f6;
+  --apex-primary-dark: #1e3a8a;
+  --apex-primary-50: #eff6ff;
+  --apex-primary-100: #dbeafe;
+  --apex-primary-200: #bfdbfe;
+  --apex-secondary: #1e293b;
+  --apex-secondary-light: #334155;
+  --apex-secondary-dark: #0f172a;
+  --apex-accent: #d97706;
+  --apex-accent-light: #f59e0b;
+  --apex-accent-dark: #b45309;
+}
+
+/* Corporate Hero */
+.apex-demo--corporate .apex-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+}
+
+.apex-demo--corporate .apex-hero__label {
+  background: rgba(217, 119, 6, 0.2);
+  color: #f59e0b;
+}
+
+/* Corporate Cards - subtle borders, professional feel */
+.apex-demo--corporate .apex-card {
+  border-radius: var(--apex-radius-lg);
+}
+
+.apex-demo--corporate .apex-card--icon .apex-card__icon {
+  border-radius: var(--apex-radius-lg);
+}
+
+/* Corporate Section Titles */
+.apex-demo--corporate .apex-section-title .apex-label {
+  color: var(--apex-accent);
+}
+
+/* Corporate Buttons - squared off */
+.apex-demo--corporate .apex-btn {
+  border-radius: var(--apex-radius-md);
+  text-transform: uppercase;
+  letter-spacing: var(--apex-tracking-wide);
+  font-size: var(--apex-text-xs);
+}
+
+/* Corporate Header */
+.apex-demo--corporate .apex-header {
+  background: var(--apex-white);
+}
+
+.apex-demo--corporate .apex-topbar {
+  background: #0f172a;
+}
+
+/* Corporate Footer */
+.apex-demo--corporate .apex-footer {
+  background: #0f172a;
+}
+
+/* Corporate Testimonials */
+.apex-demo--corporate .apex-testimonial {
+  border-left: 4px solid var(--apex-primary);
+}
+
+/* Corporate Counter Section */
+.apex-demo--corporate .apex-counter__number {
+  font-family: var(--apex-font-primary);
+}

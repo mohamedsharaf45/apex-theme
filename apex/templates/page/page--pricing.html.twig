@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Apex Theme - Pricing page template.
+ */
+#}
+
+<div class="apex-page-header apex-page-header--primary">
+  <div class="apex-container">
+    <h1 class="apex-page-header__title">{{ 'Pricing Plans'|t }}</h1>
+    <p class="apex-page-header__subtitle">{{ 'Simple, transparent pricing. Choose the plan that fits your needs.'|t }}</p>
+  </div>
+</div>
+
+{% if page.breadcrumb %}
+<div class="apex-breadcrumb-region">
+  <div class="apex-container">{{ page.breadcrumb }}</div>
+</div>
+{% endif %}
+
+<main id="main-content" class="apex-main">
+  {% if page.highlighted %}
+  <div class="apex-container">{{ page.highlighted }}</div>
+  {% endif %}
+
+  <div class="apex-container">
+    {{ page.content }}
+  </div>
+
+  {# FAQ Section #}
+  {% if page.content_bottom %}
+  <section class="apex-section apex-section--alt">
+    <div class="apex-container">
+      <div class="apex-section-title apex-section-title--center">
+        <h2>{{ 'Frequently Asked Questions'|t }}</h2>
+        <p>{{ 'Have questions? We\'ve got answers.'|t }}</p>
+      </div>
+      {{ page.content_bottom }}
+    </div>
+  </section>
+  {% endif %}
+</main>

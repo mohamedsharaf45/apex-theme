@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Apex Theme - About page template.
+ *
+ * Page template for 'about' or 'about-us' paths.
+ * Features: Page header, story section, team, counters, timeline.
+ */
+#}
+
+{# Page Header #}
+<div class="apex-page-header" style="background-image: url('{{ directory }}/images/about-header.jpg');">
+  <div class="apex-page-header__overlay"></div>
+  <div class="apex-container">
+    <h1 class="apex-page-header__title">{{ 'About Us'|t }}</h1>
+    <p class="apex-page-header__subtitle">{{ 'Learn about our story, mission, and the team behind our success.'|t }}</p>
+  </div>
+</div>
+
+{# Breadcrumb #}
+{% if page.breadcrumb %}
+<div class="apex-breadcrumb-region">
+  <div class="apex-container">
+    {{ page.breadcrumb }}
+  </div>
+</div>
+{% endif %}
+
+{# Main Content #}
+<main id="main-content" class="apex-main">
+  <div class="apex-container">
+
+    {# Messages #}
+    {% if page.highlighted %}
+      {{ page.highlighted }}
+    {% endif %}
+
+    {# Content from blocks / fields #}
+    {{ page.content }}
+
+  </div>
+</main>

@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Apex Theme - Local tasks block (tabs).
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{% if content %}
+<nav class="apex-tabs" aria-label="{{ 'Tabs'|t }}">
+  {{ content }}
+</nav>
+{% endif %}

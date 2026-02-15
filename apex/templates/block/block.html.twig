@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Apex Theme - Block template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'apex-block',
+    'apex-block--' ~ plugin_id|clean_class,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes.addClass('apex-block__title') }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  {% block content %}
+    <div class="apex-block__content">
+      {{ content }}
+    </div>
+  {% endblock %}
+</div>

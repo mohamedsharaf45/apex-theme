@@ -1,0 +1,132 @@
+{#
+/**
+ * @file
+ * Apex Theme - Hero component template.
+ *
+ * Variables:
+ * - variant: hero variant (full, medium, small, centered, split, slider).
+ * - background_image: URL for background image.
+ * - background_video: URL for background video.
+ * - overlay: overlay type (dark, gradient, light, none).
+ * - label: small label text above title.
+ * - title: main hero title.
+ * - subtitle: subtitle / description text.
+ * - cta_primary_text: Primary CTA button text.
+ * - cta_primary_url: Primary CTA button URL.
+ * - cta_secondary_text: Secondary CTA button text.
+ * - cta_secondary_url: Secondary CTA button URL.
+ * - stats: array of stat items [{value, label}].
+ * - alignment: text alignment (left, center, right).
+ * - parallax: enable parallax effect.
+ *
+ * Usage:
+ * {% include '@apex/templates/components/hero.html.twig' with {
+ *   variant: 'full',
+ *   title: 'Welcome to Apex',
+ *   subtitle: 'A premium Drupal theme',
+ *   cta_primary_text: 'Get Started',
+ *   cta_primary_url: '/contact',
+ * } %}
+ */
+#}
+
+{%
+  set hero_classes = [
+    'apex-hero',
+    'apex-hero--' ~ (variant|default('full')),
+    'apex-hero--' ~ (alignment|default('left')),
+    parallax ? 'apex-hero--parallax',
+  ]
+%}
+
+<section{{ attributes|default(create_attribute()).addClass(hero_classes) }}>
+
+  {# Background Image #}
+  {% if background_image %}
+  <div class="apex-hero__bg" {% if parallax %}data-apex-parallax="0.3"{% endif %}
+       style="background-image: url('{{ background_image }}');">
+  </div>
+  {% endif %}
+
+  {# Background Video #}
+  {% if background_video %}
+  <div class="apex-hero__video">
+    <video autoplay muted loop playsinline>
+      <source src="{{ background_video }}" type="video/mp4">
+    </video>
+  </div>
+  {% endif %}
+
+  {# Overlay #}
+  {% if overlay|default('dark') != 'none' %}
+  <div class="apex-hero__overlay apex-hero__overlay--{{ overlay|default('dark') }}"></div>
+  {% endif %}
+
+  <div class="apex-container">
+    <div class="apex-hero__inner">
+      <div class="apex-hero__content" data-apex-animate="fade-up">
+
+        {# Label #}
+        {% if label %}
+        <span class="apex-hero__label">{{ label }}</span>
+        {% endif %}
+
+        {# Title #}
+        {% if title %}
+        <h1 class="apex-hero__title">{{ title }}</h1>
+        {% endif %}
+
+        {# Subtitle #}
+        {% if subtitle %}
+        <p class="apex-hero__subtitle">{{ subtitle }}</p>
+        {% endif %}
+
+        {# CTA Buttons #}
+        {% if cta_primary_text or cta_secondary_text %}
+        <div class="apex-hero__cta">
+          {% if cta_primary_text %}
+          <a href="{{ cta_primary_url|default('#') }}" class="apex-btn apex-btn--primary apex-btn--lg">
+            {{ cta_primary_text }}
+          </a>
+          {% endif %}
+          {% if cta_secondary_text %}
+          <a href="{{ cta_secondary_url|default('#') }}" class="apex-btn apex-btn--outline-white apex-btn--lg">
+            {{ cta_secondary_text }}
+          </a>
+          {% endif %}
+        </div>
+        {% endif %}
+
+      </div>
+
+      {# Split Image (for split variant) #}
+      {% if variant == 'split' and split_image %}
+      <div class="apex-hero__media" data-apex-animate="fade-left">
+        <img src="{{ split_image }}" alt="{{ title }}" />
+      </div>
+      {% endif %}
+
+    </div>
+
+    {# Stats #}
+    {% if stats %}
+    <div class="apex-hero__stats" data-apex-animate="fade-up" data-apex-delay="300">
+      {% for stat in stats %}
+      <div class="apex-hero__stat">
+        <span class="apex-hero__stat-value" data-apex-counter="{{ stat.value }}">0</span>
+        <span class="apex-hero__stat-label">{{ stat.label }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+
+  {# Scroll Indicator #}
+  {% if variant == 'full' %}
+  <div class="apex-hero__scroll">
+    <span></span>
+  </div>
+  {% endif %}
+
+</section>

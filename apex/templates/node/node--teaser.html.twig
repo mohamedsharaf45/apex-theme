@@ -1,0 +1,72 @@
+{#
+/**
+ * @file
+ * Apex Theme - Node teaser template.
+ *
+ * @see template_preprocess_node()
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    'node--view-mode-teaser',
+    'apex-teaser',
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+
+  {# Image #}
+  {% if content.field_image|render|trim %}
+  <div class="apex-teaser__image">
+    <a href="{{ url }}">{{ content.field_image }}</a>
+  </div>
+  {% endif %}
+
+  <div class="apex-teaser__content">
+
+    {# Category #}
+    {% if content.field_tags|render|trim %}
+    <div class="apex-teaser__category">
+      {{ content.field_tags }}
+    </div>
+    {% endif %}
+
+    {# Title #}
+    {{ title_prefix }}
+    <h3{{ title_attributes.addClass('apex-teaser__title') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h3>
+    {{ title_suffix }}
+
+    {# Meta #}
+    {% if display_submitted %}
+    <div class="apex-teaser__meta">
+      <span class="apex-teaser__author">{{ author_name }}</span>
+      <span class="apex-teaser__separator">&bull;</span>
+      <time class="apex-teaser__date" datetime="{{ node.getCreatedTime()|date('Y-m-d') }}">
+        {{ date }}
+      </time>
+    </div>
+    {% endif %}
+
+    {# Summary #}
+    {% if content.body|render|trim %}
+    <div class="apex-teaser__summary">
+      {{ content.body }}
+    </div>
+    {% endif %}
+
+    {# Read More #}
+    <a href="{{ url }}" class="apex-teaser__link">
+      {{ 'Read More'|t }}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+
+  </div>
+
+</article>

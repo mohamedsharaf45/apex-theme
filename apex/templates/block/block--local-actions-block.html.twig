@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Apex Theme - Local actions block (admin action links).
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{% if content %}
+<nav class="apex-local-actions" aria-label="{{ 'Local actions'|t }}">
+  {{ content }}
+</nav>
+{% endif %}

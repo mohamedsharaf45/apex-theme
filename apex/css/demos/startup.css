@@ -1,0 +1,116 @@
+/**
+ * @file
+ * Apex Theme - Tech Startup Demo
+ *
+ * SaaS products, software companies, innovation hubs.
+ * Palette: Vibrant purple-indigo, electric blue, neon accents.
+ * Typography: Modern, geometric.
+ */
+
+.apex-demo--startup {
+  --apex-primary: #7c3aed;
+  --apex-primary-light: #8b5cf6;
+  --apex-primary-dark: #6d28d9;
+  --apex-primary-50: #f5f3ff;
+  --apex-primary-100: #ede9fe;
+  --apex-primary-200: #ddd6fe;
+  --apex-secondary: #0f172a;
+  --apex-secondary-light: #1e293b;
+  --apex-secondary-dark: #020617;
+  --apex-accent: #06b6d4;
+  --apex-accent-light: #22d3ee;
+  --apex-accent-dark: #0891b2;
+}
+
+/* Startup Hero - gradient background */
+.apex-demo--startup .apex-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #4c1d95 50%, #7c3aed 100%);
+}
+
+.apex-demo--startup .apex-hero__label {
+  background: rgba(6, 182, 212, 0.2);
+  color: #22d3ee;
+}
+
+.apex-demo--startup .apex-hero__title span {
+  background: linear-gradient(to right, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Startup Cards - rounded, glassmorphism */
+.apex-demo--startup .apex-card {
+  border-radius: var(--apex-radius-2xl);
+  border: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.apex-demo--startup .apex-card:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.1);
+}
+
+.apex-demo--startup .apex-card--icon .apex-card__icon {
+  border-radius: var(--apex-radius-2xl);
+  background: linear-gradient(135deg, var(--apex-primary-50), rgba(6, 182, 212, 0.1));
+}
+
+/* Startup Buttons - pill shaped */
+.apex-demo--startup .apex-btn {
+  border-radius: var(--apex-radius-full);
+}
+
+.apex-demo--startup .apex-btn--primary {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+}
+
+.apex-demo--startup .apex-btn--primary:hover {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+}
+
+/* Startup Header */
+.apex-demo--startup .apex-header--scrolled {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Startup Sections */
+.apex-demo--startup .apex-section--dark {
+  background: linear-gradient(135deg, #0f172a, #1e1b4b);
+}
+
+/* Startup Pricing */
+.apex-demo--startup .apex-card--pricing.is-featured {
+  border-color: var(--apex-primary);
+  background: linear-gradient(to bottom, var(--apex-primary-50), var(--apex-surface));
+}
+
+/* Startup Footer - dark gradient */
+.apex-demo--startup .apex-footer {
+  background: linear-gradient(to bottom, #0f172a, #020617);
+}
+
+/* Startup Testimonials */
+.apex-demo--startup .apex-testimonial {
+  border-radius: var(--apex-radius-2xl);
+  background: linear-gradient(135deg, var(--apex-surface), var(--apex-primary-50));
+}
+
+/* Startup CTA */
+.apex-demo--startup .apex-cta-block--primary {
+  background: linear-gradient(135deg, #7c3aed, #4c1d95, #0f172a);
+}
+
+/* Decorative elements */
+.apex-demo--startup .apex-hero::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 70%);
+  top: -100px;
+  right: -100px;
+  z-index: 0;
+}

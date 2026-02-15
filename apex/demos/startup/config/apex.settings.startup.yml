@@ -1,0 +1,24 @@
+# Apex Startup Demo - Theme Settings Override
+apex.settings:
+  demo: startup
+  header_style: transparent
+  header_cta: true
+  header_cta_text: "Start Free Trial"
+  header_cta_url: "/register"
+  hero_style: full
+  hero_overlay: false
+  hero_parallax: false
+  show_breadcrumb: true
+  show_back_to_top: true
+  dark_mode_toggle: true
+  preloader: true
+  footer_style: minimal
+  footer_columns: 3
+  social_links:
+    twitter: "#"
+    github: "#"
+    linkedin: "#"
+    youtube: "#"
+  font_heading: "Inter"
+  font_body: "Inter"
+  animations: true

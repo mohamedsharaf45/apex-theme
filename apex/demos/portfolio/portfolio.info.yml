@@ -1,0 +1,34 @@
+# Apex Theme - Portfolio Demo
+# Designers, photographers, creative agencies.
+name: Creative Portfolio
+description: "A visually rich, editorial demo for designers, photographers, and creative agencies. Features warm terracotta and sage palette with expressive typography."
+demo_class: apex-demo--portfolio
+library: apex/demo-portfolio
+palette:
+  primary: "#b45309"
+  primary_light: "#d97706"
+  primary_dark: "#92400e"
+  secondary: "#292524"
+  accent: "#059669"
+features:
+  - Full-screen portfolio hero with parallax
+  - Masonry / filterable portfolio grid
+  - Lightbox image gallery
+  - Case study detail pages
+  - Services with editorial layout
+  - About page with timeline
+  - Minimal blog with large imagery
+  - Client showcase
+  - Contact with map
+  - Single-column elegant footer
+regions:
+  hero: Hero Banner
+  portfolio: Portfolio Grid
+  about: About Section
+  services: Services Section
+  gallery: Image Gallery
+  clients: Client Showcase
+  blog: Latest Posts
+  cta: Call to Action
+screenshot: screenshot.png
+version: "1.0.0"

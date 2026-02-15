@@ -1,0 +1,79 @@
+{#
+/**
+ * @file
+ * Apex Theme - Testimonial component template.
+ *
+ * Variables:
+ * - quote: testimonial quote text.
+ * - author_name: author name.
+ * - author_title: author job title / role.
+ * - author_image: author avatar URL.
+ * - rating: star rating (1-5).
+ * - company: company name.
+ * - variant: variant (default, card, minimal, large).
+ *
+ * Usage:
+ * {% include '@apex/templates/components/testimonial.html.twig' with {
+ *   quote: 'Great service!',
+ *   author_name: 'John Doe',
+ *   author_title: 'CEO',
+ *   rating: 5,
+ * } %}
+ */
+#}
+
+{%
+  set testimonial_classes = [
+    'apex-testimonial',
+    'apex-testimonial--' ~ (variant|default('default')),
+  ]
+%}
+
+<div{{ attributes|default(create_attribute()).addClass(testimonial_classes) }}>
+
+  {# Quote Icon #}
+  <div class="apex-testimonial__quote-icon">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" opacity="0.15">
+      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609L9.995 5.151C7.563 6.068 6 8.789 6 11h4v10H0z"/>
+    </svg>
+  </div>
+
+  {# Rating Stars #}
+  {% if rating %}
+  <div class="apex-testimonial__rating">
+    {% for i in 1..5 %}
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="{{ i <= rating ? 'currentColor' : 'none' }}" stroke="currentColor" stroke-width="2">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+    </svg>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# Quote Text #}
+  {% if quote %}
+  <blockquote class="apex-testimonial__text">
+    <p>{{ quote }}</p>
+  </blockquote>
+  {% endif %}
+
+  {# Author #}
+  <div class="apex-testimonial__author">
+    {% if author_image %}
+    <div class="apex-testimonial__avatar">
+      <img src="{{ author_image }}" alt="{{ author_name }}" loading="lazy" />
+    </div>
+    {% endif %}
+
+    <div class="apex-testimonial__info">
+      {% if author_name %}
+      <cite class="apex-testimonial__name">{{ author_name }}</cite>
+      {% endif %}
+      {% if author_title or company %}
+      <span class="apex-testimonial__role">
+        {{ author_title }}{% if author_title and company %}, {% endif %}{{ company }}
+      </span>
+      {% endif %}
+    </div>
+  </div>
+
+</div>

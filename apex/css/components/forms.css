@@ -1,0 +1,278 @@
+/**
+ * @file
+ * Apex Theme - Forms Component
+ */
+
+/* ===== Form Element ===== */
+.apex-form {
+  max-width: 640px;
+}
+
+.apex-form--full {
+  max-width: 100%;
+}
+
+/* Form Group */
+.apex-form__group {
+  margin-bottom: var(--apex-space-6);
+}
+
+.apex-form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--apex-space-6);
+}
+
+@media (min-width: 640px) {
+  .apex-form__row--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .apex-form__row--3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Labels */
+.apex-form__label {
+  display: block;
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text);
+  margin-bottom: var(--apex-space-2);
+}
+
+.apex-form__label--required::after {
+  content: ' *';
+  color: var(--apex-error);
+}
+
+/* Input Fields */
+.apex-form__input,
+.apex-form__textarea,
+.apex-form__select {
+  display: block;
+  width: 100%;
+  padding: var(--apex-space-3) var(--apex-space-4);
+  font-size: var(--apex-text-base);
+  color: var(--apex-text);
+  background: var(--apex-surface);
+  border: 1px solid var(--apex-border);
+  border-radius: var(--apex-radius-lg);
+  transition: var(--apex-transition-fast);
+  outline: none;
+}
+
+.apex-form__input:hover,
+.apex-form__textarea:hover,
+.apex-form__select:hover {
+  border-color: var(--apex-border-strong);
+}
+
+.apex-form__input:focus,
+.apex-form__textarea:focus,
+.apex-form__select:focus {
+  border-color: var(--apex-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.apex-form__input::placeholder,
+.apex-form__textarea::placeholder {
+  color: var(--apex-text-muted);
+}
+
+/* Input Sizes */
+.apex-form__input--sm {
+  padding: var(--apex-space-2) var(--apex-space-3);
+  font-size: var(--apex-text-sm);
+}
+
+.apex-form__input--lg {
+  padding: var(--apex-space-4) var(--apex-space-5);
+  font-size: var(--apex-text-lg);
+}
+
+/* Textarea */
+.apex-form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Select */
+.apex-form__select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25em;
+  padding-right: 2.5rem;
+}
+
+/* Checkbox & Radio */
+.apex-form__check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--apex-space-3);
+  cursor: pointer;
+}
+
+.apex-form__check input[type="checkbox"],
+.apex-form__check input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--apex-primary);
+  cursor: pointer;
+}
+
+.apex-form__check-label {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+}
+
+/* Error State */
+.apex-form__input.has-error,
+.apex-form__textarea.has-error,
+.apex-form__select.has-error {
+  border-color: var(--apex-error);
+}
+
+.apex-form__input.has-error:focus,
+.apex-form__textarea.has-error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.apex-form__error {
+  font-size: var(--apex-text-xs);
+  color: var(--apex-error);
+  margin-top: var(--apex-space-1);
+}
+
+/* Success State */
+.apex-form__input.has-success {
+  border-color: var(--apex-success);
+}
+
+/* Help Text */
+.apex-form__help {
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-muted);
+  margin-top: var(--apex-space-1);
+}
+
+/* Input with Icon */
+.apex-form__input-icon {
+  position: relative;
+}
+
+.apex-form__input-icon .apex-form__input {
+  padding-left: 2.75rem;
+}
+
+.apex-form__input-icon .apex-icon {
+  position: absolute;
+  left: var(--apex-space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--apex-text-muted);
+}
+
+/* Search Form */
+.apex-search-form {
+  display: flex;
+  gap: var(--apex-space-2);
+}
+
+.apex-search-form .apex-form__input {
+  flex: 1;
+  border-radius: var(--apex-radius-full) 0 0 var(--apex-radius-full);
+}
+
+.apex-search-form .apex-btn {
+  border-radius: 0 var(--apex-radius-full) var(--apex-radius-full) 0;
+}
+
+/* Newsletter Form */
+.apex-newsletter {
+  display: flex;
+  gap: 0;
+  max-width: 480px;
+}
+
+.apex-newsletter .apex-form__input {
+  border-radius: var(--apex-radius-lg) 0 0 var(--apex-radius-lg);
+  border-right: none;
+}
+
+.apex-newsletter .apex-btn {
+  border-radius: 0 var(--apex-radius-lg) var(--apex-radius-lg) 0;
+  white-space: nowrap;
+}
+
+/* Contact Form */
+.apex-contact-form {
+  background: var(--apex-surface);
+  padding: var(--apex-space-8);
+  border-radius: var(--apex-radius-2xl);
+  box-shadow: var(--apex-shadow-lg);
+  border: 1px solid var(--apex-border-light);
+}
+
+/* Drupal specific form overrides */
+.form-item {
+  margin-bottom: var(--apex-space-6);
+}
+
+.form-item label {
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text);
+  margin-bottom: var(--apex-space-2);
+  display: block;
+}
+
+.form-text,
+.form-email,
+.form-url,
+.form-tel,
+.form-number,
+.form-search,
+.form-textarea {
+  display: block;
+  width: 100%;
+  padding: var(--apex-space-3) var(--apex-space-4);
+  font-size: var(--apex-text-base);
+  color: var(--apex-text);
+  background: var(--apex-surface);
+  border: 1px solid var(--apex-border);
+  border-radius: var(--apex-radius-lg);
+  transition: var(--apex-transition-fast);
+}
+
+.form-text:focus,
+.form-email:focus,
+.form-url:focus,
+.form-tel:focus,
+.form-number:focus,
+.form-search:focus,
+.form-textarea:focus {
+  border-color: var(--apex-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+.form-submit {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--apex-space-3) var(--apex-space-6);
+  background: var(--apex-primary);
+  color: var(--apex-white);
+  font-weight: var(--apex-font-semibold);
+  border: none;
+  border-radius: var(--apex-radius-lg);
+  cursor: pointer;
+  transition: var(--apex-transition-fast);
+}
+
+.form-submit:hover {
+  background: var(--apex-primary-dark);
+}

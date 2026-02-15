@@ -1,0 +1,67 @@
+{#
+/**
+ * @file
+ * Apex Theme - Icon box component template.
+ *
+ * Variables:
+ * - icon: SVG icon markup.
+ * - title: service/feature title.
+ * - text: description text.
+ * - url: optional link URL.
+ * - link_text: optional link text.
+ * - variant: variant (default, bordered, filled, minimal).
+ * - color: optional accent color.
+ *
+ * Usage:
+ * {% include '@apex/templates/components/icon-box.html.twig' with {
+ *   icon: '<svg>...</svg>',
+ *   title: 'Web Design',
+ *   text: 'Beautiful websites tailored to your needs.',
+ *   url: '/services/web-design',
+ *   link_text: 'Learn More',
+ * } %}
+ */
+#}
+
+{%
+  set box_classes = [
+    'apex-icon-box',
+    'apex-icon-box--' ~ (variant|default('default')),
+  ]
+%}
+
+<div{{ attributes|default(create_attribute()).addClass(box_classes) }}>
+
+  {% if icon %}
+  <div class="apex-icon-box__icon" {% if color %}style="color: {{ color }};"{% endif %}>
+    {{ icon|raw }}
+  </div>
+  {% endif %}
+
+  <div class="apex-icon-box__content">
+    {% if title %}
+    <h3 class="apex-icon-box__title">
+      {% if url %}
+        <a href="{{ url }}">{{ title }}</a>
+      {% else %}
+        {{ title }}
+      {% endif %}
+    </h3>
+    {% endif %}
+
+    {% if text %}
+    <p class="apex-icon-box__text">{{ text }}</p>
+    {% endif %}
+
+    {% if link_text %}
+    <a href="{{ url|default('#') }}" class="apex-icon-box__link">
+      {{ link_text }}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+    {% endif %}
+  </div>
+
+</div>

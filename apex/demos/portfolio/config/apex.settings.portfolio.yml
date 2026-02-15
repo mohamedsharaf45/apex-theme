@@ -1,0 +1,23 @@
+# Apex Portfolio Demo - Theme Settings Override
+apex.settings:
+  demo: portfolio
+  header_style: transparent
+  header_cta: false
+  hero_style: full
+  hero_overlay: true
+  hero_overlay_opacity: 40
+  hero_parallax: true
+  show_breadcrumb: true
+  show_back_to_top: true
+  dark_mode_toggle: true
+  preloader: true
+  footer_style: minimal
+  footer_columns: 2
+  social_links:
+    instagram: "#"
+    behance: "#"
+    dribbble: "#"
+    pinterest: "#"
+  font_heading: "Playfair Display"
+  font_body: "Inter"
+  animations: true

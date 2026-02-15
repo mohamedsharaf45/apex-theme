@@ -1,0 +1,102 @@
+{#
+/**
+ * @file
+ * Apex Portfolio Demo - Front page template.
+ *
+ * Creative portfolio layout with:
+ * - Full-screen hero with parallax
+ * - Featured work showcase
+ * - Filterable portfolio grid
+ * - About / artist statement
+ * - Client logos
+ * - Latest blog posts
+ * - Contact CTA
+ */
+#}
+
+{# Hero Section #}
+{% if page.hero %}
+<section class="apex-section apex-section--hero apex-section--no-padding">
+  {{ page.hero }}
+</section>
+{% else %}
+<section class="apex-hero apex-hero--full apex-hero--portfolio">
+  <div class="apex-hero__background apex-parallax" data-apex-parallax data-apex-speed="0.3" style="background: #1c1917;">
+    <div class="apex-hero__overlay" style="opacity: 0.4;"></div>
+  </div>
+  <div class="apex-container">
+    <div class="apex-hero__content apex-hero__content--centered" data-apex-animate="fade-up">
+      <h1 class="apex-hero__title apex-hero__title--editorial">{{ 'Creative Studio'|t }}</h1>
+      <div class="apex-hero__divider"></div>
+      <p class="apex-hero__subtitle">{{ 'Design · Photography · Branding'|t }}</p>
+      <div class="apex-hero__actions">
+        <a href="/portfolio" class="apex-btn apex-btn--outline-light apex-btn--lg">{{ 'View Our Work'|t }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="apex-hero__scroll-indicator" aria-hidden="true">
+    <span></span>
+  </div>
+</section>
+{% endif %}
+
+{# Featured Work #}
+{% if page.content_top %}
+<section class="apex-section apex-section--lg">
+  <div class="apex-container">
+    <div class="apex-section__header" data-apex-animate="fade-up">
+      <span class="apex-section__label">{{ 'Selected Work'|t }}</span>
+      <h2 class="apex-section__title">{{ 'Featured Projects'|t }}</h2>
+    </div>
+    {{ page.content_top }}
+  </div>
+</section>
+{% endif %}
+
+{# Portfolio Grid #}
+{% if page.content %}
+<section class="apex-section">
+  <div class="apex-container apex-container--wide">
+    {{ page.content }}
+  </div>
+</section>
+{% endif %}
+
+{# About / Statement #}
+<section class="apex-section apex-section--alt" data-apex-animate="fade-up">
+  <div class="apex-container apex-container--narrow">
+    {% if page.highlighted %}
+      {{ page.highlighted }}
+    {% else %}
+      <div class="apex-text-center">
+        <span class="apex-section__label">{{ 'About Us'|t }}</span>
+        <h2 class="apex-section__title apex-section__title--editorial">{{ 'We Create Meaningful Experiences'|t }}</h2>
+        <p class="apex-text-lg apex-text-muted">{{ 'Our studio blends strategy, design, and technology to create brands and digital experiences that connect with people.'|t }}</p>
+        <a href="/about" class="apex-btn apex-btn--text">{{ 'Learn More'|t }} →</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{# Latest Blog / Journal #}
+{% if page.content_bottom %}
+<section class="apex-section">
+  <div class="apex-container">
+    <div class="apex-section__header" data-apex-animate="fade-up">
+      <span class="apex-section__label">{{ 'Journal'|t }}</span>
+      <h2 class="apex-section__title">{{ 'Latest Posts'|t }}</h2>
+    </div>
+    {{ page.content_bottom }}
+  </div>
+</section>
+{% endif %}
+
+{# Contact CTA #}
+<section class="apex-section apex-section--dark" data-apex-animate="fade-up">
+  <div class="apex-container apex-text-center">
+    <span class="apex-section__label apex-section__label--light">{{ 'Get in Touch'|t }}</span>
+    <h2 class="apex-section__title apex-text-white apex-section__title--editorial">{{ "Let's Work Together"|t }}</h2>
+    <p class="apex-section__subtitle apex-text-white">{{ 'Have a project in mind? We\'d love to hear about it.'|t }}</p>
+    <a href="/contact" class="apex-btn apex-btn--outline-light apex-btn--lg">{{ 'Start a Project'|t }}</a>
+  </div>
+</section>

@@ -1,0 +1,101 @@
+{#
+/**
+ * @file
+ * Apex Theme - Commerce cart form template.
+ *
+ * @see template_preprocess_commerce_cart_block()
+ */
+#}
+
+<div class="apex-cart">
+
+  {% if not empty %}
+
+  {# Free shipping progress #}
+  <div class="apex-free-shipping">
+    <p class="apex-free-shipping__text">
+      {{ 'Free shipping on orders over <strong>$100</strong>!'|t }}
+    </p>
+    <div class="apex-free-shipping__bar">
+      <div class="apex-free-shipping__progress" style="width: 60%;"></div>
+    </div>
+  </div>
+
+  {# Cart Table #}
+  <table class="apex-cart__table">
+    <thead>
+      <tr>
+        <th>{{ 'Product'|t }}</th>
+        <th>{{ 'Price'|t }}</th>
+        <th>{{ 'Quantity'|t }}</th>
+        <th>{{ 'Subtotal'|t }}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ content }}
+    </tbody>
+  </table>
+
+  {# Cart Actions #}
+  <div class="apex-cart__actions">
+    <div class="apex-cart__coupon">
+      <input type="text" placeholder="{{ 'Enter coupon code'|t }}" class="apex-form__input" />
+      <button class="apex-btn apex-btn--outline">{{ 'Apply'|t }}</button>
+    </div>
+    <button class="apex-btn apex-btn--outline">{{ 'Update Cart'|t }}</button>
+  </div>
+
+  {# Cart Summary #}
+  <div class="apex-cart-summary">
+    <h3 class="apex-cart-summary__title">{{ 'Cart Total'|t }}</h3>
+
+    <div class="apex-cart-summary__row">
+      <span class="apex-cart-summary__label">{{ 'Subtotal'|t }}</span>
+      <span class="apex-cart-summary__value">{{ order_total }}</span>
+    </div>
+
+    <div class="apex-cart-summary__row">
+      <span class="apex-cart-summary__label">{{ 'Shipping'|t }}</span>
+      <span class="apex-cart-summary__value">{{ 'Calculated at checkout'|t }}</span>
+    </div>
+
+    <div class="apex-cart-summary__total">
+      <span>{{ 'Total'|t }}</span>
+      <span>{{ order_total }}</span>
+    </div>
+
+    <div class="apex-cart-summary__checkout">
+      <a href="{{ path('commerce_checkout.form') }}" class="apex-btn apex-btn--primary apex-btn--lg apex-btn--block">
+        {{ 'Proceed to Checkout'|t }}
+      </a>
+    </div>
+
+    <p class="apex-cart-summary__note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+      </svg>
+      {{ 'Secure checkout'|t }}
+    </p>
+  </div>
+
+  {% else %}
+
+  {# Empty Cart #}
+  <div class="apex-cart__empty">
+    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <path d="M16 10a4 4 0 01-8 0"></path>
+    </svg>
+    <h2>{{ 'Your cart is empty'|t }}</h2>
+    <p>{{ 'Looks like you haven\'t added any products yet.'|t }}</p>
+    <a href="{{ path('commerce_product.catalog') }}" class="apex-btn apex-btn--primary apex-btn--lg">
+      {{ 'Continue Shopping'|t }}
+    </a>
+  </div>
+
+  {% endif %}
+
+</div>

@@ -1,0 +1,114 @@
+{#
+/**
+ * @file
+ * Apex Startup Demo - Front page template.
+ *
+ * SaaS-style landing page with:
+ * - Animated gradient hero with product screenshot
+ * - Features grid
+ * - Product showcase
+ * - Pricing toggle (monthly/yearly)
+ * - Integrations / partner logos
+ * - Testimonials
+ * - FAQ accordion
+ * - CTA with gradient
+ */
+#}
+
+{# Hero Section #}
+{% if page.hero %}
+<section class="apex-section apex-section--hero apex-section--no-padding">
+  {{ page.hero }}
+</section>
+{% else %}
+<section class="apex-hero apex-hero--full apex-hero--startup">
+  <div class="apex-hero__background" style="background: linear-gradient(135deg, #0f172a 0%, #4c1d95 50%, #7c3aed 100%);">
+    <div class="apex-hero__shapes" aria-hidden="true">
+      <span class="apex-hero__shape apex-hero__shape--1"></span>
+      <span class="apex-hero__shape apex-hero__shape--2"></span>
+      <span class="apex-hero__shape apex-hero__shape--3"></span>
+    </div>
+  </div>
+  <div class="apex-container">
+    <div class="apex-hero__grid apex-hero__grid--split">
+      <div class="apex-hero__content" data-apex-animate="fade-right">
+        <span class="apex-hero__label apex-hero__label--badge">{{ '🚀 Now in Public Beta'|t }}</span>
+        <h1 class="apex-hero__title">{{ 'Build Better Products,'|t }}<br>{{ 'Ship Faster'|t }}</h1>
+        <p class="apex-hero__subtitle">{{ 'The all-in-one platform that helps teams collaborate, build, and deploy with confidence.'|t }}</p>
+        <div class="apex-hero__actions">
+          <a href="/register" class="apex-btn apex-btn--primary apex-btn--lg apex-btn--glow">{{ 'Start Free Trial'|t }}</a>
+          <a href="#demo" class="apex-btn apex-btn--outline-light apex-btn--lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            {{ 'Watch Demo'|t }}
+          </a>
+        </div>
+        <p class="apex-hero__note">{{ 'No credit card required · Free 14-day trial'|t }}</p>
+      </div>
+      <div class="apex-hero__media" data-apex-animate="fade-left">
+        <div class="apex-hero__device-frame">
+          {# Product screenshot placeholder #}
+          <div class="apex-hero__screenshot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# Logos / Social Proof #}
+<section class="apex-section apex-section--sm" data-apex-animate="fade-up">
+  <div class="apex-container apex-text-center">
+    <p class="apex-text-muted apex-text-sm">{{ 'Trusted by 1,000+ teams worldwide'|t }}</p>
+    {% if page.highlighted %}
+      {{ page.highlighted }}
+    {% endif %}
+  </div>
+</section>
+
+{# Features Section #}
+<section class="apex-section" data-apex-animate="fade-up">
+  <div class="apex-container">
+    {% if page.content_top %}
+      {{ page.content_top }}
+    {% else %}
+      <div class="apex-section__header apex-text-center">
+        <span class="apex-section__label">{{ 'Features'|t }}</span>
+        <h2 class="apex-section__title">{{ 'Everything You Need to Ship'|t }}</h2>
+        <p class="apex-section__subtitle">{{ 'Powerful tools designed for modern development teams.'|t }}</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{# Product Showcase #}
+{% if page.content %}
+<section class="apex-section apex-section--alt">
+  <div class="apex-container">
+    {{ page.content }}
+  </div>
+</section>
+{% endif %}
+
+{# Pricing Section #}
+{% if page.content_bottom %}
+<section class="apex-section">
+  <div class="apex-container">
+    <div class="apex-section__header apex-text-center">
+      <span class="apex-section__label">{{ 'Pricing'|t }}</span>
+      <h2 class="apex-section__title">{{ 'Simple, Transparent Pricing'|t }}</h2>
+    </div>
+    {{ page.content_bottom }}
+  </div>
+</section>
+{% endif %}
+
+{# CTA Section #}
+<section class="apex-section apex-section--gradient" data-apex-animate="fade-up" style="background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #06b6d4 100%);">
+  <div class="apex-container apex-text-center">
+    <h2 class="apex-section__title apex-text-white">{{ 'Ready to Get Started?'|t }}</h2>
+    <p class="apex-section__subtitle apex-text-white">{{ 'Join thousands of teams already shipping faster with our platform.'|t }}</p>
+    <div class="apex-hero__actions">
+      <a href="/register" class="apex-btn apex-btn--white apex-btn--lg">{{ 'Start Free Trial'|t }}</a>
+    </div>
+  </div>
+</section>

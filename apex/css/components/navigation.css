@@ -1,0 +1,350 @@
+/**
+ * @file
+ * Apex Theme - Navigation Component
+ */
+
+/* ===== Main Navigation ===== */
+.apex-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .apex-nav {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.apex-nav__list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--apex-space-1);
+}
+
+.apex-nav__item {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.apex-nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-1);
+  padding: var(--apex-space-2) var(--apex-space-4);
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text-secondary);
+  text-decoration: none;
+  border-radius: var(--apex-radius-md);
+  transition: var(--apex-transition-fast);
+  white-space: nowrap;
+}
+
+.apex-nav__link:hover,
+.apex-nav__link:focus-visible {
+  color: var(--apex-primary);
+  background: var(--apex-primary-50);
+  text-decoration: none;
+}
+
+.apex-nav__link.is-active,
+.apex-nav__item--active > .apex-nav__link {
+  color: var(--apex-primary);
+  font-weight: var(--apex-font-semibold);
+}
+
+/* Dropdown arrow */
+.apex-nav__link--has-children::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+  transition: transform var(--apex-duration-200) var(--apex-ease-in-out);
+}
+
+.apex-nav__item:hover > .apex-nav__link--has-children::after {
+  transform: rotate(180deg);
+}
+
+/* ===== Dropdown Menu ===== */
+.apex-nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: var(--apex-surface);
+  border: 1px solid var(--apex-border-light);
+  border-radius: var(--apex-radius-lg);
+  box-shadow: var(--apex-shadow-xl);
+  padding: var(--apex-space-2);
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: var(--apex-transition-fast);
+  z-index: var(--apex-z-dropdown);
+}
+
+.apex-nav__item:hover > .apex-nav__dropdown,
+.apex-nav__item:focus-within > .apex-nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.apex-nav__dropdown .apex-nav__link {
+  padding: var(--apex-space-2) var(--apex-space-4);
+  font-size: var(--apex-text-sm);
+  border-radius: var(--apex-radius-md);
+}
+
+.apex-nav__dropdown .apex-nav__link:hover {
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+}
+
+/* Nested Dropdown */
+.apex-nav__dropdown .apex-nav__dropdown {
+  top: 0;
+  left: 100%;
+  margin-left: 4px;
+}
+
+/* ===== Mega Menu ===== */
+.apex-mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: min(1200px, 90vw);
+  background: var(--apex-surface);
+  border: 1px solid var(--apex-border-light);
+  border-radius: var(--apex-radius-xl);
+  box-shadow: var(--apex-shadow-2xl);
+  padding: var(--apex-space-8);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--apex-transition-fast);
+  z-index: var(--apex-z-dropdown);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--apex-space-8);
+}
+
+.apex-nav__item:hover > .apex-mega-menu,
+.apex-nav__item:focus-within > .apex-mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.apex-mega-menu__column h3 {
+  font-size: var(--apex-text-sm);
+  font-weight: var(--apex-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--apex-tracking-wider);
+  color: var(--apex-text-muted);
+  margin-bottom: var(--apex-space-4);
+  font-family: var(--apex-font-primary);
+}
+
+.apex-mega-menu__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.apex-mega-menu__list li {
+  margin-bottom: var(--apex-space-1);
+}
+
+.apex-mega-menu__list a {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-3);
+  padding: var(--apex-space-2) var(--apex-space-3);
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+  border-radius: var(--apex-radius-md);
+  transition: var(--apex-transition-fast);
+  text-decoration: none;
+}
+
+.apex-mega-menu__list a:hover {
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  text-decoration: none;
+}
+
+/* ===== Mobile Navigation ===== */
+.apex-mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(320px, 85vw);
+  height: 100vh;
+  height: 100dvh;
+  background: var(--apex-surface);
+  box-shadow: var(--apex-shadow-2xl);
+  z-index: var(--apex-z-modal);
+  transition: right var(--apex-duration-300) var(--apex-ease-in-out);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.apex-mobile-nav.is-open {
+  right: 0;
+}
+
+.apex-mobile-nav__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: calc(var(--apex-z-modal) - 1);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--apex-transition);
+}
+
+.apex-mobile-nav__overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.apex-mobile-nav__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--apex-space-4) var(--apex-space-6);
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.apex-mobile-nav__close {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--apex-radius-full);
+  color: var(--apex-text-secondary);
+  font-size: 1.5rem;
+}
+
+.apex-mobile-nav__close:hover {
+  background: var(--apex-bg-alt);
+}
+
+.apex-mobile-nav__list {
+  list-style: none;
+  padding: var(--apex-space-4);
+  margin: 0;
+}
+
+.apex-mobile-nav__list li {
+  margin-bottom: 0;
+}
+
+.apex-mobile-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--apex-space-3) var(--apex-space-4);
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text);
+  border-radius: var(--apex-radius-md);
+  transition: var(--apex-transition-fast);
+  text-decoration: none;
+}
+
+.apex-mobile-nav__link:hover {
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  text-decoration: none;
+}
+
+/* Mobile Dropdown */
+.apex-mobile-nav__sub {
+  list-style: none;
+  padding: 0 0 0 var(--apex-space-4);
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--apex-duration-300) var(--apex-ease-in-out);
+}
+
+.apex-mobile-nav__sub.is-open {
+  max-height: 500px;
+}
+
+.apex-mobile-nav__sub a {
+  padding: var(--apex-space-2) var(--apex-space-4);
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+  display: block;
+  border-radius: var(--apex-radius-md);
+  text-decoration: none;
+}
+
+.apex-mobile-nav__sub a:hover {
+  color: var(--apex-primary);
+  background: var(--apex-primary-50);
+  text-decoration: none;
+}
+
+@media (min-width: 1024px) {
+  .apex-mobile-nav,
+  .apex-mobile-nav__overlay {
+    display: none;
+  }
+}
+
+/* ===== Breadcrumb ===== */
+.apex-breadcrumb {
+  padding: var(--apex-space-4) 0;
+  font-size: var(--apex-text-sm);
+}
+
+.apex-breadcrumb__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: var(--apex-space-2);
+}
+
+.apex-breadcrumb__item {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-2);
+  color: var(--apex-text-muted);
+  margin-bottom: 0;
+}
+
+.apex-breadcrumb__item:not(:last-child)::after {
+  content: '/';
+  color: var(--apex-text-muted);
+}
+
+.apex-breadcrumb__link {
+  color: var(--apex-text-secondary);
+  text-decoration: none;
+}
+
+.apex-breadcrumb__link:hover {
+  color: var(--apex-primary);
+}
+
+.apex-breadcrumb__item:last-child {
+  color: var(--apex-text);
+  font-weight: var(--apex-font-medium);
+}

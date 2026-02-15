@@ -1,0 +1,165 @@
+/**
+ * @file
+ * Apex Theme - Accessibility Styles
+ * WCAG 2.1 AA compliant focus indicators, skip links, and utilities.
+ */
+
+/* ===== Focus Indicators ===== */
+:focus-visible {
+  outline: 3px solid var(--apex-primary);
+  outline-offset: 2px;
+  border-radius: var(--apex-radius-sm);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* High-contrast focus for interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--apex-primary);
+  outline-offset: 2px;
+}
+
+/* ===== Skip Navigation ===== */
+.apex-skip-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: calc(var(--apex-z-toast) + 1);
+}
+
+.apex-skip-link {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background: var(--apex-primary);
+  color: var(--apex-white);
+  padding: var(--apex-space-3) var(--apex-space-6);
+  font-weight: var(--apex-font-bold);
+  font-size: var(--apex-text-sm);
+  text-decoration: none;
+  border-radius: 0 0 var(--apex-radius-lg) var(--apex-radius-lg);
+  white-space: nowrap;
+}
+
+.apex-skip-link:focus {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+  z-index: calc(var(--apex-z-toast) + 1);
+}
+
+/* ===== Screen Reader Only ===== */
+.sr-only,
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .apex-hero__scroll {
+    animation: none;
+  }
+
+  .apex-card:hover {
+    transform: none;
+  }
+
+  .apex-btn:hover {
+    transform: none;
+  }
+}
+
+/* ===== High Contrast Mode ===== */
+@media (prefers-contrast: high) {
+  :root {
+    --apex-border: #000;
+    --apex-border-light: #333;
+    --apex-text-muted: #555;
+  }
+
+  .apex-card {
+    border-width: 2px;
+  }
+
+  .apex-btn {
+    border-width: 2px;
+  }
+
+  .apex-form__input,
+  .apex-form__textarea,
+  .apex-form__select {
+    border-width: 2px;
+  }
+}
+
+/* ===== ARIA Live Region ===== */
+.apex-live-region {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* ===== Visible Focus Ring for Dark Mode ===== */
+[data-theme="dark"] :focus-visible {
+  outline-color: var(--apex-accent);
+}
+
+/* ===== Touch Target Sizing (minimum 44x44px) ===== */
+.apex-touch-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Ensure links in nav have adequate touch targets */
+@media (pointer: coarse) {
+  .apex-nav__link {
+    min-height: 44px;
+    padding: var(--apex-space-3) var(--apex-space-4);
+  }
+
+  .apex-mobile-nav__link {
+    min-height: 48px;
+  }
+
+  .apex-footer__links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .apex-pagination__item {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}

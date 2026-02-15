@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Apex Theme - Blog listing page template.
+ */
+#}
+
+<div class="apex-page-header">
+  <div class="apex-container">
+    <h1 class="apex-page-header__title">{{ 'Blog'|t }}</h1>
+    <p class="apex-page-header__subtitle">{{ 'Latest news, insights, and updates from our team.'|t }}</p>
+  </div>
+</div>
+
+{% if page.breadcrumb %}
+<div class="apex-breadcrumb-region">
+  <div class="apex-container">{{ page.breadcrumb }}</div>
+</div>
+{% endif %}
+
+<main id="main-content" class="apex-main">
+  {% if page.highlighted %}
+  <div class="apex-container">{{ page.highlighted }}</div>
+  {% endif %}
+
+  <div class="apex-container">
+    <div class="apex-layout {{ page.sidebar_second ? 'layout--sidebar-second' : 'layout--no-sidebar' }}">
+
+      <div class="apex-content">
+        {{ page.content }}
+      </div>
+
+      {% if page.sidebar_second %}
+      <aside class="apex-sidebar apex-sidebar--second" role="complementary">
+        {{ page.sidebar_second }}
+      </aside>
+      {% endif %}
+
+    </div>
+  </div>
+</main>

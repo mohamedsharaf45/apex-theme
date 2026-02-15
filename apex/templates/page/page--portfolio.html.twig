@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Apex Theme - Portfolio page template.
+ */
+#}
+
+<div class="apex-page-header apex-page-header--dark">
+  <div class="apex-container">
+    <h1 class="apex-page-header__title">{{ 'Our Portfolio'|t }}</h1>
+    <p class="apex-page-header__subtitle">{{ 'Explore our latest projects and creative work.'|t }}</p>
+  </div>
+</div>
+
+{% if page.breadcrumb %}
+<div class="apex-breadcrumb-region">
+  <div class="apex-container">{{ page.breadcrumb }}</div>
+</div>
+{% endif %}
+
+<main id="main-content" class="apex-main">
+  {% if page.highlighted %}
+  <div class="apex-container">{{ page.highlighted }}</div>
+  {% endif %}
+
+  {# Portfolio Filter #}
+  <div class="apex-container">
+    <div class="apex-filter-bar" data-apex-filter-grid>
+      <div class="apex-filter-bar__buttons">
+        <button class="apex-filter-btn is-active" data-filter="all">{{ 'All'|t }}</button>
+        {# Filter buttons will be dynamically generated or placed as blocks #}
+      </div>
+
+      <div class="apex-content">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+
+  {% if page.content_bottom %}
+  <section class="apex-section">{{ page.content_bottom }}</section>
+  {% endif %}
+</main>

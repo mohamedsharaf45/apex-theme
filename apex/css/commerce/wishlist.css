@@ -1,0 +1,378 @@
+/* ==========================================================================
+   Commerce - Wishlist
+   Wishlist page and wishlist widget.
+   ========================================================================== */
+
+/* Wishlist Page
+   ========================================================================== */
+
+.apex-wishlist {
+  margin-bottom: var(--apex-spacing-16);
+}
+
+.apex-wishlist__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--apex-spacing-4);
+  margin-bottom: var(--apex-spacing-8);
+}
+
+.apex-wishlist__title {
+  font-size: var(--apex-text-2xl);
+  font-weight: 700;
+  margin: 0;
+}
+
+.apex-wishlist__count {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+  font-weight: 400;
+}
+
+.apex-wishlist__share {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-2);
+}
+
+.apex-wishlist__share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--apex-spacing-2);
+  padding: var(--apex-spacing-2) var(--apex-spacing-4);
+  border: 1px solid var(--apex-border-color);
+  border-radius: var(--apex-radius-md);
+  background: var(--apex-bg-primary);
+  color: var(--apex-text-secondary);
+  font-size: var(--apex-text-sm);
+  cursor: pointer;
+  transition: all var(--apex-transition-fast);
+}
+
+.apex-wishlist__share-btn:hover {
+  border-color: var(--apex-primary);
+  color: var(--apex-primary);
+}
+
+.apex-wishlist__share-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Wishlist Grid */
+.apex-wishlist__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--apex-spacing-6);
+}
+
+/* Wishlist Item */
+.apex-wishlist-item {
+  position: relative;
+  background: var(--apex-bg-primary);
+  border-radius: var(--apex-radius-lg);
+  box-shadow: var(--apex-shadow-sm);
+  overflow: hidden;
+  transition: all var(--apex-transition-normal);
+}
+
+.apex-wishlist-item:hover {
+  box-shadow: var(--apex-shadow-md);
+}
+
+.apex-wishlist-item__image {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.apex-wishlist-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--apex-transition-slow);
+}
+
+.apex-wishlist-item:hover .apex-wishlist-item__image img {
+  transform: scale(1.05);
+}
+
+.apex-wishlist-item__remove {
+  position: absolute;
+  top: var(--apex-spacing-3);
+  right: var(--apex-spacing-3);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  color: #ef4444;
+  cursor: pointer;
+  transition: all var(--apex-transition-fast);
+  z-index: 2;
+}
+
+.apex-wishlist-item__remove:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+.apex-wishlist-item__remove svg {
+  width: 16px;
+  height: 16px;
+}
+
+.apex-wishlist-item__stock {
+  position: absolute;
+  bottom: var(--apex-spacing-3);
+  left: var(--apex-spacing-3);
+  padding: var(--apex-spacing-1) var(--apex-spacing-2);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--apex-radius-sm);
+}
+
+.apex-wishlist-item__stock--in {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.apex-wishlist-item__stock--out {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.apex-wishlist-item__stock--low {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.apex-wishlist-item__content {
+  padding: var(--apex-spacing-4);
+}
+
+.apex-wishlist-item__title {
+  font-size: var(--apex-text-sm);
+  font-weight: 600;
+  margin: 0 0 var(--apex-spacing-2);
+  line-height: 1.4;
+}
+
+.apex-wishlist-item__title a {
+  color: var(--apex-text-primary);
+  text-decoration: none;
+}
+
+.apex-wishlist-item__title a:hover {
+  color: var(--apex-primary);
+}
+
+.apex-wishlist-item__price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--apex-spacing-2);
+  margin-bottom: var(--apex-spacing-3);
+}
+
+.apex-wishlist-item__current-price {
+  font-size: var(--apex-text-base);
+  font-weight: 700;
+}
+
+.apex-wishlist-item__original-price {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-tertiary);
+  text-decoration: line-through;
+}
+
+.apex-wishlist-item__added {
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-tertiary);
+  margin-bottom: var(--apex-spacing-3);
+}
+
+.apex-wishlist-item__actions {
+  display: flex;
+  gap: var(--apex-spacing-2);
+}
+
+.apex-wishlist-item__actions .apex-btn {
+  flex: 1;
+  font-size: var(--apex-text-sm);
+  padding: var(--apex-spacing-2) var(--apex-spacing-3);
+}
+
+/* Wishlist Table View */
+.apex-wishlist-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--apex-bg-primary);
+  border-radius: var(--apex-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--apex-shadow-sm);
+}
+
+.apex-wishlist-table thead {
+  background: var(--apex-bg-secondary);
+}
+
+.apex-wishlist-table th {
+  padding: var(--apex-spacing-4) var(--apex-spacing-5);
+  font-size: var(--apex-text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--apex-text-secondary);
+  text-align: left;
+}
+
+.apex-wishlist-table td {
+  padding: var(--apex-spacing-4) var(--apex-spacing-5);
+  border-top: 1px solid var(--apex-border-light);
+  vertical-align: middle;
+}
+
+.apex-wishlist-table__product {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-4);
+}
+
+.apex-wishlist-table__product-image {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--apex-radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.apex-wishlist-table__product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apex-wishlist-table__product-name {
+  font-weight: 600;
+}
+
+.apex-wishlist-table__product-name a {
+  color: var(--apex-text-primary);
+  text-decoration: none;
+}
+
+.apex-wishlist-table__product-name a:hover {
+  color: var(--apex-primary);
+}
+
+/* Empty Wishlist */
+.apex-wishlist__empty {
+  text-align: center;
+  padding: var(--apex-spacing-16) var(--apex-spacing-8);
+}
+
+.apex-wishlist__empty svg {
+  width: 80px;
+  height: 80px;
+  color: var(--apex-text-tertiary);
+  margin-bottom: var(--apex-spacing-6);
+}
+
+.apex-wishlist__empty h2 {
+  font-size: var(--apex-text-2xl);
+  margin-bottom: var(--apex-spacing-2);
+}
+
+.apex-wishlist__empty p {
+  color: var(--apex-text-secondary);
+  margin-bottom: var(--apex-spacing-6);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Wishlist Notification Toast */
+.apex-wishlist-toast {
+  position: fixed;
+  bottom: var(--apex-spacing-6);
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  padding: var(--apex-spacing-3) var(--apex-spacing-6);
+  background: var(--apex-neutral-900);
+  color: #fff;
+  border-radius: var(--apex-radius-lg);
+  font-size: var(--apex-text-sm);
+  font-weight: 500;
+  box-shadow: var(--apex-shadow-xl);
+  z-index: 10000;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-3);
+}
+
+.apex-wishlist-toast.is-visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.apex-wishlist-toast svg {
+  width: 18px;
+  height: 18px;
+  color: #ef4444;
+  fill: currentColor;
+}
+
+.apex-wishlist-toast__undo {
+  color: var(--apex-primary-light);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: var(--apex-text-sm);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .apex-wishlist__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--apex-spacing-3);
+  }
+
+  .apex-wishlist-item__actions {
+    flex-direction: column;
+  }
+
+  .apex-wishlist-table thead {
+    display: none;
+  }
+
+  .apex-wishlist-table,
+  .apex-wishlist-table tbody,
+  .apex-wishlist-table tr,
+  .apex-wishlist-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .apex-wishlist-table tr {
+    padding: var(--apex-spacing-4);
+    border-bottom: 1px solid var(--apex-border-light);
+  }
+
+  .apex-wishlist-table td {
+    padding: var(--apex-spacing-2) 0;
+    border: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .apex-wishlist__grid {
+    grid-template-columns: 1fr;
+  }
+}

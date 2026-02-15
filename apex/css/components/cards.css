@@ -1,0 +1,316 @@
+/**
+ * @file
+ * Apex Theme - Card Component
+ */
+
+/* ===== Base Card ===== */
+.apex-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--apex-surface);
+  border: 1px solid var(--apex-border-light);
+  border-radius: var(--apex-radius-xl);
+  overflow: hidden;
+  transition: var(--apex-transition);
+}
+
+.apex-card:hover {
+  box-shadow: var(--apex-shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--apex-border);
+}
+
+/* Card Image */
+.apex-card__image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+
+.apex-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--apex-duration-500) var(--apex-ease-in-out);
+}
+
+.apex-card:hover .apex-card__image img {
+  transform: scale(1.05);
+}
+
+.apex-card__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  opacity: 0;
+  transition: opacity var(--apex-duration-300) var(--apex-ease-in-out);
+}
+
+.apex-card:hover .apex-card__image-overlay {
+  opacity: 1;
+}
+
+/* Card Body */
+.apex-card__body {
+  padding: var(--apex-space-6);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.apex-card__label {
+  font-size: var(--apex-text-xs);
+  font-weight: var(--apex-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--apex-tracking-wider);
+  color: var(--apex-primary);
+  margin-bottom: var(--apex-space-2);
+}
+
+.apex-card__title {
+  font-size: var(--apex-text-xl);
+  font-weight: var(--apex-font-bold);
+  margin-bottom: var(--apex-space-3);
+  line-height: var(--apex-leading-snug);
+}
+
+.apex-card__title a {
+  color: var(--apex-text);
+  text-decoration: none;
+}
+
+.apex-card__title a:hover {
+  color: var(--apex-primary);
+}
+
+.apex-card__text {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+  line-height: var(--apex-leading-relaxed);
+  margin-bottom: var(--apex-space-4);
+  flex: 1;
+}
+
+/* Card Footer */
+.apex-card__footer {
+  padding: var(--apex-space-4) var(--apex-space-6);
+  border-top: 1px solid var(--apex-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Card Meta */
+.apex-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-4);
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-muted);
+}
+
+.apex-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-1);
+}
+
+/* Card Tags */
+.apex-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--apex-space-2);
+  margin-bottom: var(--apex-space-4);
+}
+
+.apex-card__tag {
+  font-size: var(--apex-text-xs);
+  padding: var(--apex-space-1) var(--apex-space-2);
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  border-radius: var(--apex-radius-sm);
+  font-weight: var(--apex-font-medium);
+}
+
+/* ===== Card Variants ===== */
+
+/* Horizontal Card */
+.apex-card--horizontal {
+  flex-direction: row;
+}
+
+.apex-card--horizontal .apex-card__image {
+  width: 40%;
+  min-width: 200px;
+  aspect-ratio: auto;
+}
+
+.apex-card--horizontal .apex-card__body {
+  width: 60%;
+}
+
+@media (max-width: 639px) {
+  .apex-card--horizontal {
+    flex-direction: column;
+  }
+
+  .apex-card--horizontal .apex-card__image,
+  .apex-card--horizontal .apex-card__body {
+    width: 100%;
+  }
+}
+
+/* Overlay Card */
+.apex-card--overlay {
+  min-height: 350px;
+  justify-content: flex-end;
+  border: none;
+}
+
+.apex-card--overlay .apex-card__image {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+}
+
+.apex-card--overlay .apex-card__body {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding-top: var(--apex-space-20);
+}
+
+.apex-card--overlay .apex-card__title a,
+.apex-card--overlay .apex-card__text,
+.apex-card--overlay .apex-card__label,
+.apex-card--overlay .apex-card__meta {
+  color: var(--apex-white);
+}
+
+/* Icon Card / Feature Card */
+.apex-card--icon {
+  text-align: center;
+  padding: var(--apex-space-8);
+  border: 1px solid var(--apex-border-light);
+}
+
+.apex-card--icon .apex-card__icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--apex-primary-50);
+  color: var(--apex-primary);
+  border-radius: var(--apex-radius-xl);
+  font-size: 1.75rem;
+  margin: 0 auto var(--apex-space-6);
+  transition: var(--apex-transition);
+}
+
+.apex-card--icon:hover .apex-card__icon {
+  background: var(--apex-primary);
+  color: var(--apex-white);
+  transform: scale(1.1);
+}
+
+/* Minimal Card */
+.apex-card--minimal {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.apex-card--minimal:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.apex-card--minimal .apex-card__image {
+  border-radius: var(--apex-radius-xl);
+  overflow: hidden;
+}
+
+/* Pricing Card */
+.apex-card--pricing {
+  text-align: center;
+  padding: var(--apex-space-8);
+}
+
+.apex-card--pricing.is-featured {
+  border-color: var(--apex-primary);
+  border-width: 2px;
+  transform: scale(1.05);
+  box-shadow: var(--apex-shadow-xl);
+}
+
+.apex-card--pricing .apex-card__price {
+  font-size: var(--apex-text-5xl);
+  font-weight: var(--apex-font-bold);
+  color: var(--apex-text);
+  margin: var(--apex-space-4) 0;
+}
+
+.apex-card--pricing .apex-card__period {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-muted);
+  font-weight: var(--apex-font-normal);
+}
+
+.apex-card--pricing .apex-card__features {
+  list-style: none;
+  padding: 0;
+  margin: var(--apex-space-8) 0;
+  text-align: left;
+}
+
+.apex-card--pricing .apex-card__features li {
+  padding: var(--apex-space-2) 0;
+  border-bottom: 1px solid var(--apex-border-light);
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-2);
+  font-size: var(--apex-text-sm);
+}
+
+.apex-card--pricing .apex-card__features li::before {
+  content: '✓';
+  color: var(--apex-success);
+  font-weight: var(--apex-font-bold);
+}
+
+/* Team Card */
+.apex-card--team {
+  text-align: center;
+}
+
+.apex-card--team .apex-card__image {
+  aspect-ratio: 1;
+}
+
+.apex-card--team .apex-card__social {
+  display: flex;
+  justify-content: center;
+  gap: var(--apex-space-3);
+  margin-top: var(--apex-space-4);
+}
+
+.apex-card--team .apex-card__social a {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--apex-radius-full);
+  background: var(--apex-bg-alt);
+  color: var(--apex-text-secondary);
+  transition: var(--apex-transition-fast);
+  text-decoration: none;
+}
+
+.apex-card--team .apex-card__social a:hover {
+  background: var(--apex-primary);
+  color: var(--apex-white);
+}

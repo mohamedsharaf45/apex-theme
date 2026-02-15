@@ -1,0 +1,510 @@
+/* ==========================================================================
+   Commerce - Account
+   User account pages, order history, address book, profile.
+   ========================================================================== */
+
+/* Account Layout
+   ========================================================================== */
+
+.apex-account {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--apex-spacing-8);
+  margin-bottom: var(--apex-spacing-16);
+}
+
+/* Account Sidebar Nav */
+.apex-account__nav {
+  background: var(--apex-bg-primary);
+  border-radius: var(--apex-radius-lg);
+  box-shadow: var(--apex-shadow-sm);
+  padding: var(--apex-spacing-4);
+  align-self: start;
+  position: sticky;
+  top: calc(var(--apex-header-height) + var(--apex-spacing-8));
+}
+
+.apex-account__user {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-3);
+  padding: var(--apex-spacing-4);
+  padding-bottom: var(--apex-spacing-4);
+  margin-bottom: var(--apex-spacing-2);
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.apex-account__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.apex-account__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apex-account__name {
+  font-weight: 700;
+  font-size: var(--apex-text-sm);
+}
+
+.apex-account__email {
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-tertiary);
+}
+
+.apex-account__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.apex-account__menu-item {
+  margin-bottom: var(--apex-spacing-1);
+}
+
+.apex-account__menu-link {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-3);
+  padding: var(--apex-spacing-3) var(--apex-spacing-4);
+  border-radius: var(--apex-radius-md);
+  font-size: var(--apex-text-sm);
+  font-weight: 500;
+  color: var(--apex-text-secondary);
+  text-decoration: none;
+  transition: all var(--apex-transition-fast);
+}
+
+.apex-account__menu-link:hover {
+  background: var(--apex-bg-secondary);
+  color: var(--apex-text-primary);
+}
+
+.apex-account__menu-link.is-active {
+  background: rgba(var(--apex-primary-rgb, 37, 99, 235), 0.08);
+  color: var(--apex-primary);
+  font-weight: 600;
+}
+
+.apex-account__menu-link svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.apex-account__menu-link .apex-badge {
+  margin-left: auto;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--apex-primary);
+  color: #fff;
+  border-radius: 10px;
+}
+
+/* Account Content */
+.apex-account__content {
+  min-width: 0;
+}
+
+.apex-account__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--apex-spacing-6);
+}
+
+.apex-account__title {
+  font-size: var(--apex-text-2xl);
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Dashboard Cards */
+.apex-dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--apex-spacing-4);
+  margin-bottom: var(--apex-spacing-8);
+}
+
+.apex-dashboard-card {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-4);
+  padding: var(--apex-spacing-5);
+  background: var(--apex-bg-primary);
+  border-radius: var(--apex-radius-lg);
+  box-shadow: var(--apex-shadow-sm);
+}
+
+.apex-dashboard-card__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--apex-radius-md);
+  flex-shrink: 0;
+}
+
+.apex-dashboard-card__icon--orders {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.apex-dashboard-card__icon--wishlist {
+  background: #fce7f3;
+  color: #db2777;
+}
+
+.apex-dashboard-card__icon--reviews {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.apex-dashboard-card__icon--points {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.apex-dashboard-card__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.apex-dashboard-card__value {
+  font-size: var(--apex-text-2xl);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.apex-dashboard-card__label {
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Order History
+   ========================================================================== */
+
+.apex-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--apex-bg-primary);
+  border-radius: var(--apex-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--apex-shadow-sm);
+}
+
+.apex-orders-table thead {
+  background: var(--apex-bg-secondary);
+}
+
+.apex-orders-table th {
+  padding: var(--apex-spacing-4) var(--apex-spacing-5);
+  font-size: var(--apex-text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--apex-text-secondary);
+  text-align: left;
+}
+
+.apex-orders-table td {
+  padding: var(--apex-spacing-4) var(--apex-spacing-5);
+  border-top: 1px solid var(--apex-border-light);
+  font-size: var(--apex-text-sm);
+}
+
+.apex-orders-table a {
+  color: var(--apex-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.apex-orders-table a:hover {
+  text-decoration: underline;
+}
+
+/* Order Status Badges */
+.apex-order-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--apex-spacing-1);
+  padding: var(--apex-spacing-1) var(--apex-spacing-3);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.apex-order-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.apex-order-status--pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+.apex-order-status--pending::before { background: #d97706; }
+
+.apex-order-status--processing {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.apex-order-status--processing::before { background: #2563eb; }
+
+.apex-order-status--shipped {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+.apex-order-status--shipped::before { background: #6366f1; }
+
+.apex-order-status--delivered {
+  background: #d1fae5;
+  color: #065f46;
+}
+.apex-order-status--delivered::before { background: #059669; }
+
+.apex-order-status--cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.apex-order-status--cancelled::before { background: #ef4444; }
+
+.apex-order-status--refunded {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+.apex-order-status--refunded::before { background: #9333ea; }
+
+/* Order Detail */
+.apex-order-detail {
+  background: var(--apex-bg-primary);
+  border-radius: var(--apex-radius-lg);
+  box-shadow: var(--apex-shadow-sm);
+  overflow: hidden;
+}
+
+.apex-order-detail__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--apex-spacing-4);
+  padding: var(--apex-spacing-6);
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.apex-order-detail__items {
+  padding: var(--apex-spacing-6);
+}
+
+.apex-order-detail__footer {
+  padding: var(--apex-spacing-6);
+  background: var(--apex-bg-secondary);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--apex-spacing-6);
+}
+
+.apex-order-detail__section h4 {
+  font-size: var(--apex-text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 var(--apex-spacing-2);
+  color: var(--apex-text-secondary);
+}
+
+.apex-order-detail__section p {
+  font-size: var(--apex-text-sm);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Address Book
+   ========================================================================== */
+
+.apex-addresses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--apex-spacing-4);
+}
+
+.apex-address-card {
+  position: relative;
+  padding: var(--apex-spacing-5);
+  background: var(--apex-bg-primary);
+  border: 2px solid var(--apex-border-color);
+  border-radius: var(--apex-radius-lg);
+  transition: border-color var(--apex-transition-fast);
+}
+
+.apex-address-card--default {
+  border-color: var(--apex-primary);
+}
+
+.apex-address-card__badge {
+  display: inline-block;
+  padding: 2px 10px;
+  background: var(--apex-primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 20px;
+  margin-bottom: var(--apex-spacing-3);
+}
+
+.apex-address-card__name {
+  font-weight: 700;
+  margin-bottom: var(--apex-spacing-2);
+}
+
+.apex-address-card__details {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--apex-spacing-4);
+}
+
+.apex-address-card__actions {
+  display: flex;
+  gap: var(--apex-spacing-3);
+}
+
+.apex-address-card__actions a {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.apex-address-card__actions a:hover {
+  text-decoration: underline;
+}
+
+.apex-address-card__actions .apex-address-delete {
+  color: #ef4444;
+}
+
+/* Add Address Card */
+.apex-address-card--add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border-style: dashed;
+  cursor: pointer;
+  color: var(--apex-text-tertiary);
+  text-decoration: none;
+}
+
+.apex-address-card--add:hover {
+  border-color: var(--apex-primary);
+  color: var(--apex-primary);
+}
+
+.apex-address-card--add svg {
+  width: 32px;
+  height: 32px;
+  margin-bottom: var(--apex-spacing-2);
+}
+
+/* Profile Form */
+.apex-profile-form {
+  max-width: 600px;
+  background: var(--apex-bg-primary);
+  border-radius: var(--apex-radius-lg);
+  box-shadow: var(--apex-shadow-sm);
+  padding: var(--apex-spacing-8);
+}
+
+.apex-profile-form__avatar-section {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-6);
+  margin-bottom: var(--apex-spacing-8);
+  padding-bottom: var(--apex-spacing-6);
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.apex-profile-form__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.apex-profile-form__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .apex-account {
+    grid-template-columns: 1fr;
+  }
+
+  .apex-account__nav {
+    position: static;
+  }
+
+  .apex-account__menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--apex-spacing-1);
+  }
+}
+
+@media (max-width: 768px) {
+  .apex-orders-table thead {
+    display: none;
+  }
+
+  .apex-orders-table,
+  .apex-orders-table tbody,
+  .apex-orders-table tr,
+  .apex-orders-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .apex-orders-table tr {
+    padding: var(--apex-spacing-4);
+    border-bottom: 1px solid var(--apex-border-light);
+  }
+
+  .apex-orders-table td {
+    padding: var(--apex-spacing-2) 0;
+    border: none;
+    text-align: right;
+  }
+
+  .apex-orders-table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: 600;
+  }
+
+  .apex-order-detail__footer {
+    grid-template-columns: 1fr;
+  }
+
+  .apex-dashboard-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}

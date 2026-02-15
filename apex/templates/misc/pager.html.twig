@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Apex Theme - Pager / Pagination template.
+ *
+ * @see template_preprocess_pager()
+ */
+#}
+{% if items %}
+<nav class="apex-pagination" role="navigation" aria-label="{{ 'Pagination'|t }}">
+  <ul class="apex-pagination__list">
+
+    {# Previous #}
+    {% if items.previous %}
+    <li class="apex-pagination__item apex-pagination__item--prev">
+      <a href="{{ items.previous.href }}" class="apex-pagination__link" rel="prev"
+         title="{{ 'Go to previous page'|t }}" aria-label="{{ 'Previous page'|t }}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span class="visually-hidden">{{ 'Previous'|t }}</span>
+      </a>
+    </li>
+    {% endif %}
+
+    {# Pages #}
+    {% for key, item in items.pages %}
+    <li class="apex-pagination__item {{ current == key ? 'apex-pagination__item--active' }}">
+      {% if current == key %}
+        <span class="apex-pagination__link apex-pagination__link--current" aria-current="page">
+          {{ key }}
+        </span>
+      {% else %}
+        <a href="{{ item.href }}" class="apex-pagination__link" title="{{ 'Go to page @key'|t({'@key': key}) }}">
+          {{ key }}
+        </a>
+      {% endif %}
+    </li>
+    {% endfor %}
+
+    {# Next #}
+    {% if items.next %}
+    <li class="apex-pagination__item apex-pagination__item--next">
+      <a href="{{ items.next.href }}" class="apex-pagination__link" rel="next"
+         title="{{ 'Go to next page'|t }}" aria-label="{{ 'Next page'|t }}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+        <span class="visually-hidden">{{ 'Next'|t }}</span>
+      </a>
+    </li>
+    {% endif %}
+
+  </ul>
+</nav>
+{% endif %}

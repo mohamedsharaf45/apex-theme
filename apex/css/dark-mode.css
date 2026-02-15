@@ -1,0 +1,319 @@
+/**
+ * @file
+ * Apex Theme - Dark Mode
+ * Optimized color palette for readability in dark mode.
+ * Smooth transitions between light and dark states.
+ */
+
+/* ===== Dark Mode Toggle ===== */
+.apex-dark-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-space-2);
+  cursor: pointer;
+  padding: var(--apex-space-1);
+}
+
+.apex-dark-toggle__track {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background: var(--apex-gray-300);
+  border-radius: var(--apex-radius-full);
+  transition: background var(--apex-duration-300) var(--apex-ease-in-out);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.apex-dark-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: var(--apex-white);
+  border-radius: var(--apex-radius-full);
+  transition: transform var(--apex-duration-300) var(--apex-ease-bounce);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+}
+
+.apex-dark-toggle__thumb::before {
+  content: '☀️';
+  font-size: 0.65rem;
+}
+
+[data-theme="dark"] .apex-dark-toggle__track {
+  background: var(--apex-primary);
+}
+
+[data-theme="dark"] .apex-dark-toggle__thumb {
+  transform: translateX(22px);
+}
+
+[data-theme="dark"] .apex-dark-toggle__thumb::before {
+  content: '🌙';
+}
+
+.apex-dark-toggle__label {
+  font-size: var(--apex-text-xs);
+  font-weight: var(--apex-font-medium);
+  color: var(--apex-text-secondary);
+}
+
+/* ===== Dark Mode Color Overrides ===== */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --apex-bg: #0f172a;
+  --apex-bg-alt: #1e293b;
+  --apex-bg-subtle: #334155;
+  --apex-surface: #1e293b;
+  --apex-surface-raised: #334155;
+  --apex-surface-overlay: rgba(30, 41, 59, 0.95);
+
+  /* Text */
+  --apex-text: #f1f5f9;
+  --apex-text-secondary: #94a3b8;
+  --apex-text-muted: #64748b;
+  --apex-text-inverse: #0f172a;
+
+  /* Links */
+  --apex-text-link: #60a5fa;
+  --apex-text-link-hover: #93bbfd;
+
+  /* Borders */
+  --apex-border: #334155;
+  --apex-border-light: #1e293b;
+  --apex-border-strong: #475569;
+
+  /* Shadows (darker for dark mode) */
+  --apex-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --apex-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --apex-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --apex-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+
+  /* Semantic (adjusted for dark backgrounds) */
+  --apex-primary-50: rgba(37, 99, 235, 0.15);
+
+  /* Code */
+  color-scheme: dark;
+}
+
+/* ===== Element-specific dark mode overrides ===== */
+[data-theme="dark"] body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+/* Selection */
+[data-theme="dark"] ::selection {
+  background: rgba(96, 165, 250, 0.3);
+  color: #f1f5f9;
+}
+
+/* Code blocks */
+[data-theme="dark"] code {
+  background: #334155;
+  color: #93bbfd;
+}
+
+[data-theme="dark"] pre {
+  background: #020617;
+  border: 1px solid #334155;
+}
+
+/* Tables */
+[data-theme="dark"] thead {
+  background: #1e293b;
+}
+
+[data-theme="dark"] th {
+  border-bottom-color: #334155;
+}
+
+[data-theme="dark"] td {
+  border-bottom-color: #1e293b;
+}
+
+[data-theme="dark"] tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Header */
+[data-theme="dark"] .apex-header {
+  background: #1e293b;
+  border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .apex-header--scrolled {
+  background: rgba(30, 41, 59, 0.95);
+}
+
+[data-theme="dark"] .apex-logo__text {
+  color: #f1f5f9;
+}
+
+/* Cards */
+[data-theme="dark"] .apex-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .apex-card:hover {
+  border-color: #475569;
+}
+
+[data-theme="dark"] .apex-card__title a {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .apex-card__tag {
+  background: rgba(37, 99, 235, 0.2);
+}
+
+/* Forms */
+[data-theme="dark"] .apex-form__input,
+[data-theme="dark"] .apex-form__textarea,
+[data-theme="dark"] .apex-form__select,
+[data-theme="dark"] .form-text,
+[data-theme="dark"] .form-email,
+[data-theme="dark"] .form-textarea {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .apex-form__input:focus,
+[data-theme="dark"] .apex-form__textarea:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+/* Footer stays dark in both modes */
+[data-theme="dark"] .apex-footer {
+  background: #020617;
+}
+
+/* Sidebar */
+[data-theme="dark"] .apex-sidebar__widget {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+/* Testimonials */
+[data-theme="dark"] .apex-testimonial {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .apex-testimonial__quote::before {
+  color: rgba(96, 165, 250, 0.3);
+}
+
+/* Accordion */
+[data-theme="dark"] .apex-accordion {
+  border-color: #334155;
+}
+
+[data-theme="dark"] .apex-accordion__item {
+  border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .apex-accordion__header:hover,
+[data-theme="dark"] .apex-accordion__header.is-active {
+  background: #0f172a;
+}
+
+/* Mobile Navigation */
+[data-theme="dark"] .apex-mobile-nav {
+  background: #1e293b;
+}
+
+/* Nav dropdown */
+[data-theme="dark"] .apex-nav__dropdown {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .apex-nav__dropdown .apex-nav__link:hover {
+  background: rgba(96, 165, 250, 0.1);
+}
+
+/* Mega Menu */
+[data-theme="dark"] .apex-mega-menu {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+/* Preloader */
+[data-theme="dark"] .apex-preloader {
+  background: #0f172a;
+}
+
+/* Breadcrumb Page Header */
+[data-theme="dark"] .apex-breadcrumb-wrapper {
+  background: #1e293b;
+  border-bottom-color: #334155;
+}
+
+/* Search Overlay */
+[data-theme="dark"] .apex-search-overlay__input {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Contact Form */
+[data-theme="dark"] .apex-contact-form {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+/* Messages */
+[data-theme="dark"] .messages--status {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .messages--warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+}
+
+[data-theme="dark"] .messages--error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+
+/* Timeline */
+[data-theme="dark"] .apex-timeline::before {
+  background: #334155;
+}
+
+[data-theme="dark"] .apex-timeline__dot {
+  border-color: #0f172a;
+}
+
+[data-theme="dark"] .apex-timeline__content {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+/* ===== Smooth transition for all elements ===== */
+body,
+.apex-header,
+.apex-card,
+.apex-sidebar__widget,
+.apex-testimonial,
+.apex-accordion,
+.apex-form__input,
+.apex-form__textarea,
+.apex-footer,
+.apex-breadcrumb-wrapper {
+  transition: background-color var(--apex-duration-300) var(--apex-ease-in-out),
+              color var(--apex-duration-300) var(--apex-ease-in-out),
+              border-color var(--apex-duration-300) var(--apex-ease-in-out),
+              box-shadow var(--apex-duration-300) var(--apex-ease-in-out);
+}

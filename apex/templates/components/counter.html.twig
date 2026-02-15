@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Apex Theme - Counter / Stats component template.
+ *
+ * Variables:
+ * - counters: array of counter items [{value, suffix, label, icon}].
+ * - variant: variant (default, boxed, inline, dark).
+ *
+ * Usage:
+ * {% include '@apex/templates/components/counter.html.twig' with {
+ *   variant: 'boxed',
+ *   counters: [
+ *     { value: 150, suffix: '+', label: 'Projects Completed', icon: '<svg>...</svg>' },
+ *     { value: 50, suffix: '+', label: 'Team Members' },
+ *     { value: 99, suffix: '%', label: 'Client Satisfaction' },
+ *     { value: 10, suffix: '+', label: 'Years Experience' },
+ *   ]
+ * } %}
+ */
+#}
+
+{%
+  set counter_classes = [
+    'apex-counters',
+    'apex-counters--' ~ (variant|default('default')),
+  ]
+%}
+
+<div{{ attributes|default(create_attribute()).addClass(counter_classes) }} data-apex-stagger="100">
+
+  {% for counter in counters %}
+  <div class="apex-counter" data-apex-animate="fade-up">
+
+    {% if counter.icon %}
+    <div class="apex-counter__icon">
+      {{ counter.icon|raw }}
+    </div>
+    {% endif %}
+
+    <div class="apex-counter__value">
+      <span data-apex-counter="{{ counter.value }}">0</span>{% if counter.suffix %}{{ counter.suffix }}{% endif %}
+    </div>
+
+    {% if counter.label %}
+    <p class="apex-counter__label">{{ counter.label }}</p>
+    {% endif %}
+
+  </div>
+  {% endfor %}
+
+</div>

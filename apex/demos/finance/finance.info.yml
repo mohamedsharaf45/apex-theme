@@ -1,0 +1,35 @@
+# Apex Theme - Finance Demo
+# Financial advisors, law firms, professional services.
+name: Finance / Consulting
+description: "An elegant, authoritative demo for financial advisors, law firms, and professional services. Features deep green and gold palette with refined typography."
+demo_class: apex-demo--finance
+library: apex/demo-finance
+palette:
+  primary: "#065f46"
+  primary_light: "#059669"
+  primary_dark: "#064e3b"
+  secondary: "#1c1917"
+  accent: "#b45309"
+features:
+  - Sophisticated hero with stock imagery
+  - Services with detailed descriptions
+  - Team profiles with credentials
+  - Client success stories / case studies
+  - Stock ticker / market data section
+  - Trust indicators and certifications
+  - FAQ for financial clients
+  - Consultation booking CTA
+  - Multi-column professional footer
+  - Secure/compliance badges
+regions:
+  hero: Hero Banner
+  services: Services Section
+  about: About Section
+  team: Team / Advisors
+  case_studies: Client Success Stories
+  trust: Trust Indicators / Certifications
+  testimonials: Client Testimonials
+  faq: FAQ Section
+  cta: Consultation CTA
+screenshot: screenshot.png
+version: "1.0.0"

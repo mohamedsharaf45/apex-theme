@@ -1,0 +1,254 @@
+/**
+ * @file
+ * Apex Theme - Layout System
+ *
+ * Container, grid, flexbox utilities, and responsive layout classes.
+ * Mobile-first responsive design with CSS Grid and Flexbox.
+ */
+
+/* ===== Container ===== */
+.apex-container {
+  width: 100%;
+  max-width: var(--apex-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--apex-container-padding);
+  padding-right: var(--apex-container-padding);
+}
+
+.apex-container--sm {
+  max-width: var(--apex-container-sm);
+}
+
+.apex-container--md {
+  max-width: var(--apex-container-md);
+}
+
+.apex-container--lg {
+  max-width: var(--apex-container-lg);
+}
+
+.apex-container--xl {
+  max-width: var(--apex-container-xl);
+}
+
+.apex-container--fluid {
+  max-width: 100%;
+}
+
+/* ===== CSS Grid System ===== */
+.apex-grid {
+  display: grid;
+  gap: var(--apex-grid-gap);
+}
+
+.apex-grid--2 { grid-template-columns: repeat(1, 1fr); }
+.apex-grid--3 { grid-template-columns: repeat(1, 1fr); }
+.apex-grid--4 { grid-template-columns: repeat(1, 1fr); }
+
+@media (min-width: 640px) {
+  .apex-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .apex-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .apex-grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .apex-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .apex-grid--4 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1280px) {
+  .apex-grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Auto-fit grid */
+.apex-grid--auto {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.apex-grid--auto-lg {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+}
+
+/* ===== Main Layout (Content + Sidebars) ===== */
+.apex-layout {
+  display: grid;
+  gap: var(--apex-grid-gap);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .apex-layout--sidebar-left {
+    grid-template-columns: 300px 1fr;
+  }
+
+  .apex-layout--sidebar-right {
+    grid-template-columns: 1fr 300px;
+  }
+
+  .apex-layout--both-sidebars {
+    grid-template-columns: 250px 1fr 250px;
+  }
+}
+
+/* ===== Flexbox Utilities ===== */
+.apex-flex {
+  display: flex;
+}
+
+.apex-flex--wrap {
+  flex-wrap: wrap;
+}
+
+.apex-flex--col {
+  flex-direction: column;
+}
+
+.apex-flex--center {
+  align-items: center;
+  justify-content: center;
+}
+
+.apex-flex--between {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.apex-flex--start {
+  align-items: flex-start;
+}
+
+.apex-flex--end {
+  justify-content: flex-end;
+}
+
+.apex-flex--gap-sm {
+  gap: var(--apex-space-2);
+}
+
+.apex-flex--gap {
+  gap: var(--apex-space-4);
+}
+
+.apex-flex--gap-lg {
+  gap: var(--apex-space-8);
+}
+
+/* ===== Section ===== */
+.apex-section {
+  padding-top: var(--apex-section-py);
+  padding-bottom: var(--apex-section-py);
+}
+
+.apex-section--alt {
+  background-color: var(--apex-bg-alt);
+}
+
+.apex-section--dark {
+  background-color: var(--apex-secondary);
+  color: var(--apex-white);
+}
+
+.apex-section--dark h2,
+.apex-section--dark h3,
+.apex-section--dark p {
+  color: var(--apex-white);
+}
+
+.apex-section--dark p {
+  opacity: 0.85;
+}
+
+.apex-section--primary {
+  background-color: var(--apex-primary);
+  color: var(--apex-white);
+}
+
+/* ===== Full Width ===== */
+.apex-full-width {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+/* ===== Spacing Utilities ===== */
+.apex-mt-0 { margin-top: 0; }
+.apex-mt-4 { margin-top: var(--apex-space-4); }
+.apex-mt-8 { margin-top: var(--apex-space-8); }
+.apex-mt-12 { margin-top: var(--apex-space-12); }
+.apex-mt-16 { margin-top: var(--apex-space-16); }
+
+.apex-mb-0 { margin-bottom: 0; }
+.apex-mb-4 { margin-bottom: var(--apex-space-4); }
+.apex-mb-8 { margin-bottom: var(--apex-space-8); }
+.apex-mb-12 { margin-bottom: var(--apex-space-12); }
+.apex-mb-16 { margin-bottom: var(--apex-space-16); }
+
+.apex-py-0 { padding-top: 0; padding-bottom: 0; }
+.apex-py-4 { padding-top: var(--apex-space-4); padding-bottom: var(--apex-space-4); }
+.apex-py-8 { padding-top: var(--apex-space-8); padding-bottom: var(--apex-space-8); }
+.apex-py-16 { padding-top: var(--apex-space-16); padding-bottom: var(--apex-space-16); }
+
+.apex-px-4 { padding-left: var(--apex-space-4); padding-right: var(--apex-space-4); }
+.apex-px-8 { padding-left: var(--apex-space-8); padding-right: var(--apex-space-8); }
+
+/* ===== Text Alignment ===== */
+.apex-text-left { text-align: left; }
+.apex-text-center { text-align: center; }
+.apex-text-right { text-align: right; }
+
+/* ===== Display Utilities ===== */
+.apex-hidden { display: none; }
+.apex-block { display: block; }
+.apex-inline { display: inline; }
+.apex-inline-block { display: inline-block; }
+
+@media (max-width: 639px) {
+  .apex-hide-mobile { display: none; }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .apex-hide-tablet { display: none; }
+}
+
+@media (min-width: 1024px) {
+  .apex-hide-desktop { display: none; }
+}
+
+/* ===== Aspect Ratios ===== */
+.apex-aspect-square { aspect-ratio: 1 / 1; }
+.apex-aspect-video { aspect-ratio: 16 / 9; }
+.apex-aspect-portrait { aspect-ratio: 3 / 4; }
+
+/* ===== Object Fit ===== */
+.apex-img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apex-img-contain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ===== Max Width Utilities ===== */
+.apex-max-w-prose { max-width: 65ch; }
+.apex-max-w-xs { max-width: 20rem; }
+.apex-max-w-sm { max-width: 24rem; }
+.apex-max-w-md { max-width: 28rem; }
+.apex-max-w-lg { max-width: 32rem; }
+.apex-max-w-xl { max-width: 36rem; }
+.apex-max-w-2xl { max-width: 42rem; }
+.apex-max-w-3xl { max-width: 48rem; }
+.apex-max-w-4xl { max-width: 56rem; }
+
+/* ===== Overflow ===== */
+.apex-overflow-hidden { overflow: hidden; }
+.apex-overflow-auto { overflow: auto; }
+.apex-overflow-x-auto { overflow-x: auto; }
+
+/* ===== Position Utilities ===== */
+.apex-relative { position: relative; }
+.apex-absolute { position: absolute; }
+.apex-sticky { position: sticky; top: 0; }

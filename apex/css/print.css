@@ -1,0 +1,83 @@
+/**
+ * @file
+ * Apex Theme - Print Styles
+ */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+
+  a[href^="#"]::after,
+  a[href^="javascript"]::after {
+    content: "";
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  h2, h3 {
+    page-break-after: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Hide non-essential elements */
+  .apex-header,
+  .apex-topbar,
+  .apex-mobile-nav,
+  .apex-mobile-toggle,
+  .apex-footer,
+  .apex-back-to-top,
+  .apex-preloader,
+  .apex-search-overlay,
+  .apex-dark-toggle,
+  .apex-hero__scroll,
+  .apex-hero__dots,
+  .apex-skip-links,
+  .contextual,
+  .tabs,
+  nav,
+  .apex-sidebar,
+  .apex-pagination,
+  .apex-footer-cta,
+  .apex-btn:not(.apex-btn--print) {
+    display: none !important;
+  }
+
+  .apex-container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .apex-hero {
+    min-height: auto;
+    padding: 1rem 0;
+    color: #000;
+  }
+}

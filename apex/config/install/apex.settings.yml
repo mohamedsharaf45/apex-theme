@@ -1,0 +1,32 @@
+demo_variant: "corporate"
+dark_mode_enabled: true
+dark_mode_default: "light"
+header_style: "default"
+header_sticky: true
+header_transparent: false
+top_bar_enabled: true
+top_bar_phone: "+1 (555) 123-4567"
+top_bar_email: "info@example.com"
+hero_style: "slider"
+hero_overlay: true
+hero_parallax: false
+footer_style: "default"
+footer_columns: 4
+back_to_top: true
+preloader: true
+animations_enabled: true
+google_fonts: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+primary_font: "Inter"
+secondary_font: "Playfair Display"
+primary_color: "#2563eb"
+secondary_color: "#1e293b"
+accent_color: "#f59e0b"
+commerce_enabled: false
+commerce_catalog_style: "grid"
+commerce_products_per_page: 12
+rtl_enabled: false
+social_facebook: ""
+social_twitter: ""
+social_linkedin: ""
+social_instagram: ""
+social_youtube: ""

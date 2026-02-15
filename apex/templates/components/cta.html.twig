@@ -1,0 +1,85 @@
+{#
+/**
+ * @file
+ * Apex Theme - CTA (Call to Action) component template.
+ *
+ * Variables:
+ * - variant: cta variant (default, centered, split, minimal, gradient).
+ * - background_image: optional background image URL.
+ * - background_color: optional background color.
+ * - label: small label above title.
+ * - title: CTA title.
+ * - text: CTA description text.
+ * - cta_text: button label.
+ * - cta_url: button URL.
+ * - cta_secondary_text: secondary button label.
+ * - cta_secondary_url: secondary button URL.
+ * - image: optional image (for split variant).
+ *
+ * Usage:
+ * {% include '@apex/templates/components/cta.html.twig' with {
+ *   variant: 'centered',
+ *   title: 'Ready to get started?',
+ *   text: 'Contact us today',
+ *   cta_text: 'Contact Us',
+ *   cta_url: '/contact',
+ * } %}
+ */
+#}
+
+{%
+  set cta_classes = [
+    'apex-cta',
+    'apex-cta--' ~ (variant|default('default')),
+  ]
+%}
+
+<section{{ attributes|default(create_attribute()).addClass(cta_classes) }}
+  {% if background_image %}style="background-image: url('{{ background_image }}');"{% endif %}
+  {% if background_color %}style="background-color: {{ background_color }};"{% endif %}>
+
+  {% if background_image %}
+  <div class="apex-cta__overlay"></div>
+  {% endif %}
+
+  <div class="apex-container">
+    <div class="apex-cta__inner">
+
+      <div class="apex-cta__content" data-apex-animate="fade-up">
+        {% if label %}
+        <span class="apex-cta__label">{{ label }}</span>
+        {% endif %}
+
+        {% if title %}
+        <h2 class="apex-cta__title">{{ title }}</h2>
+        {% endif %}
+
+        {% if text %}
+        <p class="apex-cta__text">{{ text }}</p>
+        {% endif %}
+
+        {% if cta_text or cta_secondary_text %}
+        <div class="apex-cta__actions">
+          {% if cta_text %}
+          <a href="{{ cta_url|default('#') }}" class="apex-btn apex-btn--primary apex-btn--lg">
+            {{ cta_text }}
+          </a>
+          {% endif %}
+          {% if cta_secondary_text %}
+          <a href="{{ cta_secondary_url|default('#') }}" class="apex-btn apex-btn--outline apex-btn--lg">
+            {{ cta_secondary_text }}
+          </a>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+
+      {% if variant == 'split' and image %}
+      <div class="apex-cta__media" data-apex-animate="fade-left">
+        <img src="{{ image }}" alt="{{ title }}" loading="lazy" />
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>

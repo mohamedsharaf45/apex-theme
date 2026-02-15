@@ -1,0 +1,100 @@
+apex.settings:
+  type: theme_settings
+  label: "Apex Theme Settings"
+  mapping:
+    demo_variant:
+      type: string
+      label: "Active Demo Variant"
+    dark_mode_enabled:
+      type: boolean
+      label: "Enable Dark Mode Toggle"
+    dark_mode_default:
+      type: string
+      label: "Default Color Mode"
+    header_style:
+      type: string
+      label: "Header Style"
+    header_sticky:
+      type: boolean
+      label: "Sticky Header"
+    header_transparent:
+      type: boolean
+      label: "Transparent Header"
+    top_bar_enabled:
+      type: boolean
+      label: "Enable Top Bar"
+    top_bar_phone:
+      type: string
+      label: "Top Bar Phone Number"
+    top_bar_email:
+      type: string
+      label: "Top Bar Email Address"
+    hero_style:
+      type: string
+      label: "Hero Section Style"
+    hero_overlay:
+      type: boolean
+      label: "Hero Overlay"
+    hero_parallax:
+      type: boolean
+      label: "Hero Parallax Effect"
+    footer_style:
+      type: string
+      label: "Footer Style"
+    footer_columns:
+      type: integer
+      label: "Footer Columns"
+    back_to_top:
+      type: boolean
+      label: "Back to Top Button"
+    preloader:
+      type: boolean
+      label: "Page Preloader"
+    animations_enabled:
+      type: boolean
+      label: "Enable Scroll Animations"
+    google_fonts:
+      type: string
+      label: "Google Fonts URL"
+    primary_font:
+      type: string
+      label: "Primary Font Family"
+    secondary_font:
+      type: string
+      label: "Secondary Font Family"
+    primary_color:
+      type: string
+      label: "Primary Brand Color"
+    secondary_color:
+      type: string
+      label: "Secondary Brand Color"
+    accent_color:
+      type: string
+      label: "Accent Color"
+    commerce_enabled:
+      type: boolean
+      label: "Enable Commerce Features"
+    commerce_catalog_style:
+      type: string
+      label: "Product Catalog Layout"
+    commerce_products_per_page:
+      type: integer
+      label: "Products Per Page"
+    rtl_enabled:
+      type: boolean
+      label: "Enable RTL Support"
+    social_facebook:
+      type: string
+      label: "Facebook URL"
+    social_twitter:
+      type: string
+      label: "Twitter/X URL"
+    social_linkedin:
+      type: string
+      label: "LinkedIn URL"
+    social_instagram:
+      type: string
+      label: "Instagram URL"
+    social_youtube:
+      type: string
+      label: "YouTube URL"

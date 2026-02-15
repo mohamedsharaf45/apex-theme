@@ -1,0 +1,36 @@
+# Apex Theme - Medical Demo
+# Clinics, hospitals, health services.
+name: Medical / Healthcare
+description: "A clean, trustworthy demo for clinics, hospitals, and health services. Features calming teal and blue palette with professional, accessible design."
+demo_class: apex-demo--medical
+library: apex/demo-medical
+palette:
+  primary: "#0d9488"
+  primary_light: "#14b8a6"
+  primary_dark: "#0f766e"
+  secondary: "#1e293b"
+  accent: "#2563eb"
+features:
+  - Clean hero with appointment CTA
+  - Department/services cards
+  - Doctor profiles with credentials
+  - Appointment booking section
+  - Patient testimonials
+  - Emergency contact bar
+  - Insurance partners logos
+  - Health tips blog
+  - FAQ accordion for patients
+  - Accessible multi-column footer
+regions:
+  hero: Hero Banner
+  emergency: Emergency Contact Bar
+  departments: Departments / Services
+  doctors: Doctor Profiles
+  appointments: Appointment Booking
+  testimonials: Patient Testimonials
+  insurance: Insurance Partners
+  blog: Health Tips / Blog
+  faq: Patient FAQ
+  cta: Call to Action
+screenshot: screenshot.png
+version: "1.0.0"

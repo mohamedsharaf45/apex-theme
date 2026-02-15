@@ -1,0 +1,116 @@
+global:
+  version: 1.0.0
+  css:
+    base:
+      css/variables.css: {}
+      css/reset.css: {}
+      css/base.css: {}
+    component:
+      css/components/header.css: {}
+      css/components/navigation.css: {}
+      css/components/hero.css: {}
+      css/components/buttons.css: {}
+      css/components/cards.css: {}
+      css/components/forms.css: {}
+      css/components/footer.css: {}
+      css/components/breadcrumb.css: {}
+      css/components/pagination.css: {}
+      css/components/sidebar.css: {}
+      css/components/blocks.css: {}
+      css/components/accessibility.css: {}
+    layout:
+      css/layout.css: {}
+    theme:
+      css/theme.css: {}
+      css/rtl.css: {}
+      css/print.css: {}
+  js:
+    js/apex.js: {}
+    js/navigation.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+fonts:
+  version: 1.0.0
+  css:
+    base:
+      css/fonts.css: {}
+
+dark-mode:
+  version: 1.0.0
+  css:
+    theme:
+      css/dark-mode.css: {}
+  js:
+    js/dark-mode.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+
+animations:
+  version: 1.0.0
+  css:
+    theme:
+      css/animations.css: {}
+  js:
+    js/animations.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+commerce:
+  version: 1.0.0
+  css:
+    component:
+      css/commerce/products.css: {}
+      css/commerce/cart.css: {}
+      css/commerce/checkout.css: {}
+      css/commerce/account.css: {}
+      css/commerce/wishlist.css: {}
+  js:
+    js/commerce.js: {}
+    js/quick-view.js: {}
+  dependencies:
+    - apex/global
+
+demo-corporate:
+  version: 1.0.0
+  css:
+    theme:
+      css/demos/corporate.css: {}
+
+demo-startup:
+  version: 1.0.0
+  css:
+    theme:
+      css/demos/startup.css: {}
+
+demo-portfolio:
+  version: 1.0.0
+  css:
+    theme:
+      css/demos/portfolio.css: {}
+
+demo-medical:
+  version: 1.0.0
+  css:
+    theme:
+      css/demos/medical.css: {}
+
+demo-finance:
+  version: 1.0.0
+  css:
+    theme:
+      css/demos/finance.css: {}
+
+widgets:
+  version: 1.0.0
+  css:
+    component:
+      css/components/widgets.css: {}
+  js:
+    js/widgets.js: {}
+  dependencies:
+    - apex/global

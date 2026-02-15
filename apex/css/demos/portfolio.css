@@ -1,0 +1,163 @@
+/**
+ * @file
+ * Apex Theme - Creative Portfolio Demo
+ *
+ * Designers, photographers, creative agencies.
+ * Palette: Warm neutrals, terracotta, sage.
+ * Typography: Editorial, expressive.
+ */
+
+.apex-demo--portfolio {
+  --apex-primary: #b45309;
+  --apex-primary-light: #d97706;
+  --apex-primary-dark: #92400e;
+  --apex-primary-50: #fffbeb;
+  --apex-primary-100: #fef3c7;
+  --apex-primary-200: #fde68a;
+  --apex-secondary: #292524;
+  --apex-secondary-light: #44403c;
+  --apex-secondary-dark: #1c1917;
+  --apex-accent: #059669;
+  --apex-accent-light: #10b981;
+  --apex-accent-dark: #047857;
+  --apex-font-secondary: 'Playfair Display', Georgia, serif;
+}
+
+/* Portfolio Hero - minimal, editorial */
+.apex-demo--portfolio .apex-hero {
+  background: #1c1917;
+  min-height: 90vh;
+}
+
+.apex-demo--portfolio .apex-hero__title {
+  font-weight: var(--apex-font-normal);
+  letter-spacing: -0.03em;
+  font-size: var(--apex-text-7xl);
+  line-height: 1.05;
+}
+
+.apex-demo--portfolio .apex-hero__title span {
+  font-style: italic;
+  color: var(--apex-accent-light);
+}
+
+.apex-demo--portfolio .apex-hero__subtitle {
+  font-size: var(--apex-text-lg);
+  max-width: 480px;
+}
+
+/* Portfolio Cards - minimal, image focused */
+.apex-demo--portfolio .apex-card {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.apex-demo--portfolio .apex-card:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.apex-demo--portfolio .apex-card__image {
+  border-radius: var(--apex-radius-sm);
+  aspect-ratio: 4 / 5;
+}
+
+.apex-demo--portfolio .apex-card__body {
+  padding: var(--apex-space-4) 0;
+}
+
+.apex-demo--portfolio .apex-card__title {
+  font-family: var(--apex-font-secondary);
+  font-weight: var(--apex-font-normal);
+  font-size: var(--apex-text-2xl);
+}
+
+.apex-demo--portfolio .apex-card__label {
+  color: var(--apex-accent);
+}
+
+/* Portfolio Buttons */
+.apex-demo--portfolio .apex-btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: var(--apex-tracking-widest);
+  font-size: var(--apex-text-xs);
+  padding: var(--apex-space-4) var(--apex-space-8);
+}
+
+/* Portfolio Section Titles */
+.apex-demo--portfolio .apex-section-title h2 {
+  font-weight: var(--apex-font-normal);
+  font-style: italic;
+}
+
+.apex-demo--portfolio .apex-divider {
+  background: var(--apex-accent);
+}
+
+/* Portfolio Grid - masonry-style */
+.apex-demo--portfolio .apex-grid--masonry {
+  columns: 2;
+  column-gap: var(--apex-space-4);
+}
+
+@media (min-width: 1024px) {
+  .apex-demo--portfolio .apex-grid--masonry {
+    columns: 3;
+  }
+}
+
+.apex-demo--portfolio .apex-grid--masonry > * {
+  break-inside: avoid;
+  margin-bottom: var(--apex-space-4);
+}
+
+/* Portfolio Header - minimal */
+.apex-demo--portfolio .apex-header {
+  border-bottom: none;
+}
+
+.apex-demo--portfolio .apex-logo__text {
+  font-family: var(--apex-font-secondary);
+  font-weight: var(--apex-font-normal);
+  font-style: italic;
+  font-size: var(--apex-text-3xl);
+}
+
+/* Portfolio Footer */
+.apex-demo--portfolio .apex-footer {
+  background: #1c1917;
+}
+
+/* Portfolio Testimonials */
+.apex-demo--portfolio .apex-testimonial {
+  border: none;
+  background: transparent;
+  text-align: center;
+}
+
+.apex-demo--portfolio .apex-testimonial__quote {
+  font-family: var(--apex-font-secondary);
+  font-size: var(--apex-text-2xl);
+  padding-left: 0;
+}
+
+.apex-demo--portfolio .apex-testimonial__quote::before {
+  position: static;
+  display: block;
+  font-size: 5rem;
+  margin-bottom: var(--apex-space-4);
+}
+
+.apex-demo--portfolio .apex-testimonial__author {
+  justify-content: center;
+}
+
+/* Cursor follower hint */
+.apex-demo--portfolio .apex-cursor-hint {
+  font-size: var(--apex-text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--apex-tracking-widest);
+  color: var(--apex-text-muted);
+}

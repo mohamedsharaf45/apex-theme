@@ -1,0 +1,50 @@
+name: Apex
+type: theme
+description: "A professional, modern multipurpose business theme with 5 demo variations, dark mode, ecommerce integration, and full accessibility compliance."
+package: Custom
+core_version_requirement: ^10 || ^11
+base theme: false
+version: "1.0.0"
+
+regions:
+  header_top: "Header Top Bar"
+  header: "Header"
+  header_navigation: "Header Navigation"
+  hero: "Hero Section"
+  highlighted: "Highlighted"
+  breadcrumb: "Breadcrumb"
+  content_above: "Content Above"
+  content: "Content"
+  content_below: "Content Below"
+  sidebar_first: "Sidebar First"
+  sidebar_second: "Sidebar Second"
+  features: "Features Section"
+  cta: "Call to Action"
+  testimonials: "Testimonials"
+  portfolio: "Portfolio"
+  pricing: "Pricing"
+  team: "Team"
+  blog: "Blog Section"
+  clients: "Clients / Partners"
+  footer_top: "Footer Top"
+  footer_first: "Footer First Column"
+  footer_second: "Footer Second Column"
+  footer_third: "Footer Third Column"
+  footer_fourth: "Footer Fourth Column"
+  footer_bottom: "Footer Bottom"
+
+libraries:
+  - apex/global
+  - apex/fonts
+
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/action-links.css: false
+        css/components/breadcrumb.css: false
+        css/components/pager.css: false
+        css/components/tabs.css: false
+
+ckeditor5-stylesheets:
+  - css/ckeditor5.css

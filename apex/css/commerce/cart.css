@@ -1,0 +1,486 @@
+/* ==========================================================================
+   Commerce - Cart
+   Shopping cart page, mini cart dropdown, cart summary.
+   ========================================================================== */
+
+/* Mini Cart (Header Dropdown)
+   ========================================================================== */
+
+.apex-mini-cart {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 380px;
+  max-height: 80vh;
+  background: var(--apex-bg-primary);
+  border-radius: var(--apex-radius-lg);
+  box-shadow: var(--apex-shadow-xl);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--apex-transition-normal);
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.apex-mini-cart.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.apex-mini-cart__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--apex-spacing-4) var(--apex-spacing-5);
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.apex-mini-cart__title {
+  font-size: var(--apex-text-base);
+  font-weight: 700;
+  margin: 0;
+}
+
+.apex-mini-cart__count {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-secondary);
+}
+
+.apex-mini-cart__items {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--apex-spacing-4) var(--apex-spacing-5);
+  max-height: 400px;
+}
+
+.apex-mini-cart__item {
+  display: flex;
+  gap: var(--apex-spacing-3);
+  padding: var(--apex-spacing-3) 0;
+  border-bottom: 1px solid var(--apex-border-light);
+  transition: opacity 0.2s ease, height 0.3s ease;
+  overflow: hidden;
+}
+
+.apex-mini-cart__item:last-child {
+  border-bottom: none;
+}
+
+.apex-mini-cart__item-image {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--apex-radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.apex-mini-cart__item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apex-mini-cart__item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.apex-mini-cart__item-name {
+  font-size: var(--apex-text-sm);
+  font-weight: 600;
+  margin: 0 0 var(--apex-spacing-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.apex-mini-cart__item-name a {
+  color: var(--apex-text-primary);
+  text-decoration: none;
+}
+
+.apex-mini-cart__item-name a:hover {
+  color: var(--apex-primary);
+}
+
+.apex-mini-cart__item-variant {
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-tertiary);
+  margin-bottom: var(--apex-spacing-1);
+}
+
+.apex-mini-cart__item-price {
+  font-size: var(--apex-text-sm);
+  font-weight: 600;
+}
+
+.apex-mini-cart__item-qty {
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-tertiary);
+}
+
+.apex-mini-cart__remove {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  background: none;
+  border: none;
+  color: var(--apex-text-tertiary);
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--apex-transition-fast);
+}
+
+.apex-mini-cart__remove:hover {
+  color: #ef4444;
+}
+
+.apex-mini-cart__remove svg {
+  width: 16px;
+  height: 16px;
+}
+
+.apex-mini-cart__footer {
+  padding: var(--apex-spacing-4) var(--apex-spacing-5);
+  border-top: 1px solid var(--apex-border-light);
+  background: var(--apex-bg-secondary);
+}
+
+.apex-mini-cart__total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--apex-spacing-4);
+  font-size: var(--apex-text-base);
+  font-weight: 700;
+}
+
+.apex-mini-cart__actions {
+  display: flex;
+  gap: var(--apex-spacing-2);
+}
+
+.apex-mini-cart__actions .apex-btn {
+  flex: 1;
+  text-align: center;
+}
+
+.apex-mini-cart__empty {
+  padding: var(--apex-spacing-12) var(--apex-spacing-5);
+  text-align: center;
+  color: var(--apex-text-secondary);
+}
+
+.apex-mini-cart__empty svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--apex-spacing-4);
+  color: var(--apex-text-tertiary);
+}
+
+/* Cart Page
+   ========================================================================== */
+
+.apex-cart {
+  margin-bottom: var(--apex-spacing-16);
+}
+
+.apex-cart__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--apex-spacing-8);
+}
+
+.apex-cart__table thead {
+  background: var(--apex-bg-secondary);
+}
+
+.apex-cart__table th {
+  padding: var(--apex-spacing-4) var(--apex-spacing-5);
+  font-size: var(--apex-text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--apex-text-secondary);
+  text-align: left;
+  border-bottom: 2px solid var(--apex-border-color);
+}
+
+.apex-cart__table td {
+  padding: var(--apex-spacing-4) var(--apex-spacing-5);
+  border-bottom: 1px solid var(--apex-border-light);
+  vertical-align: middle;
+}
+
+.apex-cart__product {
+  display: flex;
+  align-items: center;
+  gap: var(--apex-spacing-4);
+}
+
+.apex-cart__product-image {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--apex-radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.apex-cart__product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apex-cart__product-name {
+  font-weight: 600;
+}
+
+.apex-cart__product-name a {
+  color: var(--apex-text-primary);
+  text-decoration: none;
+}
+
+.apex-cart__product-name a:hover {
+  color: var(--apex-primary);
+}
+
+.apex-cart__product-variant {
+  font-size: var(--apex-text-sm);
+  color: var(--apex-text-tertiary);
+}
+
+.apex-cart__price {
+  font-weight: 600;
+}
+
+.apex-cart__subtotal {
+  font-weight: 700;
+}
+
+.apex-cart__remove-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--apex-border-color);
+  border-radius: 50%;
+  background: none;
+  color: var(--apex-text-tertiary);
+  cursor: pointer;
+  transition: all var(--apex-transition-fast);
+}
+
+.apex-cart__remove-btn:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.apex-cart__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--apex-spacing-4);
+}
+
+.apex-cart__coupon {
+  display: flex;
+  gap: var(--apex-spacing-2);
+}
+
+.apex-cart__coupon input {
+  width: 250px;
+  padding: var(--apex-spacing-3) var(--apex-spacing-4);
+  border: 1px solid var(--apex-border-color);
+  border-radius: var(--apex-radius-md);
+  font-size: var(--apex-text-sm);
+}
+
+/* Cart Summary / Totals */
+.apex-cart-summary {
+  max-width: 450px;
+  margin-left: auto;
+  background: var(--apex-bg-secondary);
+  border-radius: var(--apex-radius-lg);
+  padding: var(--apex-spacing-8);
+}
+
+.apex-cart-summary__title {
+  font-size: var(--apex-text-xl);
+  font-weight: 700;
+  margin: 0 0 var(--apex-spacing-6);
+  padding-bottom: var(--apex-spacing-4);
+  border-bottom: 2px solid var(--apex-border-color);
+}
+
+.apex-cart-summary__row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--apex-spacing-3) 0;
+  border-bottom: 1px solid var(--apex-border-light);
+}
+
+.apex-cart-summary__label {
+  color: var(--apex-text-secondary);
+}
+
+.apex-cart-summary__value {
+  font-weight: 600;
+}
+
+.apex-cart-summary__discount {
+  color: #16a34a;
+}
+
+.apex-cart-summary__total {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--apex-spacing-4) 0;
+  margin-top: var(--apex-spacing-2);
+  font-size: var(--apex-text-xl);
+  font-weight: 700;
+  border-top: 2px solid var(--apex-border-color);
+}
+
+.apex-cart-summary__checkout {
+  margin-top: var(--apex-spacing-6);
+}
+
+.apex-cart-summary__checkout .apex-btn {
+  width: 100%;
+  text-align: center;
+}
+
+.apex-cart-summary__note {
+  margin-top: var(--apex-spacing-4);
+  font-size: var(--apex-text-xs);
+  color: var(--apex-text-tertiary);
+  text-align: center;
+}
+
+/* Free Shipping Progress */
+.apex-free-shipping {
+  margin-bottom: var(--apex-spacing-6);
+  padding: var(--apex-spacing-4);
+  background: #f0fdf4;
+  border-radius: var(--apex-radius-md);
+  text-align: center;
+}
+
+.apex-free-shipping__text {
+  font-size: var(--apex-text-sm);
+  margin-bottom: var(--apex-spacing-2);
+}
+
+.apex-free-shipping__text strong {
+  color: #16a34a;
+}
+
+.apex-free-shipping__bar {
+  height: 4px;
+  background: #dcfce7;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.apex-free-shipping__progress {
+  height: 100%;
+  background: #16a34a;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* Empty Cart */
+.apex-cart__empty {
+  text-align: center;
+  padding: var(--apex-spacing-16) var(--apex-spacing-8);
+}
+
+.apex-cart__empty svg {
+  width: 80px;
+  height: 80px;
+  color: var(--apex-text-tertiary);
+  margin-bottom: var(--apex-spacing-6);
+}
+
+.apex-cart__empty h2 {
+  margin-bottom: var(--apex-spacing-2);
+}
+
+.apex-cart__empty p {
+  color: var(--apex-text-secondary);
+  margin-bottom: var(--apex-spacing-6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .apex-mini-cart {
+    width: 100%;
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 80vh;
+    border-radius: var(--apex-radius-xl) var(--apex-radius-xl) 0 0;
+    transform: translateY(100%);
+  }
+
+  .apex-mini-cart.is-open {
+    transform: translateY(0);
+  }
+
+  .apex-cart__table thead {
+    display: none;
+  }
+
+  .apex-cart__table,
+  .apex-cart__table tbody,
+  .apex-cart__table tr,
+  .apex-cart__table td {
+    display: block;
+    width: 100%;
+  }
+
+  .apex-cart__table tr {
+    padding: var(--apex-spacing-4);
+    border-bottom: 1px solid var(--apex-border-light);
+    position: relative;
+  }
+
+  .apex-cart__table td {
+    padding: var(--apex-spacing-1) 0;
+    border: none;
+    text-align: right;
+  }
+
+  .apex-cart__table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: 600;
+    font-size: var(--apex-text-sm);
+  }
+
+  .apex-cart__table td:first-child {
+    text-align: left;
+  }
+
+  .apex-cart-summary {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .apex-cart__coupon {
+    flex-direction: column;
+  }
+
+  .apex-cart__coupon input {
+    width: 100%;
+  }
+}

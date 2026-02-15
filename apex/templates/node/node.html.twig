@@ -1,0 +1,80 @@
+{#
+/**
+ * @file
+ * Apex Theme - Node template (article, full view).
+ *
+ * @see template_preprocess_node()
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'apex-article',
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  {% if label and not page %}
+    <h2{{ title_attributes.addClass('apex-article__title') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  {# Article Meta #}
+  {% if display_submitted %}
+  <div class="apex-article__meta">
+    {% if author_picture %}
+    <div class="apex-article__avatar">
+      {{ author_picture }}
+    </div>
+    {% endif %}
+    <div class="apex-article__meta-info">
+      <span class="apex-article__author">{{ author_name }}</span>
+      <time class="apex-article__date" datetime="{{ node.getCreatedTime()|date('Y-m-d') }}">
+        {{ date }}
+      </time>
+    </div>
+  </div>
+  {% endif %}
+
+  {# Content #}
+  <div{{ content_attributes.addClass('apex-article__content') }}>
+    {{ content }}
+  </div>
+
+  {# Tags / Taxonomy #}
+  {% if content.field_tags|render|trim %}
+  <div class="apex-article__tags">
+    <span class="apex-article__tags-label">{{ 'Tags:'|t }}</span>
+    {{ content.field_tags }}
+  </div>
+  {% endif %}
+
+  {# Share Links #}
+  <div class="apex-article__share">
+    <span class="apex-article__share-label">{{ 'Share:'|t }}</span>
+    <div class="apex-article__share-links">
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('<current>')|url_encode }}"
+         target="_blank" rel="noopener noreferrer" aria-label="{{ 'Share on Facebook'|t }}" class="apex-share-link apex-share-link--facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="https://twitter.com/intent/tweet?url={{ url('<current>')|url_encode }}&text={{ label|url_encode }}"
+         target="_blank" rel="noopener noreferrer" aria-label="{{ 'Share on Twitter'|t }}" class="apex-share-link apex-share-link--twitter">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.27 0-.53-.02-.8A7.72 7.72 0 0023 3z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url('<current>')|url_encode }}"
+         target="_blank" rel="noopener noreferrer" aria-label="{{ 'Share on LinkedIn'|t }}" class="apex-share-link apex-share-link--linkedin">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
+      </a>
+    </div>
+  </div>
+
+</article>
